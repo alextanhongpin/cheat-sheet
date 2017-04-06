@@ -10,6 +10,7 @@ Useful hints:
 $ psql
 ```
 
+
 ### Creating Database
 
 Creating a new database with the name `mydb`
@@ -79,7 +80,11 @@ TRUNCATE TABLE mytable;
 ```
 
 
-INSERT INTO photo_tbl
+## Insert Row
+
+Insert a new row into table `mytable`
+```
+INSERT INTO mytable
 (photo_id, src) VALUES (1, 'SOMETHING');
 
 // Query the sql
