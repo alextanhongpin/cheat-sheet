@@ -11,3 +11,9 @@ git clean -fdx
 ```bash
 $ git rm -r --cached node_modules
 ```
+
+# Amend your comments
+
+```bash
+$ git commit --amend
+```
