@@ -48,3 +48,9 @@ $ git fetch origin
 $ git reset --hard origin/master
 $ git clean -f // clean local file
 ```
+
+# To delete all branches on remote that are already merged
+
+```bash
+$ git branch -r --merged | grep -v master | sed 's/origin\///' | xargs -n 1 git push --delete origin
+```
