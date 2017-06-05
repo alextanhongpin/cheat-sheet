@@ -41,3 +41,10 @@ $ git push origin :old-name new-name
 $ git push origin -u new-name
 
 ```
+
+# Reset local repository branch to be just like remote repository HEAD
+```bash 
+$ git fetch origin
+$ git reset --hard origin/master
+$ git clean -f // clean local file
+```
