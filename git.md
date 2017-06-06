@@ -54,3 +54,15 @@ $ git clean -f // clean local file
 ```bash
 $ git branch -r --merged | grep -v master | sed 's/origin\///' | xargs -n 1 git push --delete origin
 ```
+
+
+# Reset to origin
+```bash
+$ git fetch --all
+
+# Then, you have two options:
+$ git reset --hard origin/master
+
+# OR If you are on some other branch:
+$ git reset --hard origin/<branch_name>
+```
