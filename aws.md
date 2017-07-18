@@ -6,3 +6,12 @@ You will have different IAM policy and have it configured in your `.aws/credenti
 ```bash
 $ aws configure --profile profileName
 ```
+
+
+## Dynamodb
+
+Get the total count of items in the table
+
+```bash
+$ aws dynamodb scan --table-name job-production --select "COUNT"
+```
