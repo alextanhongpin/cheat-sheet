@@ -17,3 +17,8 @@ tar -czvf archive.tar.gz --exclude=./node_modules .
 ## If you want to make a zip without those invisible Mac resource files such as “_MACOSX” or “._Filename” and .ds store files, use the “-X” option in the command so:
 
 `zip -r -X archive_name.zip folder_to_compress`
+
+
+## Zip but exclude node modules
+
+zip -r -X node_modules archite.zip * -x node_modules/\*
