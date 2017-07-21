@@ -33,3 +33,9 @@ P.S: Don't forget to source ~/.bash_profile or ~/.zshrc, as follows:
 ```bash
 $ source ~/.bash_profile
 ```
+
+## copy or link the executables to /usr/local/bin
+
+```bash
+$ ln -s $GOPATH/bin/nomad-demo /usr/local/bin/nomad-demo
+```
