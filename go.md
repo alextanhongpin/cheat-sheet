@@ -39,3 +39,11 @@ $ source ~/.bash_profile
 ```bash
 $ ln -s $GOPATH/bin/nomad-demo /usr/local/bin/nomad-demo
 ```
+
+
+get number of fields in golang
+``` 
+x is a struct
+		v := reflect.ValueOf(x)
+		n = v.NumField() 
+    ```
