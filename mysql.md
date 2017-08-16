@@ -8,6 +8,7 @@ Replace the capitalized text with your own values.
 | `mysql> source PATH/TO/FILE.sql` | Executes a sql file. |
 | `help COMMAND` | Display help for a particular command. |
 | `source script.sql` | Execute a script. |
+| ` SELECT * FROM tableName \G;` | Pretty print output |
 
 ```bash
 # Use the demo database;
