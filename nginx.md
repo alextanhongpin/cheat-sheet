@@ -46,3 +46,10 @@ $ sudo nginx -t
 # Reload through signal
 $ sudo nginx -s reload
 ```
+## Nginx rewrite for SPA/HTML5 Push state support
+```
+ location / {
+        rewrite ^/.*/$ / last; # Redirect everything to / (ex index.html) and let the JS router take care of the rest
+        rewrite ^([^.]*[^/])$ $1/ permanent; # Force trailing slash
+    }
+```
