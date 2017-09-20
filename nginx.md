@@ -30,3 +30,19 @@ container_commands:
     command: service nginx restart
 ```
 
+```
+# SSH into ec2
+$ ssh -i test.pem ec2-user@private.ip
+
+# Go to nginx dir
+$ cd /etc/nginx
+
+# Edit 
+$ vi nginx.conf
+
+# Test
+$ sudo nginx -t
+
+# Reload through signal
+$ sudo nginx -s reload
+```
