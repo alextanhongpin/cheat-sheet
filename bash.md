@@ -16,3 +16,9 @@ If you have gsort installed,
 $ brew install coreutils
 $ du -d 1 -h . | gsort -h
 ```
+
+
+## Setting default value for environment variables
+```
+$ MONGODB_ADMIN_USER:-"admin"
+```
