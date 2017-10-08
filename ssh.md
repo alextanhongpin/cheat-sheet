@@ -1,7 +1,10 @@
 ## Copy stuff from a ssh to local directory
 
 ```bash
-scp alex@private.ip:filename .
+$ scp alex@private.ip:filename .
+
+# e.g.
+$ scp alex@sunshine.engineers.my:/etc/docker-compose/event-ui/data.json .
 ```
 
 ## SSH Amazon EC2
