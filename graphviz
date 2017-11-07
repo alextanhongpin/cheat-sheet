@@ -1,0 +1,18 @@
+## Installation
+
+```
+brew install graphviz
+```
+
+
+```dot 
+graph {
+  a -- b;
+  b -- c;
+  a -- c;
+}
+```
+
+```bash
+$ dot -Tpng DocName.dot -o DocName.png
+```
