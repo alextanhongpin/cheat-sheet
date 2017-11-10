@@ -26,6 +26,8 @@ $ aws dynamodb scan --table-name job-production --select "COUNT"
 ```js
 const aws = require('aws-sdk')
 aws.config.update({
-  region: 'ap-southeast-1'
+    region: 'ap-southeast-1',
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 })
 ```
