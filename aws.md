@@ -22,3 +22,10 @@ $ aws dynamodb scan --table-name job-production --select "COUNT"
 ```
 
 
+## Updating Region
+```js
+const aws = require('aws-sdk')
+aws.config.update({
+  region: 'ap-southeast-1'
+})
+```
