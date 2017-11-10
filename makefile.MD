@@ -173,3 +173,11 @@ local:
 	@echo "Done building private server"
 ```
   
+## Include .env file
+
+```makefile
+include .env
+
+greet:
+  @echo ${YOUR_VAR_IN_ENV}
+```
