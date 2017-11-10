@@ -23,11 +23,20 @@ $ aws dynamodb scan --table-name job-production --select "COUNT"
 
 
 ## Updating Region
-```js
+```javascript
 const aws = require('aws-sdk')
 aws.config.update({
     region: 'ap-southeast-1',
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 })
+```
+
+## Setting Credentials
+
+```javascript
+const aws = require('aws-sdk')
+const credentials = new aws.SharedIniFileCredentials({ profile: 'email-delivery' })
+aws.config.credentials = credentials;
+aws.config.region = 'ap-southeast-1'
 ```
