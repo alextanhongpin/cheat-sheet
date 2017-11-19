@@ -10,6 +10,24 @@ np.ones((3, 4))
 np.zeros((2,3,4), dtype=np.int16)
 ```
 
+## Create an array of zeros and ones
+
+```python
+# 2 is the upper boundary, so values between 0 and 2 will be generated
+# 10 is the array len
+np.random.randint(2, size=10)
+# array([1, 0, 0, 0, 1, 1, 0, 0, 1, 0])
+
+# Generate an array of zeros
+np.random.randint(1, size=10)
+# array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+# Generate an 2 x 4 array of values from 0 to 4
+np.random.randint(5, size=(2, 4))
+array([[4, 0, 2, 1],
+       [3, 2, 2, 0]])
+```
+
 ## Create an array with random values
 
 ```python
@@ -305,3 +323,8 @@ plt.title('Frequency of My 3D Array Elements')
 # Show the plot
 plt.show()
 ```
+
+## References
+
+1. [http://cs231n.github.io/python-numpy-tutorial/](http://cs231n.github.io/python-numpy-tutorial/)
+2. [https://www.datacamp.com/community/tutorials/python-numpy-tutorial](https://www.datacamp.com/community/tutorials/python-numpy-tutorial)
