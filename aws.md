@@ -44,3 +44,19 @@ aws.config.region = 'ap-southeast-1'
 ## Copy data from S3
 ```
 AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} aws s3 cp s3://url/data.zip data.zip```
+
+
+## Elasticbeanstalk Worker Connections Not Enough
+
+Increase worker connection from 1024 to 6144. The content of the file in `.ebextensions/nginx.config`:
+
+```
+files:
+  "/etc/security/limits.conf":
+    content: |
+      *           soft    nofile          6144
+      *           hard    nofile          6144
+container_commands:
+    01-worker-connections:
+        command: "/bin/sed -i 's/worker_connections  1024/worker_connections  6144/g' /tmp/deployment/config/#etc#nginx#nginx.conf"
+```
