@@ -181,3 +181,21 @@ include .env
 greet:
   @echo ${YOUR_VAR_IN_ENV}
 ```
+
+## Simple Expanded Variables `:=`
+
+```Makefile
+FOO = foo
+
+# BAR will first take the value FOO=foo, but will eventually
+# be overwritten by the FOO=foo2
+BAR = ${FOO} bar
+
+# BAR2 will take the immutable value of FOO
+BAR2 := ${FOO} bar
+FOO = foo2
+
+scream:
+	@echo ${BAR} # outputs foo2 bar
+	@echo ${BAR2} # outputs foo bar
+```
