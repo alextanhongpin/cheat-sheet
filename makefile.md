@@ -182,7 +182,7 @@ greet:
   @echo ${YOUR_VAR_IN_ENV}
 ```
 
-## Simple Expanded Variables `:=`
+## Simply Expanded Variables `:=`
 
 ```Makefile
 FOO = foo
