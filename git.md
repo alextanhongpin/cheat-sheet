@@ -66,3 +66,58 @@ $ git reset --hard origin/master
 # OR If you are on some other branch:
 $ git reset --hard origin/<branch_name>
 ```
+
+# Get latest commit of repository
+```bash
+$ git log -1
+```
+
+Output: 
+```
+commit 706b92ba174729c6a1d761a8566a74f0a0bf8672 (HEAD -> master, origin/master)
+Author: alextanhongpin <alextan@seekasia.com>
+Date:   Sun Feb 11 23:57:57 2018 +0800
+
+    refactor: improve naming
+(END)
+```
+
+Press `Q` to exit.
+
+# Get hash from latest commit
+
+```bash
+$ git log -1 --pretty=%H
+# Output
+706b92ba174729c6a1d761a8566a74f0a0bf8672
+```
+
+
+```bash
+$ git log -1 --pretty=%h
+# Output
+706b92b
+```
+
+# To get the string
+
+```
+$ echo $(git log -1 --pretty=%H)
+```
+
+```Makefile
+NAME   := acmecorp/foo
+TAG    := $$(git log -1 --pretty=%!H(MISSING))
+IMG    := ${NAME}:${TAG}
+LATEST := ${NAME}:latest
+
+build:
+  @docker build -t ${IMG} .
+  @docker tag ${IMG} ${LATEST}
+
+push:
+  @docker push ${NAME}
+
+login:
+  @docker log -u ${DOCKER_USER} -p ${DOCKER_PASS}
+```
