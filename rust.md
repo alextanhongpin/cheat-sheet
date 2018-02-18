@@ -663,3 +663,56 @@ fn main() {
   println!("Summed result: {}", p.sum());
 }
 ```
+
+## Reference Counter
+
+```rust
+use std::cell::RefCell;
+use std::rc::Rc;
+use std::rc::Weak;
+
+#[derive(Debug)]
+struct LinkedList<T> {
+  head: Option<Rc<LinkedListNode<T>>>,
+}
+
+#[derive(Debug)]
+struct LinkedListNode<T> {
+  next: Option<Rc<LinkedListNode<T>>>,
+  prev: RefCell<Option<Weak<LinkedListNode<T>>>>,
+  data: T,
+}
+
+impl<T> LinkedList<T> {
+  fn new() -> Self {
+    LinkedList { head: None }
+  }
+  fn append(&self, data: T) -> Self {
+    let new_node = Rc::new(LinkedListNode {
+      data: data,
+      next: self.head.clone(),
+      prev: RefCell::new(None),
+    });
+
+    match self.head.clone() {
+      Some(node) => {
+        let mut prev = node.prev.borrow_mut();
+        *prev = Some(Rc::downgrade(&new_node));
+        // node.prev = Some(Rc::downgrade(&new_node));
+      }
+      None => {}
+    }
+    LinkedList {
+      head: Some(new_node),
+    }
+  }
+}
+
+fn main() {
+  let list_of_nums = LinkedList::new().append(1).append(2);
+  println!("nums: {:?}", list_of_nums);
+
+  let list_of_strs = LinkedList::new().append("hello").append("world");
+  println!("strs: {:?}", list_of_strs);
+}
+```
