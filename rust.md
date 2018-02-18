@@ -113,3 +113,36 @@ fn main() {
   );
 }
 ```
+
+Output: 
+
+```
+empty_string:
+empty_string_with_capacity: ||
+string_from_bytestring: RUST
+empty string is now a with len 1
+empty string is now ahi! world! with len 11
+```
+
+## Array
+```rust
+fn main() {
+  let mut integer_array_1 = [1, 2, 3];
+  let integer_array_2: [u64; 3] = [1, 2, 3];
+  let integer_array_3: [u64; 32] = [0; 32];
+  // let integer_array_4: [i32; 16438] = [-5; 16438];
+  integer_array_1[0] = 255;
+
+  println!("1: {:?}", integer_array_1);
+  println!("2: {:?}", integer_array_2);
+  println!("3: {:?}", integer_array_3);
+  // println!("4: {:?}", integer_array_4);
+}
+```
+Output:
+
+```
+1: [255, 2, 3]
+2: [1, 2, 3]
+3: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+```
