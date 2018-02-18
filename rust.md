@@ -621,3 +621,45 @@ fn main() {
   println!("foo_one: {:?}", out);
 }
 ```
+
+## Interior Mutability
+
+Demonstrates that the cache is working without needing to make the whole `p` mutable.
+
+```
+use std::cell::Cell;
+
+#[derive(Debug)]
+struct Point {
+  x: u8,
+  y: u8,
+  cached_sum: Cell<Option<u8>>,
+}
+
+impl Point {
+  fn sum(&self) -> u8 {
+    match self.cached_sum.get() {
+      Some(sum) => {
+        println!("got from cache: {}", sum);
+        sum
+      }
+      None => {
+        let new_sum = self.x + self.y;
+        self.cached_sum.set(Some(new_sum));
+        println!("set cached: {}", new_sum);
+        new_sum
+      }
+    }
+  }
+}
+
+fn main() {
+  let p = Point {
+    x: 10,
+    y: 20,
+    cached_sum: Cell::new(None),
+  };
+  println!("Summed result: {}", p.sum());
+  println!("Summed result: {}", p.sum());
+}
+```
