@@ -227,3 +227,138 @@ Output:
 whole_euros: Money { amount: 42, currency: "EUR" }
 floating_euros: Money { amount: 24.312, currency: "EUR" }
 ```
+
+## Traits Add
+
+```
+// Lets us overload the +operator
+use std::ops::Add;
+
+// pub trait Add<RHS = Self> { // trait has a generic type RHS that needs to be equal to the Self type
+//   type Output; // Any implementation needs to declare an `Output` type
+//   // Any implementations needs to implement an add method that takes a right-hand side parameter
+//   // that was declared on the first line to be the same as the `Self` type
+//   fn add(self, rhs: RHS) -> Self::Output;
+// }
+
+#[derive(Debug)]
+struct Money<T> {
+  amount: T,
+  currency: String,
+}
+
+// impl<T: Add<T, Output=T>> says that our implementation has a generic type T
+// Add for Money says we are implementing the Add trait for the type Money<T>
+// <T: Add> says this has to implement the Add trait
+// <T, Output=T> Furthermore, the implementation of the Add trait must have
+// it's input and output types as the same
+impl<T: Add<T, Output = T>> Add for Money<T> {
+  type Output = Money<T>;
+  fn add(self, rhs: Money<T>) -> Self::Output {
+    assert!(self.currency == rhs.currency);
+    Money {
+      currency: rhs.currency,
+      amount: self.amount + rhs.amount,
+    }
+  }
+}
+
+fn main() {
+  let rm10: Money<u8> = Money {
+    amount: 10,
+    currency: "RM".to_string(),
+  };
+  let rm50: Money<u8> = Money {
+    amount: 50,
+    currency: "RM".to_string(),
+  };
+  println!("{:?}", rm10 + rm50);
+}
+```
+
+Output:
+
+```
+Money { amount: 60, currency: "RM" }
+```
+
+## Traits Into
+
+```rust
+// This trait allows use to specify conversion methods from and to arbirary types
+use std::convert::Into;
+
+#[derive(Debug)]
+struct Money<T> {
+  amount: T,
+  currency: String,
+}
+
+#[derive(Debug)]
+struct CurrencylessMoney<T> {
+  amount: T,
+}
+
+impl<T> Into<CurrencylessMoney<T>> for Money<T> {
+  fn into(self) -> CurrencylessMoney<T> {
+    CurrencylessMoney {
+      amount: self.amount,
+    }
+  }
+}
+
+fn main() {
+  let rm10: Money<f32> = Money {
+    amount: 10.50,
+    currency: "RM".to_string(),
+  };
+  let currencyless: CurrencylessMoney<f32> = rm10.into();
+  println!("{:?}", currencyless);
+
+  // This will throw error
+  // type annotations required: cannot resolve `Money<f32>: std::convert::Into<_>`
+  // println!("{:?}", rm10.into());
+}
+```
+
+Output:
+
+```
+CurrencylessMoney { amount: 10.5 }
+```
+
+## Trait Display
+
+```rust
+use std::fmt::{Display, Formatter, Result};
+
+// pub trait Display {
+//   fn fmt(&self, &mut Formatter) -> Result<(), Error>;
+// }
+
+// #[derive(Debug)]
+struct Money<T> {
+  amount: T,
+  currency: String,
+}
+
+impl<T: Display> Display for Money<T> {
+  fn fmt(&self, f: &mut Formatter) -> Result {
+    write!(f, "{} {}", self.amount, self.currency)
+  }
+}
+
+fn main() {
+  let rm5: Money<i8> = Money {
+    amount: 10,
+    currency: "RM".to_string(),
+  };
+  print!("{}", rm5);
+}
+```
+
+Output:
+
+```
+10 RM%
+```
