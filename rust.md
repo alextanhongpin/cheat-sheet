@@ -362,3 +362,25 @@ Output:
 ```
 10 RM%
 ```
+
+## Read File
+
+```rust
+use std::io::Read;
+use std::path::Path;
+use std::fs::File;
+
+fn main() {
+  let path = Path::new("data.txt");
+  let mut file = match File::open(&path) {
+    Ok(file) => file,
+    Err(e) => {
+      println!("Error while opening file: {}", e);
+      panic!();
+    }
+  };
+  let mut s = String::new();
+  file.read_to_string(&mut s);
+  println!("Read the string: {}", s);
+}
+```
