@@ -146,3 +146,53 @@ Output:
 2: [1, 2, 3]
 3: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ```
+
+## Slice Usage
+
+```rust
+use std::fmt::Debug;
+
+fn print_slice<T: Debug>(slice: &[T]) {
+  println!("{:?}", slice);
+}
+
+fn main() {
+  let array: [u8; 5] = [1, 2, 3, 4, 5];
+
+  println!("Whole array just borrowed:");
+  print_slice(&array);
+
+  println!("Whole array sliced:");
+  print_slice(&array[..]);
+
+  println!("Without the first element:");
+  print_slice(&array[1..]);
+
+  println!("One element from the middle:");
+  print_slice(&array[3..4]);
+
+  println!("First three element:");
+  print_slice(&array[..3]);
+
+  println!("Oops, going too far");
+  print_slice(&array[..900]);
+}
+```
+
+Output:
+
+```
+Whole array just borrowed:
+[1, 2, 3, 4, 5]
+Whole array sliced:
+[1, 2, 3, 4, 5]
+Without the first element:
+[2, 3, 4, 5]
+One element from the middle:
+[4]
+First three element:
+[1, 2, 3]
+Oops, going too far
+thread 'main' panicked at 'index 900 out of range for slice of length 5', src/libcore/slice/mod.rs:745:4
+note: Run with `RUST_BACKTRACE=1` for a backtrace.
+```
