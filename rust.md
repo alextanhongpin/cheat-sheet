@@ -50,3 +50,20 @@ mod tests {
     }
 }
 ```
+
+## Pass in string slice
+
+If you are passing a string to a function, use the `&str` type - a string slice is an acceptable input parameter not only for actual string slice referefences but also for `String` references.
+```rust
+fn say_hello(to_whom: &str) {
+  println!("Hey {}", to_whom);
+}
+
+fn main() {
+  let string_slice: &'static str = "you";
+  let string: String = string_slice.into(); // `String` reference
+
+  say_hello(string_slice);
+  say_hello(&string);
+}
+```
