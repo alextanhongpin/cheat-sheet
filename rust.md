@@ -384,3 +384,69 @@ fn main() {
   println!("Read the string: {}", s);
 }
 ```
+
+## Mapping Errors
+
+```rust
+use std::string::FromUtf8Error;
+
+fn bytestring_to_string_with_match(str: Vec<u8>) -> Result<String, FromUtf8Error> {
+  match String::from_utf8(str) {
+    Ok(str) => Ok(str.to_uppercase()),
+    Err(err) => Err(err),
+  }
+}
+
+fn bytestring_to_string(str: Vec<u8>) -> Result<String, FromUtf8Error> {
+  String::from_utf8(str).map(|s| s.to_uppercase())
+}
+
+fn main() {
+  let faulty_bytestring = vec![130, 131, 132, 133];
+  let ok_bytestring = vec![80, 82, 84, 85, 86];
+
+  let s1_faulty = bytestring_to_string_with_match(faulty_bytestring.clone());
+  let s1_ok = bytestring_to_string_with_match(ok_bytestring.clone());
+  println!("s1_faulty: {:?}", s1_faulty);
+  println!("s1_ok: {:?}", s1_ok);
+
+  let s2_faulty = bytestring_to_string(faulty_bytestring.clone());
+  let s2_ok = bytestring_to_string(ok_bytestring.clone());
+  println!("s2_faulty: {:?}", s2_faulty);
+  println!("s2_ok: {:?}", s2_ok);
+}
+```
+
+## Early returns and !try macro
+
+```rust
+use std::string::FromUtf8Error;
+
+fn bytestring_to_string_with_match(str: Vec<u8>) -> Result<String, FromUtf8Error> {
+  let ret = match String::from_utf8(str) {
+    Ok(str) => str.to_uppercase(),
+    Err(err) => return Err(err),
+  };
+  Ok(ret)
+}
+
+fn bytestring_to_string_with_try(str: Vec<u8>) -> Result<String, FromUtf8Error> {
+  let ret = try!(String::from_utf8(str));
+  Ok(ret)
+}
+
+fn main() {
+  let faulty_bytestring = vec![130, 131, 132, 133];
+  let ok_bytestring = vec![80, 82, 84, 85, 86];
+
+  let s1_faulty = bytestring_to_string_with_match(faulty_bytestring.clone());
+  let s1_ok = bytestring_to_string_with_match(ok_bytestring.clone());
+  println!("s1_faulty: {:?}", s1_faulty);
+  println!("s1_ok: {:?}", s1_ok);
+
+  let s2_faulty = bytestring_to_string_with_try(faulty_bytestring.clone());
+  let s2_ok = bytestring_to_string_with_try(ok_bytestring.clone());
+  println!("s2_faulty: {:?}", s2_faulty);
+  println!("s2_ok: {:?}", s2_ok);
+}
+```
