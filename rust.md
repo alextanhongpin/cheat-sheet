@@ -552,3 +552,72 @@ Output:
 money_1 is: Ok(Money { currency: USD, amount: 1000 })
 money_2 is: Err(MoneyError { cause: CurrencyError { description: "MYR" } })
 ```
+
+## Cell
+
+```rust
+// Interior mutability for Copy types
+use std::cell::Cell;
+
+fn main() {
+  // cannot borrow immutable local variable `x` as mutable
+  // let x = 1;
+  // let ref_to_x_1 = &mut x;
+  // let ref_to_x_2 = &mut x;
+
+  // *ref_to_x_1 += 1;
+  // *ref_to_x_2 += 1;
+  // println!("{} {} {}", x, ref_to_x_1, ref_to_x_2);
+
+  let x = Cell::new(1);
+  let ref_to_x_1 = &x;
+  let ref_to_x_2 = &x;
+
+  ref_to_x_1.set(ref_to_x_1.get() + 1);
+  println!("x: {:?}", x.get());
+  ref_to_x_2.set(ref_to_x_2.get() + 2);
+  println!(
+    "{:?} {:?} {:?}",
+    x.get(),
+    ref_to_x_1.get(),
+    ref_to_x_2.get()
+  );
+  x.set(0);
+  println!(
+    "{:?} {:?} {:?}",
+    x.get(),
+    ref_to_x_1.get(),
+    ref_to_x_2.get()
+  );
+}
+```
+
+## RefCell
+
+```rust
+// Interior mutability for Move types
+use std::cell::RefCell;
+
+#[derive(Debug)]
+struct Foo {
+  number: u8,
+}
+
+fn main() {
+  let foo_one = RefCell::new(Foo { number: 1 });
+
+  let mut ref_to_foo_1 = foo_one.borrow_mut();
+  ref_to_foo_1.number = 10;
+  println!("foo_one: {:?}", foo_one);
+  drop(ref_to_foo_1); // There can be only one mutable reference
+
+  let mut ref_to_foo_2 = foo_one.borrow_mut();
+  println!("{:?}", ref_to_foo_2.number);
+  ref_to_foo_2.number = 20;
+  println!("{:?}", ref_to_foo_2.number);
+  drop(ref_to_foo_2);
+
+  let out = foo_one.borrow();
+  println!("foo_one: {:?}", out);
+}
+```
