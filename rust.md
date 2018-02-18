@@ -196,3 +196,34 @@ Oops, going too far
 thread 'main' panicked at 'index 900 out of range for slice of length 5', src/libcore/slice/mod.rs:745:4
 note: Run with `RUST_BACKTRACE=1` for a backtrace.
 ```
+
+## Generic Types
+
+```rust
+#[derive(Debug)]
+struct Money<T> {
+  amount: T,
+  currency: String,
+}
+
+fn main() {
+  let whole_euros: Money<u8> = Money {
+    amount: 42,
+    currency: "EUR".to_string(),
+  };
+  let floating_euros: Money<f32> = Money {
+    amount: 24.312,
+    currency: "EUR".to_string(),
+  };
+
+  println!("whole_euros: {:?}", whole_euros);
+  println!("floating_euros: {:?}", floating_euros);
+}
+```
+
+Output:
+
+```
+whole_euros: Money { amount: 42, currency: "EUR" }
+floating_euros: Money { amount: 24.312, currency: "EUR" }
+```
