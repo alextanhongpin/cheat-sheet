@@ -834,3 +834,28 @@ Not there yet. Number is 67477
 Not there yet. Number is 99803
 Got there! Number is 100000
 ```
+
+## Making HTTP GET Request
+
+```toml
+[package]
+name = "hypter-test"
+version = "0.1.0"
+authors = ["alextanhongpin <alextan@seekasia.com>"]
+
+[dependencies]
+reqwest = "0.8.5"
+
+[[bin]]
+name = "mybin"
+path = "src/bin.rs"
+```
+
+```rust
+extern crate reqwest;
+
+pub fn main() {
+    let body = reqwest::get("http://www.google.com").unwrap().text();
+    println!("body = {:?}", body);
+}
+```
