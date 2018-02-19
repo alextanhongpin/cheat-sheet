@@ -744,3 +744,40 @@ fn main() {
   closure_without_variables();
 }
 ```
+
+Output:
+
+```
+square: 16
+square_1: 16
+square_2: 16
+square_3: 16
+function without variables
+closure without variables
+```
+
+## Closure 2
+
+```rust
+fn main() {
+  let mut outer_scope = 42;
+
+  {
+    let mut closure = move || {
+      outer_scope += 42;
+      println!("value in closure: {}", outer_scope);
+    };
+
+    closure();
+  }
+
+  println!("value outside: {}", outer_scope);
+}
+```
+
+Output: 
+
+```
+value in closure: 84
+value outside: 42
+```
