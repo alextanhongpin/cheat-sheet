@@ -781,3 +781,56 @@ Output:
 value in closure: 84
 value outside: 42
 ```
+
+## Threads
+
+```rust
+use std::sync::Mutex;
+use std::thread;
+use std::sync::Arc;
+use std::time;
+
+
+const THREADS: u64 = 100_000;
+const START_NUMBER: u64 = 1;
+
+
+fn main() {
+  let one_millisecond = time::Duration::from_millis(1);
+  let one_second = time::Duration::from_secs(1);
+
+  let mutexed_number = Arc::new(Mutex::new(START_NUMBER));
+  let mutexed_number_2 = mutexed_number.clone();
+
+  thread::spawn(move || {
+    for _ in 1..THREADS {
+      let mutexed_number_clone = mutexed_number.clone();
+      thread::spawn(move || {
+        thread::sleep(one_millisecond);
+        let mut number = mutexed_number_clone.lock().unwrap();
+        *number += 1;
+      });
+    }
+  });
+
+  loop {
+    thread::sleep(one_second);
+    let number = mutexed_number_2.lock().unwrap();
+    if *number != THREADS {
+      println!("Not there yet. Number is {}", *number);
+    } else {
+      println!("Got there! Number is {}", *number);
+      break;
+    }
+  }
+}
+```
+
+Output:
+
+```
+Not there yet. Number is 33112
+Not there yet. Number is 67477
+Not there yet. Number is 99803
+Got there! Number is 100000
+```
