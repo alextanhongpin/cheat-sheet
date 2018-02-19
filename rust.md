@@ -716,3 +716,31 @@ fn main() {
   println!("strs: {:?}", list_of_strs);
 }
 ```
+
+## Closures
+
+```rust
+fn square(x: u32) -> u32 {
+  x * x
+}
+
+fn function_without_variables() {
+  println!("function without variables");
+}
+
+fn main() {
+  let square_1 = |x: u32| x * x;
+  let square_2 = |x: u32| { x * x };
+  let square_3 = |x: u32| -> u32 { x * x };
+
+  let closure_without_variables = || println!("closure without variables");
+
+  println!("square: {}", square(4));
+  println!("square_1: {}", square_1(4));
+  println!("square_2: {}", square_2(4));
+  println!("square_3: {}", square_3(4));
+
+  function_without_variables();
+  closure_without_variables();
+}
+```
