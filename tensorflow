@@ -1,0 +1,12 @@
+## Install/Upgrade Tensorflow
+
+```
+pip3 install --upgrade tensorflow
+```
+
+
+## Print version
+
+```python
+print('Tensorflow version:', tf.__version__)
+```
