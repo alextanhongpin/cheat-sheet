@@ -70,3 +70,24 @@ https://medium.com/@adamhooper/in-mysql-never-use-utf8-use-utf8mb4-11761243e434
 
 | utf8mb4  | UTF-8 Unicode                   | utf8mb4_general_ci  |      4 |
 | utf8     | UTF-8 Unicode                   | utf8_general_ci     |      3 |-->
+
+## Basic Docker Mysql
+
+```docker-compose
+version: '3.1'
+services:
+  db:
+    image: mysql:8.0.3
+    restart: always
+    environment: 
+    - MYSQL_DATABASE=idpconfig
+    - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    ports:
+    - 3306:3306
+```
+
+## Example executing a source file from outside of Docker to Docker MySQL
+
+```bash
+$ docker exec -i <DOCKER_IMAGE_ID> mysql -u root < ./filename.sql
+```
