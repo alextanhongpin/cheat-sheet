@@ -22,3 +22,10 @@ tar -czvf archive.tar.gz --exclude=./node_modules .
 ## Zip but exclude node modules
 
 zip -r -X node_modules archite.zip * -x node_modules/\*
+
+
+## Archive hidden folders 
+
+```
+$ zip -r Archiv.zip  * .*
+```
