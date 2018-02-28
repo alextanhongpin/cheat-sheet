@@ -60,3 +60,9 @@ container_commands:
     01-worker-connections:
         command: "/bin/sed -i 's/worker_connections  1024/worker_connections  6144/g' /tmp/deployment/config/#etc#nginx#nginx.conf"
 ```
+
+## Run AWS Command with profile
+
+```bash
+$ aws ... --profile profile_name
+```
