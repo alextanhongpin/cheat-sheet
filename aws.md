@@ -66,3 +66,47 @@ container_commands:
 ```bash
 $ aws ... --profile profile_name
 ```
+
+## Sample boilerplate code for AWS Elasticbeanstalk Worker Environment with SQS
+
+```javascript
+app.js
+
+const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request-promise')
+
+const app = express()
+const port = process.env.PORT || 3000
+
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+
+app.post('/', (req, res) => {
+  const options = {
+    method: 'POST',
+    uri: 'URL_HERE',
+    json: true,
+    body: req.body,
+    resolveWithFullResponse: true
+  }
+
+  request(options)
+  .then((body) => {
+    console.log(`success: ${body}`)
+    return res.status(200).json({
+      message: body
+    })
+  })
+  .catch((error) => {
+    console.log(`error: ${error.message}`)
+    return res.status(400).json({
+      error: error.message
+    })
+  })
+})
+
+app.listen(port, () => {
+  console.log(`listening to port *:${port}. press ctrl + c to cancel.`)
+})
+```
