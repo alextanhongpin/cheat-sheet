@@ -70,7 +70,7 @@ $ aws ... --profile profile_name
 ## Sample boilerplate code for AWS Elasticbeanstalk Worker Environment with SQS
 
 ```javascript
-app.js
+// app.js
 
 const express = require('express')
 const bodyParser = require('body-parser')
