@@ -29,3 +29,9 @@ zip -r -X node_modules archite.zip * -x node_modules/\*
 ```
 $ zip -r Archiv.zip  * .*
 ```
+
+## Zip hidden
+
+```bash
+$ zip -r Archiv.zip **/**.tfvars
+```
