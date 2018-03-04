@@ -22,3 +22,16 @@ $ du -d 1 -h . | gsort -h
 ```
 $ MONGODB_ADMIN_USER:-"admin"
 ```
+
+
+## xargs with multiple commands
+
+```bash
+$ cat a.txt | xargs -I % sh -c 'command1; command2; ...'
+```
+
+## find with multiple command
+
+```bash
+$ find . -exec echo {} \; -exec printf {} \;
+```
