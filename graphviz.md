@@ -73,4 +73,4 @@ compound=true;
 }
 ```
 
-![architecture](../assets/architecture.png)
+![architecture](/assets/architecture.png)
