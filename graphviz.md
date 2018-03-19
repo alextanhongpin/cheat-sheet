@@ -20,39 +20,57 @@ $ dot -Tpng DocName.dot -o DocName.png
 ## AWS Example
 ```
 digraph G {
-   subgraph cluster0 {
 
-   label = "AWS VPC";
-   
-  "Application (Identity Server 4)"  [shape=box, style=filled, color=lightblue];
+compound=true;
+  subgraph cluster0 {
+  	label = "AWS VPC"; 
+		"AWS RDS (SQL Server)" -> "Identity Server 4";
+		"Identity Server 4" -> "AWS RDS (SQL Server)";
+		"Identity Server 4" -> "AWS Elasticache (Redis)";
+		"AWS Elasticache (Redis)" -> "Identity Server 4";
 
-  "AWS ECR" -> "AWS ECS" [label="pulls Docker image"]
-  "AWS ECS" -> "Instance 1"
-  "AWS ECS" -> "Instance 2"
-  "AWS ECS" -> "Instance n" [label="AWS Network Load Balancer"]
-  "Instance 1" ->  "Application (Identity Server 4)" 
-  "Instance 2" ->  "Application (Identity Server 4)" 
-  "Instance n" ->  "Application (Identity Server 4)" 
+		subgraph cluster2 {
+			label = "On-Premise Data Center";
+			"Siva DB";
+			"MyJS DB";
+			"jobsDB DB";
+		}
 
-  "AWS RDS (SQL Server)" -> "Application (Identity Server 4)"
-  "Application (Identity Server 4)" -> "AWS RDS (SQL Server)" 
-  "Application (Identity Server 4)" -> "AWS Elasticache (Redis)"
-  "AWS Elasticache (Redis)" -> "Application (Identity Server 4)"
- } 
+		subgraph cluster3 {
+			label = "AWS Network Load Balancer";
+			"Instance 1";
+			"Instance 2";
+			"Instance n";
+		}
 
+		subgraph cluster4 {
+			label = "AWS Container Service";
+			"AWS ECR" -> "AWS ECS" [label="pulls Docker image"];
+		}
 
-   subgraph cluster1 {
+		subgraph cluster5 {
+ 			label = "Application";
+  		"Identity Server 4"  [shape=box];
+			node [ style=filled]
+			color=blue;
+		}
 
-   label = "Public IP";
+		"AWS ECS" -> "Instance 1" [ltail=cluster4, lhead=cluster3];
+		"Instance 2" ->  "Identity Server 4" [ltail=cluster3, lhead=cluster5];
+		"Identity Server 4"  ->  "MyJS DB" [ltail=cluster5, lhead=cluster2];
+ 	} 
 
-    node [style=filled,color=white];
-   style=filled;
-   color=lightgrey;   
+  subgraph cluster1 {
+		label = "Public IP";
+		node [style=filled,color=white];
+		style=filled;
+		color=lightgrey;   
 
-  "Mobile Client" -> "AWS API Gateway"
-  "Browser Client" -> "AWS API Gateway"
-  "AWS API Gateway" -> "Application (Identity Server 4)" [label="public API"]
- }
+		"Mobile Client" -> "AWS API Gateway"
+		"Browser Client" -> "AWS API Gateway"
+		"AWS API Gateway" -> "Identity Server 4" [label="public API"]
+	}
 }
-
 ```
+
+![architecture](../assets/architecture.png)
