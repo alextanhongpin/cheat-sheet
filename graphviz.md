@@ -31,16 +31,12 @@ compound=true;
 
 		subgraph cluster2 {
 			label = "On-Premise Data Center";
-			"Siva DB";
-			"MyJS DB";
-			"jobsDB DB";
+			"Siva DB" "MyJS DB" "jobsDB DB";
 		}
 
 		subgraph cluster3 {
 			label = "AWS Network Load Balancer";
-			"Instance 1";
-			"Instance 2";
-			"Instance n";
+			"Instance 1" "Instance 2" "Instance n";
 		}
 
 		subgraph cluster4 {
@@ -50,7 +46,7 @@ compound=true;
 
 		subgraph cluster5 {
  			label = "Application";
-  		"Identity Server 4"  [shape=box];
+  		       "Identity Server 4"  [shape=box];
 			node [ style=filled]
 			color=blue;
 		}
