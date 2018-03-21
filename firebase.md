@@ -104,3 +104,110 @@ fruitsRef.on('child_removed', (data) => {
   console.log(fruit)
 })
 ```
+
+## Detaching Callbacks
+
+```js
+fruitsRef.on('value', (data) => {
+  console.log(data.val())
+}, (error) => {
+  console.log(error)
+})
+
+// Remove all callbacks with the value event type
+fruitsRef.off('value')
+
+// Remove all callbacks
+fruitsRef.off()
+```
+
+## Order by child
+
+```js
+fruitsRef.orderByChild('name').on('child_added', (data) => {
+  console.log(data.val().name)
+})
+```
+
+## Order by key
+
+```js
+fruitsRef.orderByKey().on('child_added', (data) => {
+  console.log(data.key)
+})
+```
+
+## Order by value
+
+```js
+fruitsRef.orderByValue().on('value', (data) => {
+  data.forEach((data) => {
+    console.log(data.key, data.val())
+  })
+})
+```
+
+## Limit to First
+
+**limitToFirst** method returns the specified number of items beginning from the first one
+
+```js
+const firstFruitRef = firebase.database().ref('fruits').limitToFirst(1)
+
+firstFruitRef.on('value', (data) => {
+  console.log(data.val())
+}, (error) => {
+  console.log(error)
+})
+```
+
+## Limit to Last
+
+**limitToLast** method returns a specified number of items beginning from the last one.
+
+```js
+const lastFruitRef = firebase.database().ref('fruits').limitToLast(1)
+
+lastFruitRef.on('value', (data) => {
+  console.log(data.val())
+}, (error) => {
+  console.log(error)
+})
+```
+
+## Filters
+
+```js
+const fruitsRef = firebase.database().ref('fruits')
+
+fruitsRef.orderByChild('name').startAt('banana').on('child_added', (data) => {
+  console.log('start at filter:', data.val().name)
+})
+
+fruitsRef.orderBychild('name').endAt('banana').on('child_added', (data) => {
+  console.log('end at:', data.val().name)
+})
+
+fruitsRef.orderByChild('name').equalTo('banana').on('child_added', (data) => {
+  console.log('equal to filter:', data.val().name)
+})
+
+fruitsRef.orderByChild('price').startAt(10).on('child_added', (data) => {
+  console.log('age filter:', data.val().name)
+})
+```
+
+
+## Check Connectivity
+
+```js
+const connectedRef = firebase.database().ref('.info/connected')
+
+connectedRef.on('value', (snapshot) => {
+  if (snapshot.val() === true) {
+    console.log('connected')
+  } else {
+    console.log('not connected')
+  }
+})
+```
