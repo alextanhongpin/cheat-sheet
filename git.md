@@ -121,3 +121,21 @@ push:
 login:
   @docker log -u ${DOCKER_USER} -p ${DOCKER_PASS}
 ```
+
+## Get Tag for Docker Versioning
+
+```
+# Tag the repository
+$ git tag -a v0.0.1 -m "version v0.0.1"
+
+# Check
+$ git describe
+v0.0.1
+
+# Perform a commit
+$ git commit -am 'chore: do something'
+
+$ git describe
+v0.0.1-1-g9ba5c76
+```
+
