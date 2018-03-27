@@ -110,3 +110,10 @@ app.listen(port, () => {
   console.log(`listening to port *:${port}. press ctrl + c to cancel.`)
 })
 ```
+
+
+## ECS Add Healthcheck
+
+```bash
+$ [ "CMD-SHELL", "curl -f http://localhost/ || exit 1" ]
+```
