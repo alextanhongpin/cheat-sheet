@@ -35,3 +35,15 @@ $ cat a.txt | xargs -I % sh -c 'command1; command2; ...'
 ```bash
 $ find . -exec echo {} \; -exec printf {} \;
 ```
+
+## View Running Daemon Process
+
+```bash
+$ ps
+```
+
+## Kill Running Daemon Process
+
+```bash
+$ pkill -INT <PID>
+```
