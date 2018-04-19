@@ -859,3 +859,17 @@ pub fn main() {
     println!("body = {:?}", body);
 }
 ```
+
+## Creating iterators from range and functional concepts
+ 
+```rust
+fn main() {
+	let res: Vec<i32> = (1..10).into_iter()
+		.map(|x| x * 2)
+		.filter(|x| x % 2 == 0)
+		.take(3)
+		.collect();
+
+	println!("{:?}", res);
+}
+```
