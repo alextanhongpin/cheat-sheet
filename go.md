@@ -47,3 +47,9 @@ x is a struct
 		v := reflect.ValueOf(x)
 		n = v.NumField() 
     ```
+
+## Static Analysis
+
+```bash
+$ go build -gcflags "-m -m"
+```
