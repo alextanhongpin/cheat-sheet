@@ -47,3 +47,36 @@ $ ps
 ```bash
 $ pkill -INT <PID>
 ```
+
+
+## Create your own diary
+
+In a file `log.sh`, execute `chmod u+x`:
+
+
+```bash
+#!/bin/bash
+function log() {
+	echo "$@" | sed -e "1s/^/$(date -R) /" >> log.txt
+}
+
+log $@
+```
+
+Then, to create a new entry:
+
+```bash
+$ ./log.sh This is a new entry
+```
+
+To validate:
+
+```bash
+$ cat log.txt
+```
+
+Output:
+
+```txt
+Tue, 08 May 2018 14:26:11 +0800 this is a new entry
+```
