@@ -11,6 +11,9 @@ $ scp alex@sunshine.engineers.my:/etc/docker-compose/event-ui/data.json .
 
 ```bash
 $ scp -rp ./db/* alex@sunshine.engineers.my:/etc/docker-compose/event-ui/data
+
+# If you do not have permission (directory is using root user), copy to your home first
+$ scp -rp ./db/* alex@sunshine.engineers.my:.
 ```
 
 
