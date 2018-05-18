@@ -181,3 +181,71 @@ http {
 
 }
 ```
+
+## Engineers.my
+
+```nginx
+
+server {
+       listen           80;
+       server_name      events.engineers.my;
+       return           301 https://$host$request_uri;
+}
+
+server {
+       listen           443;
+       server_name      events.engineers.my;
+       error_page       500 502 503 504  /50x.html;
+       access_log       /var/log/nginx/events.engineers.my.access.log combined;
+       include		/etc/nginx/ssl.conf;
+       client_max_body_size 10m;
+
+       location /v1/events {
+                rewrite                 ^/(.*)/$ /$1 permanent;
+
+                proxy_pass              http://172.17.0.1:30000/v1/events;
+                proxy_set_header        Host $host;
+
+                proxy_set_header        X-Real-IP $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+       }
+
+       location /v1/photos {
+                rewrite                 ^/(.*)/$ /$1 permanent;
+
+                proxy_pass              http://172.17.0.1:30000/v1/photos;
+                proxy_set_header        Host $host;
+                proxy_set_header        X-Real-IP $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+       }
+
+       location /swagger {
+                rewrite                 ^/(.*)/$ /$1 permanent;
+
+                proxy_pass              http://172.17.0.1:30000/swagger;
+                proxy_set_header        Host $host;
+                proxy_set_header        X-Real-IP $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+       }
+
+       location / {
+                rewrite                 ^/.*/$ /$1 last;
+                proxy_pass              http://172.17.0.1:31000;
+                proxy_set_header        Host $host;
+                proxy_set_header        X-Real-IP $remote_addr;
+                proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header        X-Forwarded-Proto $scheme;
+
+                # Set basic auth
+                # auth_basic "Restricted";
+                # auth_basic_user_file /etc/nginx/.htpasswd;
+       }
+
+       location = /50x.html {
+                root			/var/www/nginx-default;
+       }
+}
+```
