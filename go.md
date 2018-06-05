@@ -53,3 +53,13 @@ x is a struct
 ```bash
 $ go build -gcflags "-m -m"
 ```
+
+## Test Coverage 
+
+```bash
+# Create a test coverage output
+$ go test -cover -coverprofile cover.out
+
+# View it in html
+$ go tool cover -html=cover.out
+```
