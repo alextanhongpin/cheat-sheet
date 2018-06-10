@@ -12,6 +12,9 @@ $ mongoexport --db engineersmy --collection events --out hello.csv --type csv -u
 
 # As JSON
 $ mongoexport --db engineersmy --collection events --out hello.json -u user -p ***REMOVED***
+
+# Or
+$ mongoexport --authenticationDatabase=admin -d scraper -o user.json --jsonArray -c users -u root
 ```
 
 
@@ -20,3 +23,10 @@ $ mongoexport --db engineersmy --collection events --out hello.json -u user -p *
 ```bash
 $ mongoimport --db dbName --collection collectionName -u user -p ***REMOVED*** fileName.json
 ```
+
+# Dumping the mongo records
+
+```bash
+$ mongodump -u root --authenticationDatabase=admin --db=scraper --collection=users --out dump/
+```
+
