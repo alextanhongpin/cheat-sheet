@@ -35,3 +35,9 @@ $ zip -r Archiv.zip  * .*
 ```bash
 $ zip -r Archiv.zip **/**.tfvars
 ```
+
+## Zip with ***REMOVED***
+
+```bash
+$ zip -er out.zip ./target_folder
+```
