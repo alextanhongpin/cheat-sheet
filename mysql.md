@@ -91,3 +91,7 @@ services:
 ```bash
 $ docker exec -i <DOCKER_IMAGE_ID> mysql -u root < ./filename.sql
 ```
+
+## Performance Tips
+
+- Store UUID as binary
