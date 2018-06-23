@@ -979,3 +979,46 @@ FROM
   language_chronology;
 ```
 
+
+## Modifying data thorugh views
+
+```sql
+UPDATE
+  language_chronology
+SET
+  year = 1977
+WHERE 
+  language = 'Fortran';
+```
+
+## Deleting View
+
+```sql
+DROP VIEW <view_name>
+```
+
+# Indexing
+
+## General syntax
+
+```sql
+CREATE [UNIQUE] INDEX 
+  <index_name> 
+ON 
+  <table_name> (<column_list>);
+```
+
+## Create
+
+```sql
+CREATE INDEX 
+  language_idx 
+ON 
+  proglang_tbl (language);
+```
+
+## Deleting Index
+
+```sql
+DROP INDEX <index_name>
+```
