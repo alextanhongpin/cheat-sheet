@@ -199,3 +199,13 @@ scream:
 	@echo ${BAR} # outputs foo2 bar
 	@echo ${BAR2} # outputs foo bar
 ```
+
+
+# Include Environment Variables and export all
+
+This will include all environment variables from the `.env` file and export it directly:
+
+```makefile
+include .env
+export
+```
