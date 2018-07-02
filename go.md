@@ -63,3 +63,26 @@ $ go test -cover -coverprofile cover.out
 # View it in html
 $ go tool cover -html=cover.out
 ```
+
+## Makefile for vgo
+
+```bash
+# Include all the environment variables from the .env file
+include .env
+
+# Export all environment variables for the current scope
+export
+
+# Install vgo and dependencies
+install:
+	@go version && go get -u golang.org/x/vgo
+
+# Setup vendor folder locally
+vendor:
+	@vgo mod -vendor
+
+
+# Start local development
+start:
+	@vgo run server/server.go
+```
