@@ -209,3 +209,59 @@ This will include all environment variables from the `.env` file and export it d
 include .env
 export
 ```
+
+## Ensure Variables are set and is not empty string
+
+```makefile
+HELLO_WORLD=""
+
+# Does not handle "" empty string
+scream: check-env
+	@echo ${HELLO_WORLD}
+
+# Better
+cry: guard-HELLO_WORLD
+	@echo ${HELLO_WORLD}
+
+check-env:
+ifndef HELLO_WORLD
+  $(error HELLO_WORLD is undefined)
+endif
+
+guard-%:
+	@if [ -n '${${*}}' ]; then \
+		echo 'Environment variable $* not set'; \
+		exit 1; \
+	fi
+```
+
+## Bash Files ensure variables are set and not empty string
+
+```bash
+set -e #  
+set -u # Prints a message stderr when it tries to expand a variable that is not set
+set -x # Prints each command in a script to stderr before running it
+set -o pipefail # Pipeline fails on the first command which fails
+
+HELLO_WORLD=something
+
+echo $HELLO_WORLD
+```
+
+Or:
+
+```bash
+# Option one - Verbose version
+HI="hello"
+
+if [ -z "$HI" ]; then
+    echo "Need to set HI"
+    exit 1
+fi
+
+echo $HI
+
+# Option 2 - One liner
+HELLO="world"
+echo "${HELLO:?Need to set HELLO}"
+```
