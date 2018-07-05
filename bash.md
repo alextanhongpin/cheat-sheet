@@ -80,3 +80,10 @@ Output:
 ```txt
 Tue, 08 May 2018 14:26:11 +0800 this is a new entry
 ```
+
+
+## List Storage Size
+
+```bash
+$ du -sk
+```
