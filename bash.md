@@ -86,4 +86,9 @@ Tue, 08 May 2018 14:26:11 +0800 this is a new entry
 
 ```bash
 $ du -sk
+
+$ sudo lsof -s | awk '$5 == "REG"' | sort -n -r -k 7,7 | head -n 50
 ```
+
+
+
