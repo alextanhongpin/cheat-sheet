@@ -1,5 +1,7 @@
 # Dump TOML config
 
-```
-$ geth --networkid 3 --rpcport 8555 dumpconfig
+```bash
+$ geth dumpconfig
+
+$ geth --config /path/to/your_config.toml
 ```
