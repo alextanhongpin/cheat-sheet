@@ -1,5 +1,23 @@
 # AWS Cheatsheet
 
+## Installation
+
+AWS ECS CLI
+```bash
+$ curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-darwin-amd64-latest
+
+$ chmod +x /usr/local/bin/ecs-cli
+
+$ ecs-cli --version
+ecs-cli version 1.6.0 (95406b1)
+```
+
+AWS EB CLI
+
+```bash
+$ pip install awsebcli --upgrade --user
+```
+
 ## Changing profile
 
 You will have different IAM policy and have it configured in your `.aws/credentials` file. You need to change to another profile:
