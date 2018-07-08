@@ -11,7 +11,9 @@ $ geth --config /path/to/your_config.toml
 Will mine blocks at a rate or 1 block per second:
 
 ```bash
-$ ganache-cli --b 1
+$ ganache-cli --blockTime 1
+# or
+$ ganache-cli -b 1
 ```
 
 ## Ganache-cli with WebSocket
