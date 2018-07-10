@@ -27,3 +27,14 @@ $ npm install -g ganache-cli@beta
 ```bash
 $ geth --rpc --rpcaddr localhost --rpcport 8545 --rpcapi "db,eth,net,web3" --rpccorsdomain "http://localhost:3000" --rinkeby --ws --wsaddr localhost --wsport 8546 --wsorigins * --nodiscover
 ```
+
+## Web3 Sending
+
+This will create a transaction and emit the event if it has any:
+
+```js
+let contract = new web3.eth.Contract(contractABI, contractAddress)
+contract.methods.greet().send({
+  from: '0x552b2a819ec514a91b35fb45fe83dc96a1d4c319'
+}).then(console.log)
+```
