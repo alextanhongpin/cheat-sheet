@@ -265,3 +265,17 @@ echo $HI
 HELLO="world"
 echo "${HELLO:?Need to set HELLO}"
 ```
+
+
+## Chaining Commands
+
+```
+action1:
+    echo action1
+action2:
+    echo action2
+action3:
+    echo action3
+    
+action: action1 action2 action3
+```
