@@ -287,3 +287,22 @@ Running the `make` without the command will trigger the first command available.
 default:
 	@echo "Maybe print help or list of commands available"
 ```
+
+## Help section
+
+```
+define HELP
+usage: make (sub-commands ...)
+
+Welcome to the APPNAME CLI.
+
+commands:
+	install  Install vgo and dependencies.
+	vendor   Download dependencies into `vendor` folder.
+	start    Start local golang server.
+endef
+
+# Needs the quotes for newlines
+default:
+	@echo "$$HELP"
+```
