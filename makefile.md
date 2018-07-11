@@ -279,3 +279,11 @@ action3:
     
 action: action1 action2 action3
 ```
+
+## Default command
+
+Running the `make` without the command will trigger the first command available. So it's good to place a default command at the top of the file that prints information related to the makefile.
+```
+default:
+	@echo "Maybe print help or list of commands available"
+```
