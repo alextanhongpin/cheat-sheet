@@ -306,3 +306,21 @@ endef
 default:
 	@echo "$$HELP"
 ```
+
+
+## Ensure Variables are set
+
+```
+HELLO = hello world
+CAR = car
+
+guard-%:
+	@if [ "${${*}}" == "" ]; then \
+		echo "Environment variable $* not set"; \
+		exit 1; \
+	fi
+
+scream: guard-HELLO guard-CAR
+	@echo ${HELLO} ${CAR}
+
+```
