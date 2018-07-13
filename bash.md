@@ -6,8 +6,9 @@ ps -ef | grep go
 
 ## Sort by file size
 
-```
-du -d 1 -h .
+```bash
+$ du -shc * | sort -h
+$ du -d 1 -h .
 ```
 
 If you have gsort installed, 
