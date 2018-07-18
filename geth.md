@@ -38,3 +38,11 @@ contract.methods.greet().send({
   from: '0x552b2a819ec514a91b35fb45fe83dc96a1d4c319'
 }).then(console.log)
 ```
+
+## Binding Solidity directly
+
+Use `go:generate` to generate the go binding:
+
+```bash
+$ abigen --sol token.sol --pkg main --out token.go
+```
