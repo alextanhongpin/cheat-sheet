@@ -328,3 +328,45 @@ plt.show()
 
 1. [http://cs231n.github.io/python-numpy-tutorial/](http://cs231n.github.io/python-numpy-tutorial/)
 2. [https://www.datacamp.com/community/tutorials/python-numpy-tutorial](https://www.datacamp.com/community/tutorials/python-numpy-tutorial)
+
+
+# Python 3.6 Static Typing
+## Installation
+```bash
+$ python3 -m pip install mypy
+```
+
+
+## Code
+```python
+from typing import Dict, List, Tuple
+
+numbers: List[int] = ["hello", "world"]
+print(numbers)
+```
+
+## Linting
+```bash
+$ mypy main.py
+main.py:4: error: List item 0 has incompatible type "str"; expected "int"
+main.py:4: error: List item 1 has incompatible type "str"; expected "int"
+```
+
+## Example
+
+```python
+from typing import Dict, List, Tuple
+
+# List example
+numbers: List[str] = ["hello", "world"]
+print(numbers)
+
+# Dict example
+names: Dict[str, str] = {
+    "first_name": "John",
+    "last_name": "Doe"
+}
+
+# Tuple example
+data: Tuple[str, int, float] = ("Adam", 10, 3.4)
+```
