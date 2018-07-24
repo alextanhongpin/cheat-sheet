@@ -1,3 +1,27 @@
+
+## Installing Virtualenv
+```bash
+pip3 install virtualenv
+```
+
+## Setting up Virtualenv
+```bash
+$ virtualenv venv
+$ source venv/bin/activate
+$ deactivate
+```
+
+## Install Dependencies
+Only install after setting up virtualenv to avoid polluting the global namespace.
+```
+pip3 install numpy
+```
+
+## Run 
+```bash
+$ python3 main.py
+```
+
 ## Create an array of ones
 
 ```python
