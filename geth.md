@@ -46,3 +46,58 @@ Use `go:generate` to generate the go binding:
 ```bash
 $ abigen --sol token.sol --pkg main --out token.go
 ```
+
+## Geth Clique
+
+Start a geth that connects to Rinkeby PoA:
+```bash
+geth --rinkeby --nodiscover
+```
+
+Output:
+
+```bash
+<NOT_SHOWN>
+INFO [07-24|12:39:27] IPC endpoint opened                      url=/Users/yourusername/Library/Ethereum/rinkeby/geth.ipc
+```
+
+Connect to the geth console:
+```bash
+geth attach /Users/yourusername/Library/Ethereum/rinkeby/geth.ipc
+```
+
+Output:
+```
+Welcome to the Geth JavaScript console!
+
+instance: Geth/v1.8.11-stable/darwin-amd64/go1.10.3
+ modules: admin:1.0 clique:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0
+```
+
+You can now interact with the clique api:
+```
+> clique
+{
+  proposals: {},
+  discard: function(),
+  getProposals: function(callback),
+  getSigners: function(),
+  getSignersAtHash: function(),
+  getSnapshot: function(),
+  getSnapshotAtHash: function(),
+  propose: function()
+}
+> clique.getSnapshot()
+{
+  hash: "0x6341fd3daf94b748c72ced5a5b26028f2474f5f00d824504e4fa37a75767e177",
+  number: 0,
+  recents: {},
+  signers: {
+    0x42eb768f2244c8811c63729a21a3569731535f06: {},
+    0x7ffc57839b00206d1ad20c69a1981b489f772031: {},
+    0xb279182d99e65703f0076e4812653aab85fca0f0: {}
+  },
+  tally: {},
+  votes: null
+}
+```
