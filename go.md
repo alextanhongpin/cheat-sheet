@@ -20,13 +20,8 @@ $ /usr/local/go/bin/go
 then add following entries in `~/.bash_profile` or in `~/.zshrc`:
 
 ```bash
-export GOROOT=/usr/local/go
-export GOPATH=$GOROOT/src //your-go-workspace
-export GOBIN=$GOROOT/bin //where go-generate-executable-binaries
-
-PATH=$PATH:$GOPATH:$GOBIN
-
-export PATH
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 ```
 
 P.S: Don't forget to source ~/.bash_profile or ~/.zshrc, as follows:
