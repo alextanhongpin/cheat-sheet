@@ -337,3 +337,20 @@ help:
 vendor: ## Vendor the application
 	@echo vendoring...
 ```
+
+## Useful Variables
+
+```make
+VERSION=0.1.0
+
+COMMIT=$(shell git rev-parse HEAD)
+BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
+
+CURRENT_DIR=$(shell pwd)
+BUILD_DIR=$(CURRENT_DIR)/build
+
+BINARY=your-go-binary
+
+COLOR="\033[32;1m"
+ENDCOLOR="\033[0m"
+```
