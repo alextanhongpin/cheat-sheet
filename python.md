@@ -1,3 +1,10 @@
+## Simple http server
+
+Serve static files in this directory:
+
+```bash
+$ python -m http.server 8000
+```
 
 ## Installing Virtualenv
 ```bash
