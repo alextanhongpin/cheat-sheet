@@ -92,4 +92,10 @@ $ sudo lsof -s | awk '$5 == "REG"' | sort -n -r -k 7,7 | head -n 50
 ```
 
 
+## Rename extension 
+
+hello.png becomes hello.PNG:
+```
+for x in *.png; do mv $x ${x%.png}.PNG; done
+```
 
