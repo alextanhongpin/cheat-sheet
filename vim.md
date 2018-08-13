@@ -46,3 +46,16 @@ set ruler
 set number
 set relativenumber
 ```
+
+
+## Adding Colorschemes
+```bash
+$ git clone https://github.com/flazz/vim-colorschemes.git
+
+# after downloading; unpacking; cd'ing
+$ cp colors/* ~/.vim/colors
+```
+In `.vimrc`:
+```
+colorscheme nameofcolorscheme
+```
