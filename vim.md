@@ -29,6 +29,7 @@ NERDTree Menu. Use j/k/enter and the shortcuts indicated
 
 ```
 syntax on
+colorscheme onedark
 
 execute pathogen#infect()
 
