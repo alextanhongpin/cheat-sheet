@@ -73,3 +73,29 @@ colo dracula
 
 ## For js syntax highlighting
 https://github.com/pangloss/vim-javascript
+
+
+## Vim standardjs setup
+
+Install ale via pathogen:
+
+https://github.com/w0rp/ale#standard-installation
+
+```bash
+$ cd ~/.vim/bundle
+$ git clone https://github.com/w0rp/ale.git
+```
+
+Setup `.vimrc`
+
+https://github.com/standard/standard
+
+```.vimrc
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+
+"""autosave"""
+autocmd bufwritepost *.js silent !standard --fix %
+set autoread
+```
