@@ -59,4 +59,9 @@ $ cp colors/* ~/.vim/colors
 In `.vimrc`:
 ```
 colorscheme nameofcolorscheme
+colo grb256
+colo onedark
+colo benokai
+colo candypaper
+colo papercolor
 ```
