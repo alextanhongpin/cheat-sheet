@@ -23,3 +23,26 @@ NERDTree Menu. Use j/k/enter and the shortcuts indicated
   (c)opy the current node
   (l)ist the current node
 ```
+
+
+## .vimrc
+
+```
+syntax on
+
+execute pathogen#infect()
+
+autocmd vimenter * NERDTree
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+
+set ruler
+set number
+set relativenumber
+```
