@@ -29,6 +29,8 @@ NERDTree Menu. Use j/k/enter and the shortcuts indicated
 
 ```
 syntax on
+set t_Co=256
+set termguicolors
 colorscheme onedark
 
 execute pathogen#infect()
@@ -64,4 +66,10 @@ colo onedark
 colo benokai
 colo candypaper
 colo papercolor
+colo jellybeans
+colo monokai
+colo dracula
 ```
+
+## For js syntax highlighting
+https://github.com/pangloss/vim-javascript
