@@ -95,7 +95,21 @@ let g:ale_linters = {
 \   'javascript': ['standard'],
 \}
 
-"""autosave"""
 autocmd bufwritepost *.js silent !standard --fix %
 set autoread
+
+" Write this in your vimrc file
+let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+```
+
+
+## Vim-airline
+```
+$ git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
 ```
