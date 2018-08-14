@@ -133,3 +133,7 @@ let g:airline#extensions#ale#enabled = 1
 ```
 $ git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
 ```
+
+## Vim theme (including dracula)
+
+https://github.com/vim-airline/vim-airline-themes
