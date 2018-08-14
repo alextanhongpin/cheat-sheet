@@ -134,6 +134,17 @@ let g:airline#extensions#ale#enabled = 1
 $ git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
 ```
 
-## Vim theme (including dracula)
+## Vim airline theme (including dracula)
 
 https://github.com/vim-airline/vim-airline-themes
+
+
+## Enable syntax highlighting for golang
+
+```
+let g:go_highlight_structs = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+```
