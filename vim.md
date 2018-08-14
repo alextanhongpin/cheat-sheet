@@ -28,22 +28,41 @@ NERDTree Menu. Use j/k/enter and the shortcuts indicated
 ## .vimrc
 
 ```
+
+execute pathogen#infect()
 syntax on
 set t_Co=256
 set termguicolors
-colorscheme onedark
 
-execute pathogen#infect()
+colorscheme dracula
+let g:airline_theme='dracula'
+"""colorscheme onedark"""
+"""colorscheme dracula"""
+"""colorscheme grb256"""
+
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+
+autocmd bufwritepost *.js silent !standard --fix %
+set autoread
+
+" Write this in your vimrc file
+let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 autocmd vimenter * NERDTree
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
 
 set ruler
 set number
@@ -69,6 +88,7 @@ colo papercolor
 colo jellybeans
 colo monokai
 colo dracula
+let g:airline_theme='dracula'
 ```
 
 ## For js syntax highlighting
