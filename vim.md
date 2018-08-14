@@ -149,3 +149,28 @@ let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 ```
+
+## Insert mode shortcuts
+
+```
+ctrl + w: delete previous word
+ctrl + u: delete whole line
+ctrl + p/n: autocomplete suggestions
+ctrl + [: exit insert mode, go to normal mode (easier to access than esc key)
+```
+
+## Normal mode shortcuts
+
+```
+:ddp - delete current line, paste it to next line (use to swap lines)
+:%s/foo/bar/gI - replace all foo with bar, case sensitive
+```
+
+## Visual mode shortcuts
+
+```
+:< - unindent the line 
+:> - indent the line
+:vbx - enter visual mode, go backward one words and delete the word (faster to type ctrl + w)
+:ctrl + v, ctrl + i // - enter visual mood multi-select, insert character for all positions
+```
