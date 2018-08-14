@@ -67,6 +67,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 set ruler
 set number
 set relativenumber
+set textwidth=80
 ```
 
 
