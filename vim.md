@@ -130,8 +130,6 @@ let g:ale_lint_on_enter = 0
 
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
-
-expandtab
 ```
 
 
@@ -211,4 +209,14 @@ endfunction
 autocmd BufEnter * call SyncTree()
 ```
 
+## Tab to Space for Js
 
+```
+
+" Set space for JavaScript
+autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
+```
+
+## Find Files
+
+http://ctrlpvim.github.io/ctrlp.vim/#installation
