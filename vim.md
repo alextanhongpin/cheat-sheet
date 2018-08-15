@@ -174,3 +174,7 @@ ctrl + [: exit insert mode, go to normal mode (easier to access than esc key)
 :vbx - enter visual mode, go backward one words and delete the word (faster to type ctrl + w)
 :ctrl + v, ctrl + i // - enter visual mood multi-select, insert character for all positions
 ```
+
+## Fuzzy Search
+
+http://ctrlpvim.github.io/ctrlp.vim/#installation
