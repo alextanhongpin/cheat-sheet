@@ -178,3 +178,9 @@ ctrl + [: exit insert mode, go to normal mode (easier to access than esc key)
 ## Fuzzy Search
 
 http://ctrlpvim.github.io/ctrlp.vim/#installation
+
+## Scrolling in vim
+
+```
+:set mouse=a
+```
