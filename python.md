@@ -1,3 +1,10 @@
+## Flatten List
+```python
+flatten = lambda l: [i for row in l for i in row]
+```
+
+http://rightfootin.blogspot.com/2006/09/more-on-python-flatten.html
+
 ## Simple http server
 
 Serve static files in this directory:
