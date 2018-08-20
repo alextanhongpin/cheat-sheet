@@ -229,3 +229,83 @@ autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
 ## Find Files
 
 http://ctrlpvim.github.io/ctrlp.vim/#installation
+
+## Copy
+
+```
+"""set t_AB=^[[48;5;%dm"""
+"""set t_AF=^[[38;5;%dm"""
+
+execute pathogen#infect()
+syntax on
+filetype indent plugin on
+
+set t_Co=256
+set termguicolors
+
+colorscheme dracula
+let g:airline_theme='dracula'
+"""colorscheme onedark"""
+"""colorscheme dracula"""
+"""colorscheme grb256"""
+
+let g:go_highlight_structs = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+
+let g:ale_linters = {
+\   'javascript': ['standard'],
+\}
+
+autocmd bufwritepost *.js silent !standard --fix %
+set autoread
+
+" Write this in your vimrc file
+let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+
+autocmd vimenter * NERDTree
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+set ruler
+set number
+set relativenumber
+set mouse=a
+
+" Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()
+
+" Set space for JavaScript
+autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
+
+let g:pymode_python = 'python3'
+let g:pymode_indent = 0
+autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
+```
