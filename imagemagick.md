@@ -54,3 +54,10 @@ console.log(newdata.slice(0, 5))
 fs.writeFileSync('processed.json', JSON.stringify(newdata))
 
 ```
+
+## ImageOptim
+
+Use ImageOptim, they have option for progressive jpeg.
+```
+$ imageoptim '**/*.jpg' '**/*.jpeg'
+```
