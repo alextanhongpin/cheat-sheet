@@ -81,3 +81,11 @@ vendor:
 start:
 	@vgo run server/server.go
 ```
+
+
+## Previewing Graphviz Diagram of depedencies
+
+Need to point to `main` package. Then you can specify any packages you want to visualize
+```bash
+$ go-callvis -focus eth github.com/ethereum/go-ethereum/cmd/geth
+```
