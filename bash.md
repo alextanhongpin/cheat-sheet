@@ -99,3 +99,13 @@ hello.png becomes hello.PNG:
 for x in *.png; do mv $x ${x%.png}.PNG; done
 ```
 
+## Loop for each directory
+
+```bash
+for D in `find . -type d`                                                                                                    
+	do echo $D
+done
+
+# or
+for D in */; do echo $D; done
+```
