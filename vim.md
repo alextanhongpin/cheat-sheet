@@ -315,3 +315,7 @@ autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
 ```
 
 
+## Add Color Column for Character width 80
+```
+set colorcolumn=80
+```
