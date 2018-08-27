@@ -104,6 +104,10 @@ colo dracula
 let g:airline_theme='dracula'
 ```
 
+Another light theme alternative to github theme:
+
+https://github.com/NLKNguyen/papercolor-theme
+
 ## For js syntax highlighting
 https://github.com/pangloss/vim-javascript
 
@@ -309,3 +313,5 @@ let g:pymode_python = 'python3'
 let g:pymode_indent = 0
 autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
 ```
+
+
