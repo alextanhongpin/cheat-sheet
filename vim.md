@@ -7,6 +7,12 @@ $ :r !date
 $ :.date
 ```
 
+## Copy paste to clipboard
+```
+"*yy (to copy to clipboard)
+"*p (to paste from clipboard)
+```
+
 
 ## View folder directory 
 
