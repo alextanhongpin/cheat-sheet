@@ -109,3 +109,11 @@ done
 # or
 for D in */; do echo $D; done
 ```
+
+## alias for tree
+
+Print current directory layout:
+
+```
+alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'
+```
