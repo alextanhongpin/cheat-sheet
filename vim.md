@@ -13,6 +13,14 @@ $ :.date
 "*p (to paste from clipboard)
 ```
 
+## Others
+
+```
+:daw (delete all words)
+:dw (delete word)
+:shift + i (show hidden files)
+:shift + r (refresh nerdtree)
+```
 
 ## View folder directory 
 
