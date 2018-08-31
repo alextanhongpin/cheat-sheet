@@ -7,6 +7,13 @@ $ :r !date
 $ :.date
 ```
 
+## Simple Split
+
+```
+map <C-l> :vsplit<CR> (ctrl + l to split right)
+map <C-j> :split<CR>
+```
+
 ## Copy paste to clipboard
 ```
 "*yy (to copy to clipboard)
