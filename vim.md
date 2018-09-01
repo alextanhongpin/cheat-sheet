@@ -37,6 +37,9 @@ map <C-j> :split<CR>
 
 ```
 :daw (delete all words)
+:diw (delete word within)
+:di" (delete all word within "")
+:da" (delete word including "")
 :dw (delete word)
 :shift + i (show hidden files)
 :shift + r (refresh nerdtree)
