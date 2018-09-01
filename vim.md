@@ -7,6 +7,10 @@ press ` + the character to go to the location
 press `` to move quickly between bookmarks
 ```
 
+## Autocomplete Brackets
+
+https://github.com/jiangmiao/auto-pairs
+
 # Inserting Date
 
 ```bash
