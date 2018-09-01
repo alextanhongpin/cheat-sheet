@@ -1,3 +1,12 @@
+## Bookmark
+
+```
+# in normal mode
+m followed by any characters (a-z)
+press ` + the character to go to the location
+press `` to move quickly between bookmarks
+```
+
 # Inserting Date
 
 ```bash
