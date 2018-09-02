@@ -41,6 +41,8 @@ map <C-j> :split<CR>
 :di" (delete all word within "")
 :da" (delete word including "")
 :dw (delete word)
+:dt, (delete the whole line until the `,`, which can be anything)
+:dfx (delete the whole line till x)
 :shift + i (show hidden files)
 :shift + r (refresh nerdtree)
 ```
