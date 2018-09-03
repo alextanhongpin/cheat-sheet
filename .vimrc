@@ -18,6 +18,7 @@ set relativenumber
 set mouse=a
 set laststatus=2
 set colorcolumn=80
+set cursorline
 
 "Set split
 set splitbelow
