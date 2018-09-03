@@ -9,7 +9,8 @@ ctrl + g + j (when editing, this will conveniently go down to the next line, wil
 # ctrl + o allows you to run one command only
 ctrl + o + o (when editing, this will conveniently go down to the next line)
 ctrl + o + shift + i (go to the first line while editing)
-ctrl + o + shift + $ (go to the last line, alternatively, ctrl + o + w)
+ctrl + o + shift + $ (go to the last line, alternatively, ctrl + o + a)
+ctrl + o + u (quick undo)
 ctrl + c while typing is the same as ctrl + [, which escapes insert mode
 ```
 
