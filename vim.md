@@ -5,6 +5,8 @@
 m followed by any characters (a-z)
 press ` + the character to go to the location
 press `` to move quickly between bookmarks
+ctrl + g + j (when editing, this will conveniently go down to the next line, will not create new line)
+ctrl + o + o (when editing, this will conveniently go down to the next line)
 ```
 
 ## Autocomplete Brackets
