@@ -6,7 +6,11 @@ m followed by any characters (a-z)
 press ` + the character to go to the location
 press `` to move quickly between bookmarks
 ctrl + g + j (when editing, this will conveniently go down to the next line, will not create new line)
+# ctrl + o allows you to run one command only
 ctrl + o + o (when editing, this will conveniently go down to the next line)
+ctrl + o + shift + i (go to the first line while editing)
+ctrl + o + shift + $ (go to the last line)
+ctrl + c while typing is the same as ctrl + [, which escapes insert mode
 ```
 
 ## Autocomplete Brackets
