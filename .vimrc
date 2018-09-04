@@ -301,3 +301,8 @@ inoremap <silent> <C-S>         <C-C>:update<CR>
 "stty start undef
 "stty stop undef
 "setopt noflowcontrol
+"
+"
+"Move to the right while in insert mode
+inoremap <C-l> <Right>
+inoremap <C-j> <C-o>o
