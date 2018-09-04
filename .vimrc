@@ -1,5 +1,65 @@
 execute pathogen#infect()
 syntax on
+filetype indent plugin on
+
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+
+"Set italic
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
+set termguicolors
+set encoding=utf-8
+set clipboard=unnamed
+set ruler
+set number
+set relativenumber
+set mouse=a
+set laststatus=2
+set colorcolumn=80
+set cursorline
+
+"Set split
+set splitbelow
+set splitright
+
+"Split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+"https://github.com/jiangmiao/auto-pairs
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 0
+let g:AutoPairsShortcutBackInsert = '<M-b>'
+
+"Set themes
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \ 	 'default': {
+  \        'transparent_background': 0,
+  \        'allow_bold': 1,
+  \        'allow_italic': 1,
+  \	 }
+  \    }
+  \ }
+
+set background=light
+colorscheme PaperColor
+let g:airline_theme='papercolor'
+
+"Overwrite background and comments color
+"highlight Normal ctermfg=black ctermbg=white
+"highlight NonText ctermbg=white cterm=bold
+"highlight Comment ctermfg=white ctermbg=grey
+"highlight Special cterm=bold
+
+"Set Golang
+let g:go_highlight_structs = 1
+execute pathogen#infect()
+syntax on
 
 filetype off                  " required
 
@@ -202,3 +262,13 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 " Set mapping for Ag
 nnoremap <C-f> :Ag<Enter>
+
+" Ctrl + S to save
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-C>:update<CR>
+"# ~/.zshrc
+"# enable control-s and control-q
+"stty start undef
+"stty stop undef
+"setopt noflowcontrol
