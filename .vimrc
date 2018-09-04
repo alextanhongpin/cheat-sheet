@@ -1,6 +1,35 @@
 execute pathogen#infect()
 syntax on
-filetype indent plugin on
+
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'itchyny/lightline.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-surround'
+Plugin 'w0rp/ale'
+Plugin 'fatih/vim-go'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-fugitive'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
@@ -42,7 +71,7 @@ let g:PaperColor_Theme_Options = {
   \ }
 
 set background=light
-colorscheme PaperColor 
+colorscheme PaperColor
 let g:airline_theme='papercolor'
 
 "Overwrite background and comments color
@@ -86,7 +115,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 " Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
+function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
@@ -103,7 +132,7 @@ endfunction
 autocmd BufEnter * call SyncTree()
 
 " Set space for JavaScript
-autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab 
+autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
 
 let g:pymode_python = 'python3'
 let g:pymode_indent = 0
