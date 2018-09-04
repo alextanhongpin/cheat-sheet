@@ -9,6 +9,9 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
+" Map leader \ to ,
+let mapleader = ","
+
 set termguicolors
 set encoding=utf-8
 set clipboard=unnamed
@@ -19,6 +22,7 @@ set mouse=a
 set laststatus=2
 set colorcolumn=80
 set cursorline
+set autowrite
 
 "Set split
 set splitbelow
@@ -83,7 +87,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
 Plugin 'w0rp/ale'
-Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-fugitive'
 
@@ -145,11 +149,36 @@ let g:airline_theme='papercolor'
 
 "Set Golang
 let g:go_highlight_structs = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
+let g:go_fmt_options = 1
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
+
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 "Set JavaScript
 let g:ale_linters = {
