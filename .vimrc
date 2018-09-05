@@ -60,8 +60,6 @@ let g:airline_theme='papercolor'
 "highlight Comment ctermfg=white ctermbg=grey
 "highlight Special cterm=bold
 
-"Set Golang
-let g:go_highlight_structs = 1
 execute pathogen#infect()
 syntax on
 
@@ -89,7 +87,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'w0rp/ale'
 Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -159,14 +157,19 @@ let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
-let g:go_fmt_options = 1
+"let g:go_fmt_options = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
+"let g:go_list_type = "quickfix"
 
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+
+"autocmd FileType go map <C-n> :cnext<CR>
+"autocmd FileType go map <C-m> :cprevious<CR>
+"autocmd FileType go nnoremap <leader>a :cclose<CR>
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -293,9 +296,9 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 nnoremap <C-f> :Ag<Enter>
 
 " Ctrl + S to save
-noremap <silent> <C-S>          :update<CR>
-vnoremap <silent> <C-S>         <C-C>:update<CR>
-inoremap <silent> <C-S>         <C-C>:update<CR>
+noremap <silent> <C-S>          :write<CR>
+vnoremap <silent> <C-S>         <C-C>:write<CR>
+inoremap <silent> <C-S>         <C-C>:write<CR>
 "# ~/.zshrc
 "# enable control-s and control-q
 "stty start undef
@@ -306,3 +309,16 @@ inoremap <silent> <C-S>         <C-C>:update<CR>
 "Move to the right while in insert mode
 inoremap <C-l> <Right>
 inoremap <C-j> <C-o>o
+
+"Improve search
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>
+nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>
+
+
+"Easy cd to directory
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
