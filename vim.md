@@ -1,3 +1,18 @@
+## Sort/sort reverse
+
+
+```
+1,5sort  # Sort alphabetically from line 1 - 5
+1,5sort! # Sort in reverse from line 1 - 5
+.,+5sort # Sort from current line to next 5 lines (inclusive)
+```
+
+## Replace in selected lines
+
+```
+1,5s/foo/bar/g # Replace from line 1 to 5 (inclusive)
+.,+4s/foo/bar/g # Replace from current line to next 4 lines (inclusive)
+```
 ## Bookmark
 
 ```
