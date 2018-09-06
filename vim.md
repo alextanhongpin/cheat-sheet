@@ -1,5 +1,12 @@
-## Sort/sort reverse
+## Register
 
+```
+:qaq # clean register a
+:"ap # (visual mode) paste content from register a
+:"adiw # (visual mode) use register a, then insert the deleted word (diw can be other motion like yy)
+:ctrl+r + a # (edit mode) paste content from register a
+```
+## Sort/sort reverse
 
 ```
 1,5sort  # Sort alphabetically from line 1 - 5
