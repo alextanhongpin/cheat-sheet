@@ -1,3 +1,9 @@
+
+## Copy whole file 
+
+```vim
+:Gygg # go to last line, copy until the first
+```
 ## Register
 
 ```
