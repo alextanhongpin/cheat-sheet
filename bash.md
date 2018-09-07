@@ -117,3 +117,10 @@ Print current directory layout:
 ```
 alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'
 ```
+
+## Find and replace all file extension
+
+The example below will find all files with `*.JPG` extension and rename it to `*.jpg`.
+```bash
+$ find . -path *.JPG -exec sh -c 'mv "$1" "${1%.JPG}.jpg"' _ {}  \;
+```
