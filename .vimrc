@@ -50,10 +50,6 @@ let g:PaperColor_Theme_Options = {
   \    }
   \ }
 
-set background=light
-colorscheme PaperColor
-let g:airline_theme='papercolor'
-
 "Overwrite background and comments color
 "highlight Normal ctermfg=black ctermbg=white
 "highlight NonText ctermbg=white cterm=bold
@@ -87,6 +83,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'w0rp/ale'
 Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plugin 'ervandew/supertab'
+Plugin 'vim-airline/vim-airline-themes'
+Bundle 'gabrielelana/vim-markdown'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 "Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
@@ -135,10 +134,11 @@ let g:PaperColor_Theme_Options = {
   \    }
   \ }
 
-set background=light
-colorscheme PaperColor
-let g:airline_theme='papercolor'
-
+" set background=light
+" colorscheme PaperColor
+" let g:airline_theme='papercolor'
+colorscheme monokai
+let g:airline_theme='base16_monokai'
 "Overwrite background and comments color
 "highlight Normal ctermfg=black ctermbg=white
 "highlight NonText ctermbg=white cterm=bold
@@ -322,3 +322,37 @@ nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>
 
 "Easy cd to directory
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+"Preview markdown key mapping
+" brew install grip
+let vim_markdown_preview_github=1
+let vim_markdown_preview_toggle=1
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_temp_file=1
+
+
+set scrolloff=999
+if !exists('*VCenterCursor')
+  augroup VCenterCursor
+  au!
+  au OptionSet *,*.*
+    \ if and( expand("<amatch>")=='scrolloff' ,
+    \         exists('#VCenterCursor#WinEnter,WinNew,VimResized') )|
+    \   au! VCenterCursor WinEnter,WinNew,VimResized|
+    \ endif
+  augroup END
+  function VCenterCursor()
+    if !exists('#VCenterCursor#WinEnter,WinNew,VimResized')
+      let s:default_scrolloff=&scrolloff
+      let &scrolloff=winheight(win_getid())/2
+      au VCenterCursor WinEnter,WinNew,VimResized *,*.*
+        \ let &scrolloff=winheight(win_getid())/2
+    else
+      au! VCenterCursor WinEnter,WinNew,VimResized
+      let &scrolloff=s:default_scrolloff
+    endif
+  endfunction
+endif
+
+nnoremap <leader>zz :call VCenterCursor()<CR>
