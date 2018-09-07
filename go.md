@@ -89,3 +89,29 @@ Need to point to `main` package. Then you can specify any packages you want to v
 ```bash
 $ go-callvis -focus eth github.com/ethereum/go-ethereum/cmd/geth
 ```
+
+
+## Example of dockerizing with C dependencies
+
+```dockerfile
+FROM golang:1.11.0-alpine3.8 as builder
+
+RUN apk add --no-cache make gcc musl-dev linux-headers git
+
+WORKDIR /go-c/
+
+COPY . ./
+
+
+RUN GO111MODULE=on CC=gcc go build -mod=vendor -o app
+
+FROM alpine:3.8
+
+WORKDIR /root/
+
+ENV GIN_MODE=release
+
+COPY --from=builder /go-c/app .
+
+CMD ["./app"]
+```
