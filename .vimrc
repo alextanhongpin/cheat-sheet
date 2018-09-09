@@ -21,13 +21,14 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-fugitive'
 Plugin 'w0rp/ale'
 Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plugin 'ervandew/supertab'
 Plugin 'vim-airline/vim-airline-themes'
 Bundle 'gabrielelana/vim-markdown'
 Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'tpope/vim-fugitive'
 Bundle 'belltoy/vim-protobuf'
 
 " All of your Plugins must be added before the following line
@@ -57,6 +58,7 @@ set mouse=a
 set laststatus=2
 set colorcolumn=80
 set cursorline
+set nocompatible "to ensure it's not compatible with vi"
 set inccommand=nosplit
 
 "Set split
@@ -249,6 +251,7 @@ inoremap <silent> <C-S>         <C-C>:write<CR>
 "Move to the right while in insert mode
 inoremap <C-l> <Right>
 inoremap <C-j> <C-o>o
+inoremap <C-k> <Up>
 
 "Improve search
 set ignorecase
