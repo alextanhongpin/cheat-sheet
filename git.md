@@ -2,7 +2,7 @@
 
 ```bash
 # n is the number of commits previously that you want to squash
-$ git rebase -i master~n
+$ git rebase -i HEAD~n
 ```
 
 # Undo your changes
