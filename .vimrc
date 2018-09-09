@@ -1,6 +1,44 @@
 execute pathogen#infect()
 syntax on
-filetype indent plugin on
+
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'itchyny/lightline.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-surround'
+Plugin 'w0rp/ale'
+Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+Plugin 'ervandew/supertab'
+Plugin 'vim-airline/vim-airline-themes'
+Bundle 'gabrielelana/vim-markdown'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'tpope/vim-fugitive'
+Bundle 'belltoy/vim-protobuf'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" If installed using Homebrew
+set rtp+=/usr/local/opt/fzf
+
+" Map leader \ to ,
+let mapleader = ","
 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
@@ -8,9 +46,6 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 "Set italic
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
-
-" Map leader \ to ,
-let mapleader = ","
 
 set termguicolors
 set encoding=utf-8
@@ -22,7 +57,7 @@ set mouse=a
 set laststatus=2
 set colorcolumn=80
 set cursorline
-set autowrite
+set inccommand=nosplit
 
 "Set split
 set splitbelow
@@ -50,100 +85,13 @@ let g:PaperColor_Theme_Options = {
   \    }
   \ }
 
-"Overwrite background and comments color
-"highlight Normal ctermfg=black ctermbg=white
-"highlight NonText ctermbg=white cterm=bold
-"highlight Comment ctermfg=white ctermbg=grey
-"highlight Special cterm=bold
-
-execute pathogen#infect()
-syntax on
-
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'itchyny/lightline.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-surround'
-Plugin 'w0rp/ale'
-Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
-Plugin 'ervandew/supertab'
-Plugin 'vim-airline/vim-airline-themes'
-Bundle 'gabrielelana/vim-markdown'
-Plugin 'JamshedVesuna/vim-markdown-preview'
-"Plugin 'tpope/vim-fugitive'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-" If installed using Homebrew
-set rtp+=/usr/local/opt/fzf
-
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-
-"Set italic
-let &t_ZH="\e[3m"
-let &t_ZR="\e[23m"
-
-set termguicolors
-set encoding=utf-8
-set clipboard=unnamed
-set ruler
-set number
-set relativenumber
-set mouse=a
-set laststatus=2
-set colorcolumn=80
-set cursorline
-
-"Set split
-set splitbelow
-set splitright
-
-"Split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-"Set themes
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \ 	 'default': {
-  \        'transparent_background': 0,
-  \        'allow_bold': 1,
-  \        'allow_italic': 1,
-  \	 }
-  \    }
-  \ }
-
 " set background=light
 " colorscheme PaperColor
 " let g:airline_theme='papercolor'
-colorscheme monokai
-let g:airline_theme='base16_monokai'
-"Overwrite background and comments color
-"highlight Normal ctermfg=black ctermbg=white
-"highlight NonText ctermbg=white cterm=bold
-"highlight Comment ctermfg=white ctermbg=grey
-"highlight Special cterm=bold
+" colorscheme monokai
+" let g:airline_theme='base16_monokai'
+colorscheme onedark
+let g:airline_theme='onedark'
 
 "Set Golang
 let g:go_highlight_structs = 1
@@ -157,19 +105,14 @@ let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
-"let g:go_fmt_options = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
-"let g:go_list_type = "quickfix"
+let g:go_list_type = "quickfix"
 
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-
-"autocmd FileType go map <C-n> :cnext<CR>
-"autocmd FileType go map <C-m> :cprevious<CR>
-"autocmd FileType go nnoremap <leader>a :cclose<CR>
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -187,17 +130,14 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 let g:ale_linters = {
 \   'javascript': ['standard'],
 \}
-
-autocmd bufwritepost *.js silent !standard --fix %
-set autoread
-
-" Write this in your vimrc file
+let g:ale_fixers = {'javascript': ['standard']}
 let g:ale_lint_on_text_changed = 'never'
-" You can disable this option too
-" if you don't want linters to run on opening a file
-let g:ale_lint_on_enter = 0
-
-" Set this. Airline will handle the rest.
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_set_loclist = 0
+let g:ale_completion_enabled = 0
+let g:ale_set_quickfix = 1
 let g:airline#extensions#ale#enabled = 1
 
 "Set NERDTree
