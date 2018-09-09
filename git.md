@@ -1,3 +1,10 @@
+# Squash commits
+
+```bash
+# n is the number of commits previously that you want to squash
+$ git rebase -i master~n
+```
+
 # Undo your changes
 
 ```bash
