@@ -1,3 +1,9 @@
+## Exit to background
+
+```
+ctrl + z (to go to bg)
+$ fg (go resume)
+```
 
 ## Copy whole file 
 
