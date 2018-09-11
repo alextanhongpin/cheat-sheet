@@ -6,10 +6,7 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'editorconfig/editorconfig-vim'
@@ -41,12 +38,11 @@ set rtp+=/usr/local/opt/fzf
 " Map leader \ to ,
 let mapleader = ","
 
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-
+" let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 "Set italic
-let &t_ZH="\e[3m"
-let &t_ZR="\e[23m"
+" let &t_ZH="\e[3m"
+" let &t_ZR="\e[23m"
 
 set termguicolors
 set encoding=utf-8
@@ -58,11 +54,8 @@ set mouse=a
 set laststatus=2
 set colorcolumn=80
 set cursorline
-set nocompatible "to ensure it's not compatible with vi"
+set nocompatible
 set inccommand=nosplit
-
-"Set split
-"set splitbelow
 set splitright
 
 "Split navigations
@@ -111,9 +104,9 @@ let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
 let g:go_list_type = "quickfix"
 
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 
 " run :GoBuild or :GoTestCompile based on the go file
@@ -229,14 +222,13 @@ let g:fzf_tags_command = 'ctags -R'
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
-
 " ctrlf + f to search
 nnoremap <C-f> :Ag<Enter>
 
 " ctrl + d to save
-noremap <silent> <C-S>          :write<CR>
-vnoremap <silent> <C-S>         <C-C>:write<CR>
-inoremap <silent> <C-S>         <C-C>:write<CR>
+noremap <silent> <C-S> :write<CR>
+vnoremap <silent> <C-S> <C-C>:write<CR>
+inoremap <silent> <C-S> <C-C>:write<CR>
 "# ~/.zshrc
 "# enable control-s and control-q
 "stty start undef
@@ -244,10 +236,10 @@ inoremap <silent> <C-S>         <C-C>:write<CR>
 "setopt noflowcontrol
 
 "Insert mode key mappings
-inoremap <C-l> <Right> "Move cursor to the right
-inoremap <C-j> <Down><C-o>A "Move cursor down and to the end of the line
-inoremap <C-m> <C-o>o "Move the cursor down to a new line
-inoremap <C-k> <Up><C-o>A "Move the cursor up and to the end of the line
+inoremap <C-l> <Right>
+inoremap <C-j> <Down>
+inoremap <C-b> <C-o>o
+inoremap <C-k> <Up><C-o>A
 
 "Improve search
 set ignorecase
