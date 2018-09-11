@@ -62,7 +62,7 @@ set nocompatible "to ensure it's not compatible with vi"
 set inccommand=nosplit
 
 "Set split
-set splitbelow
+"set splitbelow
 set splitright
 
 "Split navigations
@@ -177,7 +177,6 @@ let python_highlight_all=1
 
 autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
 
-
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -201,9 +200,6 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
-
-
-
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -234,10 +230,10 @@ let g:fzf_tags_command = 'ctags -R'
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 
-" Set mapping for Ag
+" ctrlf + f to search
 nnoremap <C-f> :Ag<Enter>
 
-" Ctrl + S to save
+" ctrl + d to save
 noremap <silent> <C-S>          :write<CR>
 vnoremap <silent> <C-S>         <C-C>:write<CR>
 inoremap <silent> <C-S>         <C-C>:write<CR>
@@ -246,12 +242,12 @@ inoremap <silent> <C-S>         <C-C>:write<CR>
 "stty start undef
 "stty stop undef
 "setopt noflowcontrol
-"
-"
-"Move to the right while in insert mode
-inoremap <C-l> <Right>
-inoremap <C-j> <C-o>o
-inoremap <C-k> <Up>
+
+"Insert mode key mappings
+inoremap <C-l> <Right> "Move cursor to the right
+inoremap <C-j> <Down><C-o>A "Move cursor down and to the end of the line
+inoremap <C-m> <C-o>o "Move the cursor down to a new line
+inoremap <C-k> <Up><C-o>A "Move the cursor up and to the end of the line
 
 "Improve search
 set ignorecase
@@ -262,19 +258,18 @@ set hlsearch
 nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>
 nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>
 
-
-"Easy cd to directory
+"Easy cd to directory with `,cd`
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 "Preview markdown key mapping
-" brew install grip
+"Require `$ brew install grip`
 let vim_markdown_preview_github=1
 let vim_markdown_preview_toggle=1
 let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_temp_file=1
 
-
+"Center cursor vertically
 set scrolloff=999
 if !exists('*VCenterCursor')
   augroup VCenterCursor
