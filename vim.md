@@ -1,3 +1,9 @@
+## Set vim as the main editor
+
+```
+https://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits
+```
+
 ## Exit to background
 
 ```
