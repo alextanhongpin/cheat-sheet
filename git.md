@@ -22,20 +22,20 @@ $ brew install bfg
 
 # Running bf, note it only cleans the commit history
 $ bfg --delete-files *.mp4
-$ bfg --replace-text ***REMOVED***s.txt
+$ bfg --replace-text passwords.txt
 $ bfg --delete-folders .git
 
 # Run this to remove the files
 $ git reflog expire --expire=now --all && git gc --prune=now --aggressive
 ```
 
-When replacing text, create a file called `***REMOVED***s.txt` for example for mapping the text to another pattern:
+When replacing text, create a file called `passwords.txt` for example for mapping the text to another pattern:
 
 ```txt
 PASSWORD1 # Replace literal string 'PASSWORD1' with '***REMOVED***' (default)
 PASSWORD2==>examplePass         # replace with 'examplePass' instead
 PASSWORD3==>                    # replace with the empty string
-regex:***REMOVED***=\w+==>***REMOVED***=  # Replace, using a regex
+regex:password=\w+==>password=  # Replace, using a regex
 ```
 
 # Squash commits

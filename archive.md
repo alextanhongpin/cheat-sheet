@@ -36,7 +36,7 @@ $ zip -r Archiv.zip  * .*
 $ zip -r Archiv.zip **/**.tfvars
 ```
 
-## Zip with ***REMOVED***
+## Zip with password
 
 ```bash
 $ zip -er out.zip ./target_folder
