@@ -1,8 +1,49 @@
+# Find Folder Size
+
+```bash
+$ du -hs
+```
+# Clear git history
+
+With `git filter-branch`:
+
+```bash
+# pathname is the file to remove, commitHASH is the starting hash to traverse, else it will traverse from the first commit
+$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch pathname' commitHASH
+```
+
+With `bfg`:
+
+```
+# Installation
+$ brew cask install java
+$ brew install bfg
+
+
+# Running bf, note it only cleans the commit history
+$ bfg --delete-files *.mp4
+$ bfg --replace-text ***REMOVED***s.txt
+$ bfg --delete-folders .git
+
+# Run this to remove the files
+$ git reflog expire --expire=now --all && git gc --prune=now --aggressive
+```
+
+When replacing text, create a file called `***REMOVED***s.txt` for example for mapping the text to another pattern:
+
+```txt
+PASSWORD1 # Replace literal string 'PASSWORD1' with '***REMOVED***' (default)
+PASSWORD2==>examplePass         # replace with 'examplePass' instead
+PASSWORD3==>                    # replace with the empty string
+regex:***REMOVED***=\w+==>***REMOVED***=  # Replace, using a regex
+```
+
 # Squash commits
 
 ```bash
 # n is the number of commits previously that you want to squash
 $ git rebase -i HEAD~n
+$ git rebase -i COMMIT_HASH
 ```
 
 # Undo your changes
