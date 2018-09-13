@@ -241,7 +241,7 @@ inoremap <C-j> <Down>
 inoremap <C-b> <C-o>o
 inoremap <C-k> <Up><C-o>A
 inoremap <C-d> <Right>,<C-o>o
-inoremap <C-e> <Right>:,<Left>
+inoremap <C-e> <Right>:<Space>,<Left>
 
 "Improve search
 set ignorecase
