@@ -1,3 +1,16 @@
+## Go to column number
+
+```vim
+80| # Goes to column 80
+```
+
+## Format line to fit 80 characters
+Normally for comments
+
+```vim
+:gqq
+```
+
 ## Set vim as the main editor
 
 ```
