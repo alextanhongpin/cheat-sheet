@@ -1,3 +1,16 @@
+## Undo git reset
+Made a mistake once by running `git reset --hard HEAD^`. All my commits are gone. To undo it, its' just run `git reflog`. Git keeps a log of all ref updates (e.g., checkout, reset, commit, merge). You can view it by typing:
+
+```
+git reflog
+ 
+ ```
+ To undo the commit:
+  ```
+ git reset 'HEAD@{1}'
+ ```
+
+ 
 # Find Folder Size
 
 ```bash
