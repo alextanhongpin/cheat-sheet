@@ -1,3 +1,10 @@
+## Search
+
+```
+:%s/\<hello\>/world/g # Match exact words hello
+:%s/hello\s\+world/hello world # Match all spaces between hello and world
+```
+
 ## Go to column number
 
 ```vim
