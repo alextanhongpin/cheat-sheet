@@ -1,3 +1,8 @@
+## Clearing up registers
+
+```
+:qaq # Clears up register "a"
+```
 ## Search
 
 ```
