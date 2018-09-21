@@ -165,10 +165,8 @@ And this is how a sample `Dockerrun.aws.json` would look like:
     ],
     "Volumes": [
 	    {
-		    "name": "datadir",
-		    "host": {
-			    "sourcePath": "/root/datadir"
-		    }
+		    "HostDirectory": "var/app/go-ppn-gateway",
+		    "ContainerDirectory": "/root/datadir"
 	    }
     ],
     "Logging": "/var/log/nginx"
