@@ -135,3 +135,42 @@ app.listen(port, () => {
 ```bash
 $ [ "CMD-SHELL", "curl -f http://localhost/ || exit 1" ]
 ```
+
+
+## AWS Elasticbeanstalk 
+
+When using Dockerrun.aws.json, remember to exclude other dependencies, such as `Dockerfile`, since it will attempt to rebuild the image using the dockerfile:
+
+```
+# Ignore all
+*
+
+# Only require the Dockerrun.aws.json
+!Dockerrun.aws.json
+```
+
+And this is how a sample `Dockerrun.aws.json` would look like:
+
+```json
+{
+    "AWSEBDockerrunVersion": "1",
+    "Image": {
+      "Name": "nginx:latest",
+      "Update": "true"
+    },
+    "Ports": [
+      {
+        "ContainerPort": "8000"
+      }
+    ],
+    "Volumes": [
+	    {
+		    "name": "datadir",
+		    "host": {
+			    "sourcePath": "/root/datadir"
+		    }
+	    }
+    ],
+    "Logging": "/var/log/nginx"
+  }
+```
