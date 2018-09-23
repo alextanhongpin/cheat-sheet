@@ -1,6 +1,5 @@
 execute pathogen#infect()
 syntax on
-
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -80,13 +79,19 @@ let g:PaperColor_Theme_Options = {
   \    }
   \ }
 
-" set background=light
 " colorscheme PaperColor
 " let g:airline_theme='papercolor'
+" colorscheme grb256
 " colorscheme monokai
 " let g:airline_theme='base16_monokai'
 colorscheme onedark
 let g:airline_theme='onedark'
+set background=dark
+highlight Normal guibg=dark guifg=white
+" highlight Normal ctermbg=None
+
+" set background=light
+" highlight Normal guibg=white guifg=dark
 
 "Set Golang
 let g:go_highlight_structs = 1
@@ -223,7 +228,7 @@ let g:fzf_tags_command = 'ctags -R'
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 " ctrlf + f to search
-nnoremap <C-f> :Ag<Enter>
+nnoremap <C-f> :Ag!<Enter>
 
 " ctrl + d to save
 noremap <silent> <C-S> :write<CR>
@@ -288,3 +293,9 @@ if !exists('*VCenterCursor')
 endif
 
 nnoremap <leader>zz :call VCenterCursor()<CR>
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
