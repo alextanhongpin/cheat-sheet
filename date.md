@@ -10,6 +10,30 @@ Output:
 Fri, 27 Apr 2018 17:56:15 +0800
 ```
 
+## Formatting Date
+
+```
+%a = Short date, Sun
+%A = Long date, Sunday
+%b = Short Month, Feb
+%B = Long Month, February
+%d = Day of the month
+%D = Date such as %m/%d/%y
+%H = Hour in 24 hour format (00..23)
+%I = Hour in 12 hour format (01..12) (this can be used with %p to append Am or PM)
+%j = Day of the year
+%m = Month in number format (01..12)
+%M = Minute (00..59)
+%p = Locale either AM or PM
+%S = Second
+%u = Day of the week
+%V = Week number of year with Monday as first day of week (01..53)
+%Y = Year
+%z = Numeric timezone (e.g., -0400) or %Z with timezone abbreviation.
+%t = for a tab 
+%n = for a new line
+```
+
 ## ISO-8601 Compliant Date
 
 ```bash
