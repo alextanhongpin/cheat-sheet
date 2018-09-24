@@ -1,3 +1,10 @@
+## Remove containers that are months old
+
+The first pipe search for the keyword `months`, you can customize it to filter specific keyword. The second one basically prints out only the third column, which is the image id.
+```bash
+$ docker rmi $(docker images | awk /months/ | awk '{print $3}')
+```
+
 ## Clear all images forcefully
 
 ```bash
