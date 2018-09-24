@@ -290,6 +290,26 @@ Passing args when building:
 $ docker build --build-arg REACT_APP_VERSION=${VERSION} -t organization/repository .
 ```
 
+## Dockerfile build with multiple args
+
+`Dockerfile`:
+```
+ARG BUILD_DATE
+ARG VERSION
+
+ENV BUILD_DATE=$BUILD_DATE
+ENV VERSION=$VERSION
+```
+
+`Makefile`:
+
+```make
+TAG := $(shell git log -1 --pretty=%h)
+DATE := $(shell date '+%Y/%m/%d')
+
+docker:
+	@docker build --build-arg VERSION=${TAG} --build-arg BUILD_DATE=${DATE} -t ${IMG} .
+```
 
 ## Dockerfile with go-ethereum
 
