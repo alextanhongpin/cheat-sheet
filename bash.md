@@ -1,3 +1,15 @@
+## Generate random passwords
+
+```
+$ openssl rand -base64 32
+kVehTPyjvy0OXZ5AAYN4nsRHDFlDN/ciP0LPLHadsVI=
+
+$ date | md5
+93f685a396de775f267aa999f9a1b60e
+
+$ echo "hello" | md5
+b1946ac92492d2347c6235b4d2611184
+```
 
 ## Check if your go instances is running 
 ```bash
