@@ -1,3 +1,8 @@
+## Run the last command line
+
+```
+@:
+```
 ## Clearing up registers
 
 ```
