@@ -1,3 +1,19 @@
+## Specifying User
+
+```
+FROM debian:stretch
+RUN groupadd -g 999 appuser && \
+    useradd -r -u 999 -g appuser appuser
+USER appuser
+CMD ["cat", "/tmp/secrets.txt"]
+```
+
+```
+$ docker run --user 1001 -v /root/secrets.txt:/tmp/secrets.txt <img>
+cat: /tmp/secrets.txt: Permission denied
+$ docker run -v /root/secrets.txt:/tmp/secrets.txt <img>
+top secret stuff
+```
 ## Remove containers that are months old
 
 The first pipe search for the keyword `months`, you can customize it to filter specific keyword. The second one basically prints out only the third column, which is the image id.
