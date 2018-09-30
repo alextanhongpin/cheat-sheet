@@ -1,3 +1,12 @@
+## User
+
+```
+$ id -u
+$ id -un
+$ id -g
+$ id -gn
+```
+
 ## Generate random passwords
 
 ```
