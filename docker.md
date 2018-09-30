@@ -3,6 +3,16 @@
 The first pipe search for the keyword `months`, you can customize it to filter specific keyword. The second one basically prints out only the third column, which is the image id.
 ```bash
 $ docker rmi $(docker images | awk /months/ | awk '{print $3}')
+
+# Better
+# Remove image that are 1 day old
+$ docker image prune -a --filter "until=24h" 
+
+# Remove image that are 10 day old
+$ docker image prune -a --filter "until=240h" 
+
+$ docker images --format 'table {{.Repository}}\t{{.Tag}}\t{{.ID}}\t{{.CreatedAt}}\t{{.Size}}'
+$ docker image prune -a --filter "until=2017-01-04T00:00:00"
 ```
 
 ## Clear all images forcefully
