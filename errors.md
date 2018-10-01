@@ -1,5 +1,7 @@
 ## Sample error messages for validation
 
+Backend/API error messages can be slightly more generic. If there are translations/custom error messages required, do it on the presentation layer.
+
 ```
 'my hero "value" is not [sad]',
 'must be one of [sad]',
