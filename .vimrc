@@ -299,3 +299,12 @@ command! -bang -nargs=* Ag
   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
+
+
+augroup vimrc
+ 
+   autocmd!
+ 
+   autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
+ 
+augroup END
