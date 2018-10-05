@@ -26,6 +26,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Bundle 'gabrielelana/vim-markdown'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Bundle 'belltoy/vim-protobuf'
+Bundle 'zah/nim.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,8 +48,9 @@ set termguicolors
 set encoding=utf-8
 set clipboard=unnamed
 set ruler
-set number
-set relativenumber
+" set number
+" set relativenumber
+set foldcolumn=2
 set mouse=a
 set laststatus=2
 set colorcolumn=80
@@ -87,7 +89,7 @@ let g:PaperColor_Theme_Options = {
 colorscheme onedark
 let g:airline_theme='onedark'
 set background=dark
-highlight Normal guibg=dark guifg=white
+" highlight Normal guibg=dark guifg=white
 " highlight Normal ctermbg=None
 
 " set background=light
@@ -300,11 +302,19 @@ command! -bang -nargs=* Ag
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
 
+fun! JumpToDef()
+  if exists("*GotoDefinition_" . &filetype)
+    call GotoDefinition_{&filetype}()
+  else
+    exe "norm! \<C-]>"
+  endif
+endf
+
+" Jump to tag
+nn <M-g> :call JumpToDef()<cr>
+ino <M-g> <esc>:call JumpToDef()<cr>i
 
 augroup vimrc
- 
-   autocmd!
- 
-   autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
- 
+	autocmd!
+	autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
 augroup END
