@@ -86,6 +86,13 @@ services:
     - 3306:3306
 ```
 
+## Run MySQL in Docker
+
+```
+$ docker run -d --rm -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:8.0.12
+$ mysql -h 127.0.0.1 -u root -p 
+```
+
 ## Example executing a source file from outside of Docker to Docker MySQL
 
 ```bash
@@ -96,6 +103,38 @@ $ docker exec -i <DOCKER_IMAGE_ID> mysql -u root < ./filename.sql
 
 ## Use UUID
 
+[MySQL 8.0](https://mysqlserverteam.com/mysql-8-0-uuid-support/) has build-in UUID support. There are several pros and cons of using UUID instead of auto-incrementing the primary key.
+
+Some other references:
+- https://mysqlserverteam.com/storing-uuid-values-in-mysql-tables/
+
+To run MySQL in Docker, follow the step [here](#run-mysql-in-docker)
+```mysql
+# Create a database first.
+mysql > CREATE DATABASE uuidtest;
+Query OK, 1 row affected (0.05 sec)
+
+# Switch database.
+mysql > USE uuidtest;
+Database changed
+
+# Create table.
+mysql> CREATE TABLE t (id binary(16) PRIMARY KEY);
+Query OK, 0 rows affected (0.10 sec)
+
+# Create entry with a new UUID.
+mysql> INSERT INTO t VALUES(UUID_TO_BIN(UUID()));
+Query OK, 1 row affected (0.07 sec)
+
+# View result.
+mysql> SELECT BIN_TO_UUID(id) from t;
++--------------------------------------+
+| BIN_TO_UUID(id)                      |
++--------------------------------------+
+| 20467a31-c914-11e8-b0aa-0242ac110002 |
++--------------------------------------+
+1 row in set (0.00 sec)
+```
 
 ## CHAR(n) vs VARCHAR(n)
 
