@@ -123,7 +123,8 @@ mysql> CREATE TABLE t (id binary(16) PRIMARY KEY);
 Query OK, 0 rows affected (0.10 sec)
 
 # Create entry with a new UUID.
-mysql> INSERT INTO t VALUES(UUID_TO_BIN(UUID()));
+# Note that the second argument is set to true. This is required to rearrange the time-related bits so that consecutive generated values will be ordered. This will have less performance impact as the values will no longer be inserted in random locations. Read the reference for more info.
+mysql> INSERT INTO t VALUES(UUID_TO_BIN(UUID(), true));
 Query OK, 1 row affected (0.07 sec)
 
 # View result.
