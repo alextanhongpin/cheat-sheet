@@ -137,6 +137,44 @@ mysql> SELECT BIN_TO_UUID(id) from t;
 1 row in set (0.00 sec)
 ```
 
+Calling `UUID_TO_BIN(UUID())`:
+```sql
+mysql> select bin_to_uuid(id) from t;
++--------------------------------------+
+| bin_to_uuid(id)                      |
++--------------------------------------+
+| d9b2615b-c915-11e8-99bb-0242ac110002 |
+| dabdbf92-c915-11e8-99bb-0242ac110002 |
+| db1a0ccb-c915-11e8-99bb-0242ac110002 |
+| db5fda13-c915-11e8-99bb-0242ac110002 |
+| db9e66ce-c915-11e8-99bb-0242ac110002 |
+| dbdb2033-c915-11e8-99bb-0242ac110002 |
+| dc62df00-c915-11e8-99bb-0242ac110002 |
+| de0b358d-c915-11e8-99bb-0242ac110002 |
++--------------------------------------+
+8 rows in set (0.00 sec)
+```
+
+Calling `UUID_TO_BIN(UUID(), true)`:
+
+```sql
+
+mysql> select bin_to_uuid(id) from t;
++--------------------------------------+
+| bin_to_uuid(id)                      |
++--------------------------------------+
+| 11e8c916-2271-6dfb-99bb-0242ac110002 |
+| 11e8c916-2396-4757-99bb-0242ac110002 |
+| 11e8c916-2406-c782-99bb-0242ac110002 |
+| 11e8c916-245e-09a6-99bb-0242ac110002 |
+| 11e8c916-24b4-a849-99bb-0242ac110002 |
+| 11e8c916-2507-9ac7-99bb-0242ac110002 |
+| 11e8c916-255e-d329-99bb-0242ac110002 |
+| 11e8c916-25bb-0bb4-99bb-0242ac110002 |
++--------------------------------------+
+8 rows in set (0.01 sec)
+```
+
 ## CHAR(n) vs VARCHAR(n)
 
 - `CHAR(n)` values are stored with the *exact* length specified.
