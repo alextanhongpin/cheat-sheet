@@ -1,8 +1,9 @@
 # Typical conversion
 
-```
+```js
 1 byte = 8 bits  # The size of a char
 2 - 4 bytes      # The size of integer
+1 million int32 characters (8 bytes each) takes up 8MB.
 
 1024 bytes = 1 kilobyte (K / Kb) 
 1024 * 1024 = 1,048,576 bytes = 1024 kilobytes = 1 megabyte (M / MB)
@@ -25,7 +26,7 @@
 
 ## Unit
 
-```
+```js
 thousand = 1e3 / 1000
 million = 1e6 / 1,000,000
 billion = 1e9 / 1,000,000,000
@@ -33,13 +34,16 @@ billion = 1e9 / 1,000,000,000
 
 ## Time
 
-```
+```js
 1 hr = 60 * 60 = 3600 seconds
 1 day = 24 * 3600 = 86,400 seconds
 1 month (30 days) = 720 hours = 2,592,000 seconds
 ```
 
 ## Capacity Estimation and Constraints
+
+Typical system design questions involves solving the _Fermi Problem_ through **Fermi Questions** or **Back-of-the-Envelope Calculations**.
+
 - Traffic estimate
 - Storage estimates
 - Bandwidth estimates
