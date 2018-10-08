@@ -1,3 +1,9 @@
+## Optional include
+
+```Make
+-include .env
+```
+
 ## Example makefile for grpc
 
 ```makefile
