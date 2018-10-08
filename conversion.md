@@ -104,3 +104,8 @@ Outgoing data: 9MB/s
 Storage for 5 years: 15TB
 Memory for cache 170GB
 ```
+
+
+## References
+- https://hostingfacts.com/internet-facts-stats/
+- http://highscalability.com/
