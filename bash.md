@@ -1,3 +1,11 @@
+## Clearing clipboard
+
+Weird issue when pasting in vim due to the append nature (?) of copy paste.
+
+```bash
+echo | pbcopy
+pbpaste
+```
 ## User
 
 ```
