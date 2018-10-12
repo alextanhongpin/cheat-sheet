@@ -27,3 +27,6 @@ screen -ls
 No Sockets found in /var/folders/7m/74_ct3hx33d878n626w1wxyc0000gn/T/.screen.
 ```
 
+
+## References
+http://hyperpolyglot.org/multiplexers
