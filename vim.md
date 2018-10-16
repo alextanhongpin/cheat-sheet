@@ -1,3 +1,10 @@
+## Operating on search matches using gn
+- http://vimcasts.org/episodes/operating-on-search-matches-using-gn/
+
+```
+- cgn # To delete word, repeat with dot (.)
+- dgn # Delete word
+```
 ## Run the last command line
 
 ```
