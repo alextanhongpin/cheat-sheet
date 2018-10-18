@@ -1,4 +1,12 @@
+## Connecting from container to host service
+
+```
+host.docker.internal
+```
+
 ## Specifying User
+
+For ubuntu/debian:
 
 ```
 FROM debian:stretch
@@ -6,6 +14,16 @@ RUN groupadd -g 999 appuser && \
     useradd -r -u 999 -g appuser appuser
 USER appuser
 CMD ["cat", "/tmp/secrets.txt"]
+```
+
+For alpine:
+
+```
+RUN addgroup -g 1000 group && \
+    adduser -D -u 1000 -G group user
+
+RUN chown -R user:group /app
+USER user
 ```
 
 ```
