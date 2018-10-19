@@ -23,6 +23,20 @@ $ DESCRIBE address;
 $ DROP USER 'jeffrey'@'localhost';
 ```
 
+## Sample Create Table
+
+```
+CREATE TABLE IF NOT EXISTS sample (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	gender CHAR(1) NOT NULL,
+	name VARCHAR(80) NOT NULL,
+	description VARCHAR(255) NOT NULL,
+	some_boolean BOOLEAN NOT NULL DEFAULT 0,
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	deleted_at DATETIME
+);
+```
 
 <!--
 mysqlbinlog --set-charset = utf8
