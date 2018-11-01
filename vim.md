@@ -5,6 +5,19 @@
 - cgn # To delete word, repeat with dot (.)
 - dgn # Delete word
 ```
+
+## Visual Selection
+
+```
+prefix all with `v`
+it # Select all within tags
+at # Select the tag included
+aw # mark a word
+ab # a block with ()
+aB # a block with {}
+ib # inner block with ()
+iB # inner block with {}
+```
 ## Run the last command line
 
 ```
