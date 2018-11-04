@@ -1,3 +1,9 @@
+## Run all go files except those ending with test
+
+```bash
+# ls -1 will print each statement in a new line, and grep -v will invert the search
+$ go run $(ls -1 *.go | grep -v _test.go) 
+```
 ## Building binary
 Building a binary in the folder `bin` with the name `application` for linux
 
