@@ -1,3 +1,11 @@
+## Base64 and MD5 with no newline
+
+Useful for basic authorization header.
+
+```bash
+$ echo -n john:123456 | md5
+$ echo -n john:123456 | base64
+```
 ## Clearing clipboard
 
 Weird issue when pasting in vim due to the append nature (?) of copy paste.
