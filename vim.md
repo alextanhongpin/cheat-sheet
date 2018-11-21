@@ -479,3 +479,7 @@ go get -u honnef.co/go/tools/cmd/keyify
 go get -u github.com/fatih/motion
 go get -u github.com/koron/iferr
 ```
+
+## Good Light Theme
+
+Seoul256, Tomorow, PaperColor, and Solarized Light, gruvbox, hemisu and Kalisi.
