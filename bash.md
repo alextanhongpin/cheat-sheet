@@ -5,6 +5,7 @@ Useful for basic authorization header.
 ```bash
 $ echo -n john:123456 | md5
 $ echo -n john:123456 | base64
+$ echo -n john:123456 | shasum -a 256
 ```
 ## Clearing clipboard
 
