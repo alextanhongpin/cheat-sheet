@@ -55,3 +55,9 @@ Backend/API error messages can be slightly more generic. If there are translatio
 'meet requirement of having peer modify set to true',
 
 ```
+
+## Github Error for Rate Limit
+
+```
+non-200 OK status code: 403 Forbidden body: "{\n  \"documentation_url\": \"https://developer.github.com/v3/#abuse-rate-limits\",\n  \"message\": \"You have triggered an abuse detection mechanism. Please wait a few minutes before you try again.\"\n}\n"
+```
