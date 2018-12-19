@@ -59,6 +59,9 @@ set nocompatible
 set inccommand=nosplit
 set splitright
 
+"Important for tmux
+set notermguicolors
+
 "Split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
