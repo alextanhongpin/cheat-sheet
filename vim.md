@@ -483,3 +483,20 @@ go get -u github.com/koron/iferr
 ## Good Light Theme
 
 Seoul256, Tomorow, PaperColor, and Solarized Light, gruvbox, hemisu and Kalisi.
+
+
+## TypeScript + Vue support
+
+```
+# Install tsuquyomi.
+git clone https://github.com/Quramy/tsuquyomi.git ~/.vim/bundle/tsuquyomi
+
+# Syntax highlighting for Vue components.
+Plugin 'posva/vim-vue'
+# OR
+cd ~/.vim/bundle && \
+git clone https://github.com/posva/vim-vue.git
+
+# Typescript
+git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/bundle/typescript-vim
+```
