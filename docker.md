@@ -1,3 +1,10 @@
+## Run ubuntu to test installations
+
+```bash
+$ docker pull ubuntu:latest
+$ docker run -it ubuntu
+```
+
 ## Connecting from container to host service
 
 ```
