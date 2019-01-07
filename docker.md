@@ -15,7 +15,7 @@ host.docker.internal
 
 For ubuntu/debian:
 
-```
+```Dockerfile
 FROM debian:stretch
 RUN groupadd -g 999 appuser && \
     useradd -r -u 999 -g appuser appuser
@@ -25,13 +25,54 @@ CMD ["cat", "/tmp/secrets.txt"]
 
 For alpine:
 
-```
+```Dockerfile
 RUN addgroup -g 1000 group && \
     adduser -D -u 1000 -G group user
 
 RUN chown -R user:group /app
 USER user
 ```
+
+Alternative:
+```Dockerfile
+RUN adduser -S -D -H -h /app appuser
+USER appuser
+```
+
+`adduser` command:
+
+```bash
+BusyBox v1.28.4 (2018-12-06 15:13:21 UTC) multi-call binary.
+
+Usage: adduser [OPTIONS] USER [GROUP]
+
+Create new user, or add USER to GROUP
+
+	-h DIR		Home directory
+	-g GECOS	GECOS field
+	-s SHELL	Login shell
+	-G GRP		Group
+	-S		Create a system user
+	-D		Don't assign a password
+	-H		Don't create home directory
+	-u UID		User id
+	-k SKEL		Skeleton directory (/etc/skel)
+```
+
+`addgroup`:
+
+```bash
+BusyBox v1.28.4 (2018-12-06 15:13:21 UTC) multi-call binary.
+
+Usage: addgroup [-g GID] [-S] [USER] GROUP
+
+Add a group or add a user to a group
+
+	-g GID	Group id
+	-S	Create a system group
+```
+
+Example:
 
 ```
 $ docker run --user 1001 -v /root/secrets.txt:/tmp/secrets.txt <img>
