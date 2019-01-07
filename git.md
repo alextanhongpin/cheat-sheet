@@ -1,14 +1,15 @@
 ## Undo git reset
 Made a mistake once by running `git reset --hard HEAD^`. All my commits are gone. To undo it, its' just run `git reflog`. Git keeps a log of all ref updates (e.g., checkout, reset, commit, merge). You can view it by typing:
 
+```bash
+$ git reflog
 ```
-git reflog
- 
- ```
+
  To undo the commit:
-  ```
- git reset 'HEAD@{1}'
- ```
+ 
+```bash
+$ git reset 'HEAD@{1}'
+```
 
  
 # Find Folder Size
@@ -212,4 +213,25 @@ alias gd='git diff | mate'
 alias gb='git branch'
 alias gba='git branch -a'
 alias del='git branch -d'
+```
+
+## Getting the Github Repository name and owner
+
+```bash
+$ git config --get remote.origin.url
+$ git ls-remote —get-url
+
+# Use this.
+$ git remote get-url origin
+# https://github.com/alextanhongpin/go-github-scraper-sg.git
+
+$ basename $(git ls-remote --get-url) .git
+$ basename `git remote get-url origin` .git
+# go-github-scraper-sg
+
+# View other configs that can be used
+$ git config -l
+$ git config --get user.name
+# alextanhongpin
+# Alternative is whoami, but this will return the name of the personal user, not the github username.
 ```
