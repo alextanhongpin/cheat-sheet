@@ -500,3 +500,17 @@ git clone https://github.com/posva/vim-vue.git
 # Typescript
 git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/bundle/typescript-vim
 ```
+
+## Set tabwidth for specific language
+
+Just put the settings into the filetype plugin file ~/.vim/ftplugin/LANGUAGE.vim . My ~/.vim/ftplugin/perl.vim contains the lines:
+
+```.vimrc
+"
+" ---------- tabulator / shiftwidth --------------------
+"  Set tabulator and shift width to 4 (Perl Style Guide)
+"
+setlocal  tabstop=4
+setlocal  shiftwidth=4
+"
+```
