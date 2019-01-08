@@ -27,6 +27,10 @@ Bundle 'gabrielelana/vim-markdown'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Bundle 'belltoy/vim-protobuf'
 Bundle 'zah/nim.vim'
+Plugin 'tomlion/vim-solidity'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'ericbn/vim-solarized'
+Plugin 'jason0x43/vim-js-indent'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
