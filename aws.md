@@ -229,3 +229,10 @@ In the `Elasticbeanstalk` Load balancer setting, instead of `HTTP`, use `TCP` an
 $ chmod 400 mykeypair.pem
 $ bash ssh -i .ec2/mykeypair.pem ec2-user@<public-DNS-of-the-instance>
 ```
+
+
+## Security Group Inbound Rules
+
+Point to another Security Group instead, rather than just pointing to a hardcoded instance private IP. Whenever the instance got recreated, the IP will change. Hence it's better to point to the security group instead.
+
+![Security Group](/assets/security_group_aws.png)
