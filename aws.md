@@ -201,8 +201,8 @@ In `.ebignore`:
 # Only require the Dockerrun.aws.json
 !Dockerrun.aws.json
 
-# Required to enable the Websocket.
-!.ebextensions/
+# Required to enable the Websocket. The ** is to allow all subfolders.
+!.ebextensions/**
 ```
 
 In `.ebextensions/websocket_upgrade.conf`:
@@ -223,3 +223,9 @@ In the `Elasticbeanstalk` Load balancer setting, instead of `HTTP`, use `TCP` an
 | --   | --       | --            | --                |
 | 80   | TCP      | 80	| TCP |
 | 443   | SSL      | 80	| TCP |
+
+## SSH
+```bash
+$ chmod 400 mykeypair.pem
+$ bash ssh -i .ec2/mykeypair.pem ec2-user@<public-DNS-of-the-instance>
+```
