@@ -1,6 +1,6 @@
 ## Base64 and MD5 with no newline
 
-Useful for basic authorization header.
+Useful for basic authorization header. Also take a look at htpasswd.
 
 ```bash
 $ echo -n john:123456 | md5
