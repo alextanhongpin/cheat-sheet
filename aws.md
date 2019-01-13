@@ -61,8 +61,8 @@ aws.config.region = 'ap-southeast-1'
 
 ## Copy data from S3
 ```
-AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} aws s3 cp s3://url/data.zip data.zip```
-
+AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} aws s3 cp s3://url/data.zip data.zip
+```
 
 ## Elasticbeanstalk Worker Connections Not Enough
 
