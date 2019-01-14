@@ -236,3 +236,14 @@ $ bash ssh -i .ec2/mykeypair.pem ec2-user@<public-DNS-of-the-instance>
 Point to another Security Group instead, rather than just pointing to a hardcoded instance private IP. Whenever the instance got recreated, the IP will change. Hence it's better to point to the security group instead.
 
 ![Security Group](/assets/security_group_aws.png)
+
+
+## Allow DNS
+
+```
+#!/bin/sh
+AWS_IP=$(curl http://checkip.amazonaws.com)
+aws ec2 authorize-security-group-ingress --group-name awseb-e-zj7rmnppsa-stack-AWSEBSecurityGroup-1OSSN6V65CR7N \
+         --protocol tcp --port 22 \
+         --cidr $AWS_IP/32
+```
