@@ -247,3 +247,20 @@ aws ec2 authorize-security-group-ingress --group-name awseb-e-zj7rmnppsa-stack-A
          --protocol tcp --port 22 \
          --cidr $AWS_IP/32
 ```
+
+## (Close to) Zero-Downtime Deployments 
+
+When running a single instance, it is possible to set the deployment method to `Rolling with Additional Batch` for AWS Elasticbeanstalk. 
+
+The way it works is as follow:
+
+```
+- when a new application version is deployed, an instance is created and added to the environment
+- the application will be created
+- the instance will swap, and if it works, the swap will be permanent
+- the old instance will be removed
+```
+
+![rolling-with-additional-batch-1.png](./assets/rolling-with-additional-batch-1.png)
+![rolling-with-additional-batch-2.png](./assets/rolling-with-additional-batch-2.png)
+
