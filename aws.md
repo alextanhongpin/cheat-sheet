@@ -264,3 +264,23 @@ The way it works is as follow:
 ![rolling-with-additional-batch-1.png](./assets/rolling-with-additional-batch-1.png)
 ![rolling-with-additional-batch-2.png](./assets/rolling-with-additional-batch-2.png)
 
+## Increase client_max_body_size
+
+When deploying for nodejs, the file name must end with `.config`, not `.conf` as when deploying for golang (see the `websocket.conf` example above. The example below overrides the `client_max_body_size` (default is 1MB) which will cause requests larger than 1MB to fail, example when uploading images etc.
+
+The file `.ebextensions/01_nginx.config` contains:
+
+```nginx
+files:
+  "/etc/nginx/conf.d/01_proxy.conf":
+    mode: "000644"
+    owner: root
+    group: root
+    content: |
+      client_max_body_size 50M;
+      
+container_commands:
+  01_reload_nginx:
+    command: |
+      sudo nginx -s reload
+```
