@@ -291,5 +291,5 @@ files:
 container_commands:
   01_reload_nginx:
     command: |
-      sudo nginx -s reload
+      sudo service nginx restart 
 ```
