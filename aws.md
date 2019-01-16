@@ -16,6 +16,15 @@ AWS EB CLI
 
 ```bash
 $ pip install awsebcli --upgrade --user
+
+# Alternatively
+$ brew install awsebcli
+```
+
+AWS CLI
+
+```bash
+$ brew install awscli
 ```
 
 ## Changing profile
