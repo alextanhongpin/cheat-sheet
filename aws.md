@@ -293,3 +293,22 @@ container_commands:
     command: |
       sudo service nginx restart 
 ```
+
+Be careful when renaming the file for the conf. For example, if you rename your /etc/nginx/conf.d/01_proxy.conf to /etc/nginx/conf.d/proxy.conf, the first 01_proxy.conf file you generated won't go away. You need to remove it first.
+
+```
+files:
+  "/etc/nginx/conf.d/proxy.conf":
+    mode: "000755"
+    owner: root
+    group: root
+    content: |
+      client_max_body_size 50M;
+
+container_commands:
+  01_remove_proxy:
+    command: "rm -rf /opt/elasticbeanstalk/support/conf/proxy.conf /etc/nginx/conf.d/proxy.conf"
+  02_reload_nginx:
+    command: "sudo service nginx reload"
+
+```
