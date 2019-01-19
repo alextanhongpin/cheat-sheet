@@ -235,3 +235,9 @@ $ git config --get user.name
 # alextanhongpin
 # Alternative is whoami, but this will return the name of the personal user, not the github username.
 ```
+
+## Delete branch locally
+
+```bash
+$ git push origin --delete branchname
+```
