@@ -516,6 +516,9 @@ setlocal  shiftwidth=2
 ```
 
 ## Format typescript
-
-```https://github.com/google/vim-codefmt
+https://github.com/google/vim-codefmt
+```bash
+$ brew install clang-format
+$ yarn global add prettier
+$ yarn global js-prettify
 ```
