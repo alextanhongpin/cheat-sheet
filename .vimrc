@@ -27,14 +27,45 @@ Bundle 'gabrielelana/vim-markdown'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Bundle 'belltoy/vim-protobuf'
 Bundle 'zah/nim.vim'
-Plugin 'tomlion/vim-solidity'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'ericbn/vim-solarized'
-Plugin 'jason0x43/vim-js-indent'
+Plugin 'junegunn/seoul256.vim'
+Plugin 'posva/vim-vue'
 
+" Add maktaba and codefmt to the runtimepath.
+" (The latter must be installed before it can be used.)
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plugin 'google/vim-glaive'
+" ...
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call vundle#end()
 filetype plugin indent on    " required
+
+" the glaive#Install() should go after the "call vundle#end()"
+call glaive#Install()
+" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
+Glaive codefmt plugin[mappings]
+Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
+
+" use `set filetype` to override default filetype=xml for *.ts files
+autocmd BufNewFile,BufRead *.ts  set filetype=typescript
+" use `setfiletype` to not override any other plugins like ianks/vim-tsx
+autocmd BufNewFile,BufRead *.tsx setfiletype typescript
+
+" vim-codefmt
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,protoAutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType typescript AutoFormatBuffer prettier
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+augroup END
 
 " If installed using Homebrew
 set rtp+=/usr/local/opt/fzf
@@ -48,13 +79,13 @@ let mapleader = ","
 " let &t_ZH="\e[3m"
 " let &t_ZR="\e[23m"
 
-set termguicolors
+set notermguicolors
 set encoding=utf-8
 set clipboard=unnamed
 set ruler
-" set number
-" set relativenumber
-set foldcolumn=2
+set number
+set relativenumber
+" set foldcolumn=2
 set mouse=a
 set laststatus=2
 set colorcolumn=80
@@ -62,9 +93,6 @@ set cursorline
 set nocompatible
 set inccommand=nosplit
 set splitright
-
-"Important for tmux
-set notermguicolors
 
 "Split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -88,18 +116,23 @@ let g:PaperColor_Theme_Options = {
   \    }
   \ }
 
+
+" colo seoul256
+" colo tomorrow
+" set background=light
 " colorscheme PaperColor
 " let g:airline_theme='papercolor'
 " colorscheme grb256
 " colorscheme monokai
 " let g:airline_theme='base16_monokai'
-colorscheme onedark
-let g:airline_theme='onedark'
-set background=dark
+" colorscheme onedark
+" let g:airline_theme='onedark'
+" set background=dark
 " highlight Normal guibg=dark guifg=white
 " highlight Normal ctermbg=None
 
-" set background=light
+colorscheme kalisi
+set background=light
 " highlight Normal guibg=white guifg=dark
 
 "Set Golang
