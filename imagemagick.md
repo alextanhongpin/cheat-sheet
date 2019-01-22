@@ -125,3 +125,11 @@ compress:
 		find . -type d -path "*/*-resize" -exec imageoptim "{}/*.jpg" "{}/*.jpeg" \;
 		
 ```
+
+## Image compression with ImageOptim
+
+https://imageoptim.com/command-line.html
+
+```
+$ open -a ImageOptim .
+```
