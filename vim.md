@@ -522,3 +522,6 @@ $ brew install clang-format
 $ yarn global add prettier
 $ yarn global js-prettify
 ```
+
+# Alternative Theme
+https://github.com/cormacrelf/vim-colors-github
