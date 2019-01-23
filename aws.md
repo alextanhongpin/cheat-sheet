@@ -310,5 +310,9 @@ container_commands:
     command: "rm -rf /opt/elasticbeanstalk/support/conf/proxy.conf /etc/nginx/conf.d/proxy.conf"
   02_reload_nginx:
     command: "sudo service nginx reload"
-
 ```
+
+## Elasticbeanstalk Go nginx.conf
+
+https://stackoverflow.com/questions/24860426/nginx-config-file-overwritten-during-elastic-beanstalk-deployment
+https://aws.amazon.com/blogs/aws/elastic-beanstalk-update-support-for-java-and-go/
