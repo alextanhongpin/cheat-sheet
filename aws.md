@@ -316,3 +316,7 @@ container_commands:
 
 https://stackoverflow.com/questions/24860426/nginx-config-file-overwritten-during-elastic-beanstalk-deployment
 https://aws.amazon.com/blogs/aws/elastic-beanstalk-update-support-for-java-and-go/
+
+## Cloudwatch Conditional query
+
+```[ip, , ,timestamp, url = *register* || url = *packages*, status = 200 || status = 401, ...]```
