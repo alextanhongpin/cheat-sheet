@@ -525,3 +525,19 @@ $ yarn global js-prettify
 
 # Alternative Theme
 https://github.com/cormacrelf/vim-colors-github
+
+
+## Modifying specific language indentation
+
+```
+# create folder if not exist
+$ touch ~/.vim/ftplugin/LANGUAGE.vim
+
+"
+" ---------- tabulator / shiftwidth --------------------
+"  Set tabulator and shift width to 4 (Perl Style Guide)
+"
+setlocal  tabstop=4
+setlocal  shiftwidth=4
+"
+```
