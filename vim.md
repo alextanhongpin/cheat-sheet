@@ -541,3 +541,11 @@ setlocal  tabstop=4
 setlocal  shiftwidth=4
 "
 ```
+
+## HTML Autocomplete for react
+
+```
+" Plugin alvan/vim-closetag
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.js"
+let g:closetag_xhtml_filetypes = 'xhtml,js,jsx'
+```
