@@ -1,4 +1,3 @@
-execute pathogen#infect()
 syntax on
 filetype off                  " required
 
@@ -17,6 +16,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/pathogen'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 Plugin 'w0rp/ale'
@@ -29,6 +29,8 @@ Bundle 'belltoy/vim-protobuf'
 Bundle 'zah/nim.vim'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'posva/vim-vue'
+Plugin 'cormacrelf/vim-colors-github'
+Plugin 'leafgarland/typescript-vim'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -38,6 +40,7 @@ Plugin 'google/vim-codefmt'
 " `:help :Glaive` for usage.
 Plugin 'google/vim-glaive'
 " ...
+"
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on    " required
@@ -51,14 +54,14 @@ Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VER
 " use `set filetype` to override default filetype=xml for *.ts files
 autocmd BufNewFile,BufRead *.ts  set filetype=typescript
 " use `setfiletype` to not override any other plugins like ianks/vim-tsx
-autocmd BufNewFile,BufRead *.tsx setfiletype typescript
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript
 
 " vim-codefmt
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
   autocmd FileType c,cpp,protoAutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType typescript AutoFormatBuffer prettier
+  autocmd FileType typescript AutoFormatBuffer prettier 
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType gn AutoFormatBuffer gn
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
@@ -115,25 +118,17 @@ let g:PaperColor_Theme_Options = {
   \	 }
   \    }
   \ }
+" use a slightly darker background, like GitHub inline code blocks
+let g:github_colors_soft = 1
 
+" more blocky diff markers in signcolumn (e.g. GitGutter)
+let g:github_colors_block_diffmark = 0
+" in your .vimrc or init.vim
+colorscheme github
 
-" colo seoul256
-" colo tomorrow
-" set background=light
-" colorscheme PaperColor
-" let g:airline_theme='papercolor'
-" colorscheme grb256
-" colorscheme monokai
-" let g:airline_theme='base16_monokai'
-" colorscheme onedark
-" let g:airline_theme='onedark'
-" set background=dark
-" highlight Normal guibg=dark guifg=white
-" highlight Normal ctermbg=None
-
-colorscheme kalisi
-set background=light
-" highlight Normal guibg=white guifg=dark
+" if you use airline / lightline
+let g:airline_theme = "github"
+let g:lightline = { 'colorscheme': 'github' }
 
 "Set Golang
 let g:go_highlight_structs = 1
@@ -150,6 +145,12 @@ let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
 let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
+
+" gofmt on save
+" autocmd FileType go autocmd BufWritePre <buffer> GoFmt
+" Go complier
+" autocmd FileType go compiler go
 
 autocmd FileType go nmap <leader>t <Plug>(go-test)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
@@ -171,8 +172,9 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 "Set JavaScript
 let g:ale_linters = {
 \   'javascript': ['standard'],
+\   'typescript': ['standard', 'eslint', 'prettier']
 \}
-let g:ale_fixers = {'javascript': ['standard']}
+let g:ale_fixers = {'javascript': ['standard'], 'typescript': ['standard']}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
