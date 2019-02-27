@@ -15,3 +15,10 @@ curl -H "Origin: http://example.com" \
   -X OPTIONS --verbose \
   https://www.googleapis.com/discovery/v1/apis?fields=
 ```
+
+
+## Uploading file
+
+```bash
+$ curl -F 'file[]=@/absolute/path/filename.jpeg" http://localhost:8080
+```
