@@ -175,10 +175,9 @@ endfunction
 
 "Set JavaScript
 let g:ale_linters = {
-\   'javascript': ['standard'],
-\   'typescript': ['standard', 'eslint', 'prettier']
+\   'javascript': ['standard', 'eslint'],
 \}
-let g:ale_fixers = {'javascript': ['standard'], 'typescript': ['standard']}
+let g:ale_fixers = {'javascript': ['standard', 'eslint']}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
@@ -373,3 +372,10 @@ augroup END
 " Plugin alvan/vim-closetag
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js"
 let g:closetag_xhtml_filetypes = 'xhtml,js,jsx,tsx'
+
+
+" Enable folding
+set foldmethod=syntax
+set foldcolumn=1
+let javaScript_fold = 1 "activates fold by JS syntax
+set foldlevelstart=99 "start file with all folds opened
