@@ -31,6 +31,7 @@ Plugin 'junegunn/seoul256.vim'
 Plugin 'posva/vim-vue'
 Plugin 'cormacrelf/vim-colors-github'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'alvan/vim-closetag'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -152,10 +153,14 @@ let g:go_fmt_command = "goimports"
 " Go complier
 " autocmd FileType go compiler go
 
-autocmd FileType go nmap <leader>t <Plug>(go-test)
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
-autocmd FileType go nmap <leader>r <Plug>(go-run)
-autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+augroup golang
+	autocmd!
+	autocmd FileType go nmap <leader>t <Plug>(go-test)
+	autocmd FileType go nmap <Leader>i <Plug>(go-info)
+	autocmd FileType go nmap <leader>r <Plug>(go-run)
+	autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+augroup END
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -167,7 +172,6 @@ function! s:build_go_files()
   endif
 endfunction
 
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 "Set JavaScript
 let g:ale_linters = {
@@ -185,13 +189,18 @@ let g:ale_set_quickfix = 1
 let g:airline#extensions#ale#enabled = 1
 
 "Set NERDTree
-autocmd vimenter * NERDTree
+augroup nerdtree
+	autocmd!
+	autocmd vimenter * NERDTree
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+	autocmd StdinReadPre * let s:std_in=1
+	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+	autocmd StdinReadPre * let s:std_in=1
+	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+	" Highlight currently open buffer in NERDTree
+	autocmd BufEnter * call SyncTree()
+augroup END
 
 " Check if NERDTree is open or active
 function! IsNERDTreeOpen()
@@ -207,11 +216,11 @@ function! SyncTree()
   endif
 endfunction
 
-" Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
 
 " Set space for JavaScript
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
+autocmd Filetype typescript setlocal ts=2 sw=2 sts=0 expandtab
+
 
 let g:pymode_python = 'python3'
 let g:pymode_indent = 0
@@ -360,3 +369,7 @@ augroup vimrc
 	autocmd!
 	autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
 augroup END
+
+" Plugin alvan/vim-closetag
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js"
+let g:closetag_xhtml_filetypes = 'xhtml,js,jsx,tsx'
