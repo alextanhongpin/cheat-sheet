@@ -418,3 +418,12 @@ $ make command
 # or
 $ MAKE_ENV=development make command
 ```
+
+If you do not want to add the `MAKE_ENV` env before calling the command, do this:
+
+```makefile
+dev:
+	@MAKE_ENV=development $(MAKE) command
+pro:
+	@MAKE_ENV=production $(MAKE) command
+```
