@@ -427,3 +427,9 @@ dev:
 pro:
 	@MAKE_ENV=production $(MAKE) command
 ```
+
+## Delete all files in directory except hidden ones
+
+```
+$ rm -rf *
+```
