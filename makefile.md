@@ -473,3 +473,23 @@ deploy-production: .env.production
 #         $(error not equal for $(ENV) and $*)
 # endif
 ```
+
+## Improvisation
+
+```makefile
+ifeq ($(ENV),)
+	ENV := development
+endif
+-include .env
+-include .env.$(ENV)
+export
+
+# To override just a single environment variable inline.
+deploy:
+	@echo ${A}
+
+# make deploy-staging
+# make deploy-production
+deploy-%: .env.%
+	@$(MAKE) deploy ENV=$*
+```
