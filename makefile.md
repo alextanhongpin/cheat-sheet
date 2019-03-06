@@ -440,3 +440,36 @@ $ rm -rf *
 deploy-%:
 	echo deploying to $* now
 ```
+
+## Safe Env
+
+```makefile
+NAME = car
+-include .env
+ifeq ($(ENV),)
+	ENV := development
+endif
+-include .env.$(ENV)
+export
+
+# To override just a single environment variable inline.
+deploy:
+	@export NAME=car; \
+	echo $$NAME; \
+	echo ${NAME}
+	echo ${env} ${A}
+
+deploy-staging: .env.staging
+	echo ${A}
+	$(MAKE) deploy ENV=staging
+	
+deploy-production: .env.production
+	echo ${A}
+	$(MAKE) deploy ENV=production
+
+# ifeq ($(ENV),$*)
+#         @echo ${ENV} ${A}
+# else
+#         $(error not equal for $(ENV) and $*)
+# endif
+```
