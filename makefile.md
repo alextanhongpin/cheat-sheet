@@ -433,3 +433,10 @@ pro:
 ```
 $ rm -rf *
 ```
+
+## Match command
+
+```makefile
+deploy-%:
+	echo deploying to $* now
+```
