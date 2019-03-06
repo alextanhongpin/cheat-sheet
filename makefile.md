@@ -390,3 +390,31 @@ export const BgMagenta = "\x1b[45m"
 export const BgCyan = "\x1b[46m"
 export const BgWhite = "\x1b[47m"
 ```
+
+
+## Conditional Makefile environment
+
+Let's say you have this in your root directory:
+
+```bash
+.env
+.env.development
+```
+
+```Makefile
+ifeq ($(MAKE_ENV),)
+	MAKE_ENV := development
+endif
+# Include the default.
+-include .env
+# Overwrite
+-include .env.$(MAKE_ENV)
+export
+```
+
+Now you can run with either:
+```bash
+$ make command
+# or
+$ MAKE_ENV=development make command
+```
