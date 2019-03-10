@@ -16,15 +16,12 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/pathogen'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 Plugin 'w0rp/ale'
 Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plugin 'ervandew/supertab'
 Plugin 'vim-airline/vim-airline-themes'
-Bundle 'gabrielelana/vim-markdown'
-Plugin 'JamshedVesuna/vim-markdown-preview'
 Bundle 'belltoy/vim-protobuf'
 Bundle 'zah/nim.vim'
 Plugin 'junegunn/seoul256.vim'
@@ -32,6 +29,7 @@ Plugin 'posva/vim-vue'
 Plugin 'cormacrelf/vim-colors-github'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'alvan/vim-closetag'
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -64,6 +62,7 @@ augroup autoformat_settings
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType typescript AutoFormatBuffer prettier 
   autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType md, markdown AutoFormatBuffer prettier 
   autocmd FileType gn AutoFormatBuffer gn
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
   autocmd FileType java AutoFormatBuffer google-java-format
@@ -379,3 +378,7 @@ set foldmethod=syntax
 set foldcolumn=1
 let javaScript_fold = 1 "activates fold by JS syntax
 set foldlevelstart=99 "start file with all folds opened
+
+" Vim-prettier config.
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
