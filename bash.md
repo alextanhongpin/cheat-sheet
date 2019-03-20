@@ -6,6 +6,8 @@ Useful for basic authorization header. Also take a look at htpasswd.
 $ echo -n john:123456 | md5
 $ echo -n john:123456 | base64
 $ echo -n john:123456 | shasum -a 256
+
+$ openssl rand -base64 32
 ```
 ## Clearing clipboard
 
