@@ -549,3 +549,7 @@ setlocal  shiftwidth=4
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.js"
 let g:closetag_xhtml_filetypes = 'xhtml,js,jsx'
 ```
+
+## Autoclose vim tag
+
+https://github.com/cohama/lexima.vim
