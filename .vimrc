@@ -30,6 +30,7 @@ Plugin 'cormacrelf/vim-colors-github'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plugin 'cohama/lexima.vim'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
