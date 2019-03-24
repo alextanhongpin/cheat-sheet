@@ -367,10 +367,34 @@ My own version:
 # Explanation - find the row that starts with ##, with the ":" as separator, then trim away the ##, and pretty print them.
 $ awk -F ":" '/^##/{sub("^##","", $0); printf("%s\t%s\n", $1, $2)}' Makefile
 
-## With color
+## With color, but the column is uneven...
 $ awk '/^##/{sub("^##", "", $0);split($0, a, ":");printf("\033[0;32m%s\033[0m\t%s\n", a[1], a[2])}' Makefile
+
+
+# Simple. Find the line matching ## at the beginning, then replace the ## with empty string
+# Split the text by ":" into individual columns, but no coloring...
+$ awk '/^##/{sub("##","", $0); print $0}' Makefile | column -t -s ':'
+
+# Other alternative...
+$ awk -F ':' '/^##/{sub("##","", $0); printf("\033[0;32m%s\033[0m:%s\n", $1, $2);}' Makefile | column -t -s ':'
+$ awk '/^##/{sub("##","", $0); print $0}' Makefile | column -t -s ':' | awk -F "\t" '{printf("%s:%s\n", $1, $2)}'
 ```
 
+
+Usage in Makefile (note the $$ for params):
+
+```bash
+PROJECTNAME := $(shell basename $(PWD))
+
+.PHONY: help
+all: help
+help: Makefile
+	@echo
+	@echo " Choose a command to run in "$(PROJECTNAME)":"
+	@echo
+	@awk -F ':' '/^##/{sub("##","", $$0); printf("\033[0;32m%s\033[0m:%s\n", $$1, $$2);}' Makefile | column -t -s ':'
+	@echo
+```
 ## Useful Variables
 
 ```make
