@@ -343,7 +343,21 @@ help:
 vendor: ## Vendor the application
 	@echo vendoring...
 ```
+Alternative:
+```
+PROJECTNAME=$(shell basename "$(PWD)")
+GOFILES=$(wildcard *.go)
 
+.PHONY: help
+all: help
+help: Makefile
+	@echo
+	@echo " Choose a command run in "$(PROJECTNAME)":"
+	@echo
+	@sed -n 's/^##//p' $< | column -t -s ':' |  sed -e 's/^/ /'
+	@echo
+
+```
 ## Useful Variables
 
 ```make
