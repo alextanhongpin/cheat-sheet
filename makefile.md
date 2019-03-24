@@ -358,6 +358,19 @@ help: Makefile
 	@echo
 
 ```
+
+
+My own version:
+
+```bash
+# Without color
+# Explanation - find the row that starts with ##, with the ":" as separator, then trim away the ##, and pretty print them.
+$ awk -F ":" '/^##/{sub("^##","", $0); printf("%s\t%s\n", $1, $2)}' Makefile
+
+## With color
+$ awk '/^##/{sub("^##", "", $0);split($0, a, ":");printf("\033[0;32m%s\033[0m\t%s\n", a[1], a[2])}' Makefile
+```
+
 ## Useful Variables
 
 ```make
