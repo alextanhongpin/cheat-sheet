@@ -320,3 +320,26 @@ https://aws.amazon.com/blogs/aws/elastic-beanstalk-update-support-for-java-and-g
 ## Cloudwatch Conditional query
 
 ```[ip, , ,timestamp, url = *register* || url = *packages*, status = 200 || status = 401, ...]```
+
+
+## Cleanup image for elasticbeanstalk docker
+```
+files:
+  "/opt/elasticbeanstalk/hooks/appdeploy/post/99-docker-cleanup.sh":
+    mode: "000755"
+    owner: root
+    group: root
+    content: |
+      #!/usr/bin/env bash
+      # remove all stopped containers
+      docker rm $(docker ps -a -q)
+      # remove all unused images
+      docker images -q | while read line; do docker rmi $line 2>/dev/null; done
+      exit 0
+ 
+commands:
+  01remove_backup:
+    command: rm -f /opt/elasticbeanstalk/hooks/appdeploy/post/99-docker-cleanup.sh.bak
+```
+References:
+- https://forums.aws.amazon.com/thread.jspa?threadID=171537
