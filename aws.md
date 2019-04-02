@@ -330,5 +330,12 @@ container_commands:
   remove_backup:
     command: "docker system prune -f --volumes"
 ```
+
+If the command is executed correctly, you should see the logsin `cfn-init-cmd.log`:
+
+```
+2019-01-15 01:06:44,539 P2921 [INFO] Command 00removebackup
+2019-01-15 01:06:44,541 P2921 [INFO] Completed successfully.
+```
 References:
 - https://forums.aws.amazon.com/thread.jspa?threadID=171537
