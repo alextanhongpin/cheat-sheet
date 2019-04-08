@@ -342,10 +342,15 @@ References:
 
 ## Docker Elasticbeanstalk LogRotate
 
-It seems that running the docker in Elasticbeanstalk will not clear the rotated logs, which will keep building until the maxfile system is used up.
+It seems that running the docker in Elasticbeanstalk will not clear the rotated logs, which will keep building until the maxfile system is used up. 
 
 ![root_file_system](./assets/root_file_system.png)
 ![max_root_file_system](./assets/max_root_file_system.png)
+
+On second thoughts, it seems like some part of the logs are rotated, but not all. There are still parts that are continuosly being appended:
+
+
+![root_file_system_stairs](./assets/root_file_system_stairs.png)
 
 In `.ebextensions/docker_logs_rotate.conf`:
 ```
