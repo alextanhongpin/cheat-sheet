@@ -349,10 +349,14 @@ It seems that running the docker in Elasticbeanstalk will not clear the rotated 
 
 On second thoughts, it seems like some part of the logs are rotated, but not all. There are still parts that are continuosly being appended:
 
+(Updated) It seems like the plain logs from `/var/log/eb-docker` is rotated correctly, hence the drop in the size for the root file system, but the json logging in `/var/lib/docker/containers/*/*.log` is not. Consider excluding the `/var/log/eb-docker` section in the `.config` below... [Source](https://forums.aws.amazon.com/thread.jspa?threadID=164502)
+
 
 ![root_file_system_stairs](./assets/root_file_system_stairs.png)
 
 In ~~`.ebextensions/docker_logs_rotate.conf`~~ NOTE: if the extensions ends with `.conf`, it seems that the file will not be created. The correct naming should be `.ebextensions/dockerlogs_rotate.config`:
+
+
 ```
 files:
   "/etc/logrotate.elasticbeanstalk.hourly/logrotate.elasticbeanstalk.dockerlogs.conf":
