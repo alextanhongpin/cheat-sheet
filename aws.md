@@ -352,35 +352,35 @@ On second thoughts, it seems like some part of the logs are rotated, but not all
 
 ![root_file_system_stairs](./assets/root_file_system_stairs.png)
 
-In `.ebextensions/docker_logs_rotate.conf`:
+In ~~`.ebextensions/docker_logs_rotate.conf`~~ NOTE: if the extensions ends with `.conf`, it seems that the file will not be created. The correct naming should be `.ebextensions/dockerlogs_rotate.config`:
 ```
 files:
   "/etc/logrotate.elasticbeanstalk.hourly/logrotate.elasticbeanstalk.dockerlogs.conf":
-    mode: "000644"
+    mode: "000755"
     owner: root
     group: root
     content: |
         /var/log/eb-docker/containers/eb-current-app/* {
         size 100M
-        rotate 14
+        rotate 5 
         missingok
         compress
         notifempty
         copytruncate
         dateext
         dateformat %s
-	olddir /var/log/eb-docker/containers/eb-current-app/rotated
+        olddir /var/log/eb-docker/containers/eb-current-app/rotated
         }
         /var/lib/docker/containers/*/*.log {
         size 100M
-        rotate 14
+        rotate 5 
         missingok
         compress
         notifempty
         copytruncate
         dateext
         dateformat %s
-	olddir /var/log/eb-docker/containers/eb-current-app/rotated
+        olddir /var/log/eb-docker/containers/eb-current-app/rotated
         }
 
   "/etc/cron.hourly/cron.logrotate.elasticbeanstalk.dockerlogs.conf":
