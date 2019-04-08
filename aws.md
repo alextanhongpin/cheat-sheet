@@ -339,3 +339,57 @@ If the command is executed correctly, you should see the logsin `cfn-init-cmd.lo
 ```
 References:
 - https://forums.aws.amazon.com/thread.jspa?threadID=171537
+
+## Docker Elasticbeanstalk LogRotate
+
+It seems that running the docker in Elasticbeanstalk will not clear the rotated logs, which will keep building until the maxfile system is used up.
+
+![root_file_system](./assets/root_file_system.png)
+![max_root_file_system](./assets/max_root_file_system.png)
+
+In `.ebextensions/docker_logs_rotate.conf`:
+```
+files:
+  "/etc/logrotate.elasticbeanstalk.hourly/logrotate.elasticbeanstalk.dockerlogs.conf":
+    mode: "000644"
+    owner: root
+    group: root
+    content: |
+        /var/log/eb-docker/containers/eb-current-app/* {
+        size 100M
+        rotate 14
+        missingok
+        compress
+        notifempty
+        copytruncate
+        dateext
+        dateformat %s
+	olddir /var/log/eb-docker/containers/eb-current-app/rotated
+        }
+        /var/lib/docker/containers/*/*.log {
+        size 100M
+        rotate 14
+        missingok
+        compress
+        notifempty
+        copytruncate
+        dateext
+        dateformat %s
+	olddir /var/log/eb-docker/containers/eb-current-app/rotated
+        }
+
+  "/etc/cron.hourly/cron.logrotate.elasticbeanstalk.dockerlogs.conf":
+    mode: "000755"
+    owner: root
+    group: root
+    content: |
+        #!/bin/sh
+        test -x /usr/sbin/logrotate || exit 0
+        /usr/sbin/logrotate /etc/logrotate.elasticbeanstalk.hourly/logrotate.elasticbeanstalk.dockerlogs.conf
+```
+
+
+- https://gist.github.com/almoraes/47a02e2832129dc8c5ffebac045774f8
+- https://forums.aws.amazon.com/thread.jspa?threadID=164502
+- https://stackoverflow.com/questions/36823982/aws-beanstalk-environment-isnt-rotating-docker-container-logs
+- https://serverfault.com/questions/871653/amazon-aws-elastic-beanstalk-ebs-logs-to-cloudwatch-multi-docker-env
