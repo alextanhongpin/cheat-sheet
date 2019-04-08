@@ -397,6 +397,9 @@ files:
         /usr/sbin/logrotate /etc/logrotate.elasticbeanstalk.hourly/logrotate.elasticbeanstalk.dockerlogs.conf
 ```
 
+After deploying the `.ebextentions`, the logs in docker will now be rotated hourly:
+
+![stable_root_file_system](./assets/stable_root_file_system.png)
 
 - https://gist.github.com/almoraes/47a02e2832129dc8c5ffebac045774f8
 - https://forums.aws.amazon.com/thread.jspa?threadID=164502
