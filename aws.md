@@ -312,6 +312,21 @@ container_commands:
     command: "sudo service nginx reload"
 ```
 
+NOTE: Found out that if the name is `.ebextensions/client_max_body_size.conf`, it will not work. The naming should be `.ebextensions/client_max_body_size.config`:
+```nginx
+files:
+  "/etc/nginx/conf.d/proxy.conf":
+    mode: "000755"
+    owner: root
+    group: root
+    content: |
+      client_max_body_size 50M;
+
+container_commands:
+  reload_nginx:
+    command: "sudo service nginx restart"
+```
+
 ## Elasticbeanstalk Go nginx.conf
 
 https://stackoverflow.com/questions/24860426/nginx-config-file-overwritten-during-elastic-beanstalk-deployment
