@@ -241,3 +241,11 @@ $ git config --get user.name
 ```bash
 $ git push origin --delete branchname
 ```
+
+## Git commit messages
+
+- feat: A feature that is visible to end users
+- fix: A bugfix that is visible for end users
+- chore: A change that doesn’t impact end users (e.g .changes to CI Pipeline)
+- docs: A change in the README or documentation
+- refactor: A change in production code focused on readability, style and / or performance
