@@ -443,3 +443,17 @@ docker:
 	"vendor/github.com/ethereum/go-ethereum/crypto/secp256k1/"
 	@docker build -t example/go-app .
 ```
+
+
+## Docker image naming
+
+
+Other than image:version, we should specify whether it is stage or prod too. Reason being if we push a general latest version in local development, and the production db restarts, it will take the latest development version.
+
+Is this naming good enough?
+
+```
+alextanhongpin/go-server:prod-latest
+alextanhongpin/go-server:stage-latest
+alextanhongpin/go-server:test-latest
+```
