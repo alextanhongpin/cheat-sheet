@@ -31,6 +31,9 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plugin 'cohama/lexima.vim'
+Plugin 'dracula/vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -59,8 +62,9 @@ autocmd BufNewFile,BufRead *.tsx set filetype=typescript
 " vim-codefmt
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,protoAutoFormatBuffer clang-format
+  autocmd FileType c,cpp,proto AutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
+  " autocmd FileType javascript,js AutoFormatBuffer standard
   autocmd FileType typescript AutoFormatBuffer prettier 
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType md, markdown AutoFormatBuffer prettier 
@@ -173,18 +177,25 @@ function! s:build_go_files()
 endfunction
 
 
+" augroup FiletypeGroup
+"         autocmd!
+"         au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+" augroup END
+" let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
 "Set JavaScript
 let g:ale_linters = {
-\   'javascript': ['standard', 'eslint'],
+\   'javascript': ['prettier_standard'],
+\   'jsx': ['prettier_standard'],
+\   'vue': ['prettier_standard'],
 \}
-let g:ale_fixers = {'javascript': ['standard', 'eslint']}
+
+let g:ale_linter_aliases = { 'vue': ['vue', 'css'] }
+let g:ale_fixers = {'javascript': ['prettier_standard'], 'vue':['prettier_standard']}
+let g:ale_javascript_standard_use_global = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
-let g:ale_set_loclist = 0
-let g:ale_completion_enabled = 0
-let g:ale_set_quickfix = 1
 let g:airline#extensions#ale#enabled = 1
 
 "Set NERDTree
@@ -370,7 +381,7 @@ augroup vimrc
 augroup END
 
 " Plugin alvan/vim-closetag
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js,*.vue"
 let g:closetag_xhtml_filetypes = 'xhtml,js,jsx,tsx'
 
 
@@ -379,7 +390,3 @@ set foldmethod=syntax
 set foldcolumn=1
 let javaScript_fold = 1 "activates fold by JS syntax
 set foldlevelstart=99 "start file with all folds opened
-
-" Vim-prettier config.
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
