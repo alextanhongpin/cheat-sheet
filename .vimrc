@@ -29,11 +29,7 @@ Plugin 'posva/vim-vue'
 Plugin 'cormacrelf/vim-colors-github'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'alvan/vim-closetag'
-Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plugin 'cohama/lexima.vim'
-Plugin 'dracula/vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -62,10 +58,9 @@ autocmd BufNewFile,BufRead *.tsx set filetype=typescript
 " vim-codefmt
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto AutoFormatBuffer clang-format
+  autocmd FileType c,cpp,protoAutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
-  " autocmd FileType javascript,js AutoFormatBuffer standard
-  autocmd FileType typescript AutoFormatBuffer prettier 
+  autocmd FileType typescript AutoFormatBuffer prettier
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType md, markdown AutoFormatBuffer prettier 
   autocmd FileType gn AutoFormatBuffer gn
@@ -81,19 +76,12 @@ set rtp+=/usr/local/opt/fzf
 " Map leader \ to ,
 let mapleader = ","
 
-" let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-"Set italic
-" let &t_ZH="\e[3m"
-" let &t_ZR="\e[23m"
-
 set notermguicolors
 set encoding=utf-8
 set clipboard=unnamed
 set ruler
 set number
 set relativenumber
-" set foldcolumn=2
 set mouse=a
 set laststatus=2
 set colorcolumn=80
@@ -152,11 +140,6 @@ let g:go_auto_sameids = 1
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 
-" gofmt on save
-" autocmd FileType go autocmd BufWritePre <buffer> GoFmt
-" Go complier
-" autocmd FileType go compiler go
-
 augroup golang
 	autocmd!
 	autocmd FileType go nmap <leader>t <Plug>(go-test)
@@ -177,26 +160,25 @@ function! s:build_go_files()
 endfunction
 
 
-" augroup FiletypeGroup
-"         autocmd!
-"         au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-" augroup END
-" let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
 "Set JavaScript
 let g:ale_linters = {
-\   'javascript': ['prettier_standard'],
-\   'jsx': ['prettier_standard'],
-\   'vue': ['prettier_standard'],
+\   'rust': ['cargo'],
+\   'javascript': ['prettier-standard'],
 \}
-
-let g:ale_linter_aliases = { 'vue': ['vue', 'css'] }
-let g:ale_fixers = {'javascript': ['prettier_standard'], 'vue':['prettier_standard']}
-let g:ale_javascript_standard_use_global = 1
+let g:ale_fixers = {
+	\'rust': ['rustfmt'],
+	\'vue': ['prettier-standard'],
+	\'javascript': ['prettier-standard']
+\}
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 1
+let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
+let g:ale_set_loclist = 0
+let g:ale_completion_enabled = 1
+let g:ale_set_quickfix = 0
 let g:airline#extensions#ale#enabled = 1
+let g:ale_rust_rls_toolchain = 'stable'
 
 "Set NERDTree
 augroup nerdtree
@@ -230,7 +212,6 @@ endfunction
 " Set space for JavaScript
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
 autocmd Filetype typescript setlocal ts=2 sw=2 sts=0 expandtab
-
 
 let g:pymode_python = 'python3'
 let g:pymode_indent = 0
