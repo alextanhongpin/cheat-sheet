@@ -30,6 +30,7 @@ Plugin 'cormacrelf/vim-colors-github'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'cohama/lexima.vim'
+Plugin 'vim-ruby/vim-ruby'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -164,8 +165,10 @@ endfunction
 let g:ale_linters = {
 \   'rust': ['cargo'],
 \   'javascript': ['prettier-standard'],
+\   'ruby': ['brakeman', 'standardrb', 'ruby', 'rails_best_practices']
 \}
 let g:ale_fixers = {
+	\ 'ruby': ['sorbet', 'standardrb'],
 	\'rust': ['rustfmt'],
 	\'vue': ['prettier-standard'],
 	\'javascript': ['prettier-standard']
@@ -362,7 +365,7 @@ augroup vimrc
 augroup END
 
 " Plugin alvan/vim-closetag
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js,*.vue"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js,*.vue,*.erb"
 let g:closetag_xhtml_filetypes = 'xhtml,js,jsx,tsx'
 
 
