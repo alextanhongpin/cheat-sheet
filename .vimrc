@@ -374,3 +374,13 @@ set foldmethod=syntax
 set foldcolumn=1
 let javaScript_fold = 1 "activates fold by JS syntax
 set foldlevelstart=99 "start file with all folds opened
+
+" Map jk to ESC in insert mode
+inoremap jk <esc>
+
+" Disable ESC key in insert mode.
+inoremap <esc> <nop>
+
+
+" Sets the directory to ~/.vim/tmp
+set directory^=$HOME/.vim/tmp//
