@@ -61,7 +61,7 @@ augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
   autocmd FileType c,cpp,protoAutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType typescript AutoFormatBuffer prettier
+  autocmd FileType typescript AutoFormatBuffer prettier-standard
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType md, markdown AutoFormatBuffer prettier 
   autocmd FileType gn AutoFormatBuffer gn
@@ -165,13 +165,15 @@ endfunction
 let g:ale_linters = {
 \   'rust': ['cargo'],
 \   'javascript': ['prettier-standard'],
+\   'typescript': ['prettier-standard'],
 \   'ruby': ['brakeman', 'standardrb', 'ruby', 'rails_best_practices']
 \}
 let g:ale_fixers = {
 	\ 'ruby': ['sorbet', 'standardrb'],
 	\'rust': ['rustfmt'],
 	\'vue': ['prettier-standard'],
-	\'javascript': ['prettier-standard']
+	\'javascript': ['prettier-standard'],
+	\'typescript': ['prettier-standard']
 \}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
