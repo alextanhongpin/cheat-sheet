@@ -249,3 +249,8 @@ $ git push origin --delete branchname
 - chore: A change that doesn’t impact end users (e.g .changes to CI Pipeline)
 - docs: A change in the README or documentation
 - refactor: A change in production code focused on readability, style and / or performance
+
+# clears local deleted branch, fetch all other branches
+```
+$ git remote update --prune
+```
