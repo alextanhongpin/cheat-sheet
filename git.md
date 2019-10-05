@@ -254,3 +254,10 @@ $ git push origin --delete branchname
 ```
 $ git remote update --prune
 ```
+
+## Git commit messages
+http://karma-runner.github.io/4.0/dev/git-commit-msg.html
+https://365git.tumblr.com/post/3308646748/writing-git-commit-messages
+https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+https://dev.to/maxpou/enhance-your-git-log-with-conventional-commits-3ea4
+https://seesparkbox.com/foundry/semantic_commit_messages
