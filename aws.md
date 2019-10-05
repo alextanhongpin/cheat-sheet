@@ -420,3 +420,48 @@ After deploying the `.ebextentions`, the logs in docker will now be rotated hour
 - https://forums.aws.amazon.com/thread.jspa?threadID=164502
 - https://stackoverflow.com/questions/36823982/aws-beanstalk-environment-isnt-rotating-docker-container-logs
 - https://serverfault.com/questions/871653/amazon-aws-elastic-beanstalk-ebs-logs-to-cloudwatch-multi-docker-env
+
+
+## Cloudwatch
+
+Stream json logs to cloudwatch to enable us to perform many different queries.
+```
+# General query, match all.
+"error"
+
+# Query the nested json field with the name Sidekiq.
+{$.name = "Sidekiq"}
+
+# Query the nested json field with multiple conditions.
+{($.name = "Sidekiq") && ($.level = "error") }
+```
+
+## Cloudwatch Insights
+
+Get the average timestamp of the controller actions. NOTE: Using percentil is more accurate.
+```
+Cloud watch insights
+fields @timestamp, @message
+| sort @timestamp desc
+| stats avg(duration_ms) as total by payload.controller, payload.action
+| sort total desc
+| limit 20
+```
+
+Get the total count of occurances of the log level (error, info etc)
+```
+fields @timestamp, @message
+| sort @timestamp desc
+| stats count(level) as total by level
+| sort total desc
+| limit 20
+```
+
+Get the 95th percentile of the the services grouped by the controller and actions.
+```
+fields @timestamp, @message
+| sort @timestamp desc
+| stats percentile(duration_ms, 95) as total by payload.controller, payload.action
+| sort total desc
+| limit 20
+```
