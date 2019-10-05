@@ -465,3 +465,16 @@ fields @timestamp, @message
 | sort total desc
 | limit 20
 ```
+
+## Accessing environment variable in .ebextensions
+
+https://stackoverflow.com/questions/29423608/accessing-environment-variables-in-aws-beanstalk-ebextensions
+```
+files:
+  "/etc/nginx/nginx.conf" :
+    mode: "000644"
+    owner: root
+    group: root
+    content: |
+      worker_processes `{"Fn::GetOptionSetting": {"Namespace": "aws:elasticbeanstalk:application:environment", "OptionName": "MYVAR"}}`;
+```
