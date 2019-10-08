@@ -478,3 +478,9 @@ files:
     content: |
       worker_processes `{"Fn::GetOptionSetting": {"Namespace": "aws:elasticbeanstalk:application:environment", "OptionName": "MYVAR"}}`;
 ```
+
+## Eb init without interactive
+
+```bash
+$ eb init --region ap-southeast-1 --platform "arn:aws:elasticbeanstalk:ap-southeast-1::platform/Puma with Ruby 2.2 running on 64bit Amazon Linux/2.10.2" <application-name>
+```
