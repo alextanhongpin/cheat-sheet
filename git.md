@@ -255,6 +255,11 @@ $ git push origin --delete branchname
 $ git remote update --prune
 ```
 
+## Remove all git branch except the current one
+```bash
+$ git branch -D $(git branch)
+```
+
 ## Git commit messages
 http://karma-runner.github.io/4.0/dev/git-commit-msg.html
 https://365git.tumblr.com/post/3308646748/writing-git-commit-messages
