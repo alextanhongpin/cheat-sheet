@@ -484,3 +484,56 @@ files:
 ```bash
 $ eb init --region ap-southeast-1 --platform "arn:aws:elasticbeanstalk:ap-southeast-1::platform/Puma with Ruby 2.2 running on 64bit Amazon Linux/2.10.2" <application-name>
 ```
+
+## Debugging memory
+```
+$ free -m
+```
+Output:
+```
+             total       used       free     shared    buffers     cached
+Mem:          3887       2978        908         61         76        273
+-/+ buffers/cache:       2628       1258
+Swap:            0          0          0
+```
+
+```
+$ free -h
+```
+Output:
+```
+             total       used       free     shared    buffers     cached
+Mem:          3.8G       2.9G       907M        61M        76M       273M
+-/+ buffers/cache:       2.6G       1.2G
+Swap:           0B         0B         0B
+```
+
+## Finding threads processes
+
+```bash
+$ top -H
+
+# Find threads belonging to process
+$ top -H -p <PID>
+```
+
+## Apache
+Checking version, finding what mom it is running
+```
+$ apachectl -V
+```
+
+
+### Tuning apache mpm event formula 
+```
+<IfModule mpm_event_module>
+            StartServers              6         #default 3
+            ServerLimit               512       #default 16
+            ThreadsPerChild           25        #25
+            MaxRequestWorkers      12800        #default 400(16x25, server limit * threadsPerChild)
+	   ThreadLimit 25 # max equal to threadsPerChild
+            MinSpareThreads           64        # MaxRequestWorkers / 4
+            MaxSpareThreads          256        #64 MinSpareThreads * 3
+            MaxConnectionsPerChild     0
+</IfModule>
+```
