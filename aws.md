@@ -537,3 +537,93 @@ $ apachectl -V
             MaxConnectionsPerChild     0
 </IfModule>
 ```
+
+## Getting name
+
+To get environment id and name (note that this is different than instance id)
+```
+files:
+  /path/to/environmentInfo.txt:
+    content : |
+      Environment Name: `{"Ref": "AWSEBEnvironmentName" }`
+      Environment Id:   `{"Ref": "AWSEBEnvironmentId" }`
+```
+https://marcelog.github.io/articles/get_aws_instance_id_ec2_read_metadata.html
+
+
+## Docker container logs stdout
+
+In `.ebextensions/log.config`:
+
+```
+option_settings:
+  - namespace: aws:elasticbeanstalk:cloudwatch:logs
+    option_name: StreamLogs
+    value: true
+  - namespace: aws:elasticbeanstalk:cloudwatch:logs
+    option_name: DeleteOnTerminate
+    value: false
+  - namespace: aws:elasticbeanstalk:cloudwatch:logs
+    option_name: RetentionInDays
+    value: 7
+
+files:
+  "/etc/awslogs/config/stdout.conf":
+    mode: "000755"
+    owner: root
+    group: root
+    content: |
+      [docker-stdout]
+      log_group_name=/aws/elasticbeanstalk/environment_name/docker-stdout
+      log_stream_name={instance_id}
+      file=/var/log/eb-docker/containers/eb-current-app/*-stdouterr.log
+
+commands:
+  "00_restart_awslogs":
+    command: service awslogs restart
+```
+https://stackoverflow.com/questions/41979394/elastic-beanstalk-single-container-docker-use-awslogs-logging-driver
+https://stackoverflow.com/questions/49543944/how-can-i-stream-a-specific-log-file-from-multi-container-docker-elastic-beansta
+
+## Dockerrun v2
+
+```yaml
+{
+    "AWSEBDockerrunVersion": 2,
+    "volumes": [{
+
+            "name": "rails-app",
+            "host": {
+                "sourcePath": "/var/app/current/rails-app"
+            }
+        },
+        {
+            "name": "keys",
+            "host": {
+                "sourcePath": "/etc/pki/tls/certs"
+            }
+        }
+    ],
+    "containerDefinitions": [{
+        "name": "api",
+        "image": "rails/api:latest",
+        "essential": true,
+        "memory": 512,
+        "cpu": 1,
+        "mountPoints": [{
+                "sourceVolume": "rails-app",
+                "containerPath": "/app/tmp”
+            },
+            {
+                "sourceVolume": "keys",
+                "containerPath": "/etc/pki/tls/certs"
+            }
+        ],
+        "portMappings": [{
+            "containerPort": 3000,
+            "hostPort": 80
+        }]
+    }]
+
+}
+```
