@@ -627,3 +627,73 @@ https://stackoverflow.com/questions/49543944/how-can-i-stream-a-specific-log-fil
 
 }
 ```
+
+
+## Setting up Swap
+
+To fix OOM (out of memory) issues:
+```
+commands:
+  remove_old_swap:
+     command: "rm -f /tmp/setup_swap.sh"
+  01setup_swap:
+    test: test ! -e /var/swapfile
+    command: |
+      /bin/dd if=/dev/zero of=/var/swapfile bs=1M count=2048
+      /bin/chmod 600 /var/swapfile
+      /sbin/mkswap /var/swapfile
+      /sbin/swapon /var/swapfile
+```
+
+## Swap settings
+
+Check if you have swap already, memory and disk size:
+```
+$ sudo swapon -s
+$ free -m
+$ df -h
+```
+
+Make swap file (change 1G to 4G if you want 4GB SWAP memory)
+
+```
+$ sudo fallocate -l 1G /swapfile
+```
+
+Check swapfile:
+```
+$ ls -lh /swapfile
+```
+
+Assign swap file:
+
+```bash
+$ sudo chmod 600 /swapfile
+$ sudo mkswap /swapfile
+$ sudo swapon /swapfile
+```
+
+Check if swap OK, memory and disk size:
+```
+$ sudo swapon -s
+$ free -m
+$ df -h
+```
+
+Adjust swap file settings
+```
+$ cat /proc/sys/vm/swappiness
+$ cat /proc/sys/vm/vfs_cache_pressure
+
+$ sudo sysctl vm.swappiness=10
+$ sudo sysctl vm.vfs_cache_pressure=50
+$ sudo nano /etc/sysctl.conf
+```
+
+```
+# Swap file priority (0-100, 0: don't put to SWAP, 100: put on SWAP and free the RAM)
+vm.swappiness=10 # default is 60
+
+# Remove inode from cache: (100: system removes inode information from the cache too quickly)
+vm.vfs_cache_pressure = 50
+```
