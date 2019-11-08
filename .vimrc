@@ -31,6 +31,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'alvan/vim-closetag'
 Plugin 'cohama/lexima.vim'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'mdempsky/gocode', {'rtp': 'nvim/'}
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -87,6 +88,7 @@ set mouse=a
 set laststatus=2
 set colorcolumn=80
 set cursorline
+set cursorcolumn
 set nocompatible
 set inccommand=nosplit
 set splitright
@@ -166,10 +168,10 @@ let g:ale_linters = {
 \   'rust': ['cargo'],
 \   'javascript': ['prettier-standard'],
 \   'typescript': ['prettier-standard'],
-\   'ruby': ['brakeman', 'standardrb', 'ruby', 'rails_best_practices']
+\   'ruby': ['brakeman', 'standardrb', 'ruby', 'rails_best_practices', 'rubocop']
 \}
 let g:ale_fixers = {
-	\ 'ruby': ['sorbet', 'standardrb'],
+	\'ruby': ['sorbet', 'standardrb', 'rubocop'],
 	\'rust': ['rustfmt'],
 	\'vue': ['prettier-standard'],
 	\'javascript': ['prettier-standard'],
@@ -197,7 +199,11 @@ augroup nerdtree
 	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 	" Highlight currently open buffer in NERDTree
 	autocmd BufEnter * call SyncTree()
+
 augroup END
+
+"Go back to the bar.
+map <leader>r :NERDTreeFind<cr>
 
 " Check if NERDTree is open or active
 function! IsNERDTreeOpen()
@@ -383,6 +389,10 @@ inoremap jk <esc>
 " Disable ESC key in insert mode.
 inoremap <esc> <nop>
 
+" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " Sets the directory to ~/.vim/tmp
 set directory^=$HOME/.vim/tmp//
+
