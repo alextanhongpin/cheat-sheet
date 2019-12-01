@@ -32,6 +32,7 @@ Plugin 'alvan/vim-closetag'
 Plugin 'cohama/lexima.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'mdempsky/gocode', {'rtp': 'nvim/'}
+Plugin 'OmniSharp/omnisharp-vim'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -395,4 +396,3 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " Sets the directory to ~/.vim/tmp
 set directory^=$HOME/.vim/tmp//
-
