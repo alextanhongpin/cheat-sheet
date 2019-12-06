@@ -164,3 +164,9 @@ The example below will find all files with `*.JPG` extension and rename it to `*
 ```bash
 $ find . -path *.JPG -exec sh -c 'mv "$1" "${1%.JPG}.jpg"' _ {}  \;
 ```
+
+## Bcrypt Password
+
+```bash
+$ htpasswd -bnBC 10 "" your_password | tr -d ':\n' | sed 's/$2y/$2a/'
+```
