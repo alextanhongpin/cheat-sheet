@@ -70,6 +70,7 @@ augroup autoformat_settings
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
   autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType python AutoFormatBuffer yapf
+  autocmd FileType yaml AutoFormatBuffer prettier
   " Alternative: autocmd FileType python AutoFormatBuffer autopep8
 augroup END
 
@@ -396,3 +397,10 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " Sets the directory to ~/.vim/tmp
 set directory^=$HOME/.vim/tmp//
+
+" Mono configuration for dotnetcore
+let g:OmniSharp_server_stdio = 1
+
+" add yaml stuffs
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
