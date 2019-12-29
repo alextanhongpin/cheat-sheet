@@ -33,6 +33,9 @@ Plugin 'cohama/lexima.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'mdempsky/gocode', {'rtp': 'nvim/'}
 Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'kien/rainbow_parentheses.vim'
+" Plugin 'ayu-theme/ayu-vim'
+" Plugin 'arcticicestudio/nord-vim'
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -127,6 +130,13 @@ colorscheme github
 " if you use airline / lightline
 let g:airline_theme = "github"
 let g:lightline = { 'colorscheme': 'github' }
+
+" set termguicolors     " enable true colors support
+" let ayucolor="light"  " for light version of theme
+" let ayucolor="mirage" " for mirage version of theme
+" let ayucolor="dark"   " for dark version of theme
+" colorscheme ayu
+" colorscheme nord
 
 "Set Golang
 let g:go_highlight_structs = 1
@@ -404,3 +414,8 @@ let g:OmniSharp_server_stdio = 1
 " add yaml stuffs
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
