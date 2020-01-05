@@ -697,3 +697,82 @@ vm.swappiness=10 # default is 60
 # Remove inode from cache: (100: system removes inode information from the cache too quickly)
 vm.vfs_cache_pressure = 50
 ```
+
+
+## Multi-container AWS Elasticbeanstalk
+
+When running multi-container, we need to ensure that we specify the log groups for each container in order to send them to cloud watch.
+Specifying only one pattern won’t send the logs to cloudwatch.
+
+References:
+- https://stackoverflow.com/questions/41979394/elastic-beanstalk-single-container-docker-use-awslogs-logging-driver
+- https://gist.github.com/jwhiting/e58d9e6a19d9311df1894f1b03c035a1
+
+
+```
+option_settings:
+  - namespace: aws:elasticbeanstalk:cloudwatch:logs
+    option_name: StreamLogs
+    value: true
+  - namespace: aws:elasticbeanstalk:cloudwatch:logs
+    option_name: DeleteOnTerminate
+    value: false
+  - namespace: aws:elasticbeanstalk:cloudwatch:logs
+    option_name: RetentionInDays
+    value: 14
+
+files:
+  "/etc/awslogs/config/stdout.conf":
+    mode: "000755"
+    owner: root
+    group: root
+    content: |
+      [/var/log/containers/server-stdouterr]
+      log_group_name=/aws/elasticbeanstalk/`{ "Ref" : "AWSEBEnvironmentName" }`/var/log/server-stdouterr.log
+      log_stream_name={instance_id}
+      file=/var/log/containers/server-*-stdouterr.log
+      [/var/log/containers/worker-stdouterr]
+      log_group_name=/aws/elasticbeanstalk/`{ "Ref" : "AWSEBEnvironmentName" }`/var/log/worker-stdouterr.log
+      log_stream_name={instance_id}
+      file=/var/log/containers/worker-*-stdouterr.log
+
+commands:
+  "00_restart_awslogs":
+    command: service awslogs restart
+```
+
+## Getting Commit ID in CodeShip
+
+This is equivalent to `git rev-parse --short HEAD`, but in Codeship this command is not available. So, we take the first 7 characters of the git commit with the method below:
+```
+$ git rev-parse HEAD | cut -c1-8
+```
+
+## Replace existing .json file with jq
+
+Sometimes we need to use `jq` to find and replace a specific field:
+```bash
+$ cat test.json | jq .AWSEBDockerrunVersion='"4"'
+
+$ cat test.json | jq --arg VERSION "$VERSION" ".containerDefinitions[0].image"="\"782306342803.dkr.ecr.ap-southeast-1.amazonaws.com/alextanhongpin/api:$VERSION\""
+
+$ cat test.json | jq ".containerDefinitions[0].image"="$(git rev-parse --short HEAD):hello"
+```
+
+Do it this way:
+
+```
+set -e
+
+# Take only the first 7 characters as the version.
+export VERSION=$(echo $CI_COMMIT_ID | cut -c1-7)
+export WORKDIR=deploy
+
+# Create a copy of the old configuration.
+mv $WORKDIR/Dockerrun.aws.json $WORKDIR/Dockerrun.aws.json.copy
+
+# Set the latest version.
+cat $WORKDIR/Dockerrun.aws.json.copy | jq --arg VERSION "$VERSION" ".containerDefinitions[].image"="\"782306342803.dkr.ecr.ap-southeast-1.amazonaws.com/alextanhongpin/api:$VERSION\"" > $WORKDIR/Dockerrun.aws.json
+
+cat $WORKDIR/Dockerrun.aws.json | grep image
+```
