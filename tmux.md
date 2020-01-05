@@ -30,3 +30,12 @@ bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux past
 # fix the delay esc of vim
 set -sg escape-time 0
 ```
+
+
+## Clear history
+
+Don't keep history of password/tokens in your terminal history! Clear them periodically! You need to reload the session after running this:
+
+```bash
+$ history -c
+```
