@@ -553,3 +553,8 @@ let g:closetag_xhtml_filetypes = 'xhtml,js,jsx'
 ## Autoclose vim tag
 
 https://github.com/cohama/lexima.vim
+
+
+```
+Ctrl + ^: goes back to previous file
+```
