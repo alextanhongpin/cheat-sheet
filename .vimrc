@@ -34,8 +34,10 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'mdempsky/gocode', {'rtp': 'nvim/'}
 Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'thoughtbot/vim-rspec'
 " Plugin 'ayu-theme/ayu-vim'
 " Plugin 'arcticicestudio/nord-vim'
+
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -419,3 +421,11 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+
+let g:rspec_runner = "os_x_iterm"
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
