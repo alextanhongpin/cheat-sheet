@@ -260,6 +260,13 @@ $ git remote update --prune
 $ git branch -D $(git branch)
 ```
 
+## Sort the branches by last commited date
+
+Find out what are the latest branch in progress.
+```bash
+$ git fetch --prune
+$ git branch —sort=-committerdate
+```
 ## Git commit messages
 http://karma-runner.github.io/4.0/dev/git-commit-msg.html
 https://365git.tumblr.com/post/3308646748/writing-git-commit-messages
