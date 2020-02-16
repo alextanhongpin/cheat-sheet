@@ -776,3 +776,33 @@ cat $WORKDIR/Dockerrun.aws.json.copy | jq --arg VERSION "$VERSION" ".containerDe
 
 cat $WORKDIR/Dockerrun.aws.json | grep image
 ```
+
+## Add memory monitoring AWS
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html
+
+```bash
+packages:
+  yum:
+    perl-DateTime: []
+    perl-Sys-Syslog: []
+    perl-LWP-Protocol-https: []
+    perl-Switch: []
+    perl-URI: []
+    perl-Bundle-LWP: []
+sources: 
+  /opt/cloudwatch: https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-1.2.1.zip
+  
+container_commands:
+  01-setupcron:
+    command: |
+      echo '*/5 * * * * root perl /opt/cloudwatch/aws-scripts-mon/mon-put-instance-data.pl `{"Fn::GetOptionSetting" : { "OptionName" : "CloudWatchMetrics", "DefaultValue" : "--mem-util --disk-space-util --disk-path=/" }}` >> /var/log/cwpump.log 2>&1' > /etc/cron.d/cwpump
+  02-changeperm:
+    command: chmod 644 /etc/cron.d/cwpump
+  03-changeperm:
+    command: chmod u+x /opt/cloudwatch/aws-scripts-mon/mon-put-instance-data.pl
+option_settings:
+  "aws:autoscaling:launchconfiguration" :
+    IamInstanceProfile : "aws-elasticbeanstalk-ec2-role"
+  "aws:elasticbeanstalk:customoption" :
+    CloudWatchMetrics : "--mem-util --mem-used --mem
+```
