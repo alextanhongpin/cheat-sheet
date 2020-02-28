@@ -5,37 +5,41 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Bundle 'belltoy/vim-protobuf'
+Bundle 'zah/nim.vim'
+Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'alvan/vim-closetag'
+Plugin 'cohama/lexima.vim'
+Plugin 'cormacrelf/vim-colors-github'
+Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'ervandew/supertab'
+Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 Plugin 'itchyny/lightline.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-fugitive'
-Plugin 'w0rp/ale'
-Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
-Plugin 'ervandew/supertab'
-Plugin 'vim-airline/vim-airline-themes'
-Bundle 'belltoy/vim-protobuf'
-Bundle 'zah/nim.vim'
 Plugin 'junegunn/seoul256.vim'
-Plugin 'posva/vim-vue'
-Plugin 'cormacrelf/vim-colors-github'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'alvan/vim-closetag'
-Plugin 'cohama/lexima.vim'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'mdempsky/gocode', {'rtp': 'nvim/'}
-Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'mdempsky/gocode', {'rtp': 'nvim/'}
+Plugin 'posva/vim-vue'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'w0rp/ale'
+Plugin 'Shougo/echodoc.vim'
+Plugin 'gorodinskiy/vim-coloresque'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'benmills/vimux'
 " Plugin 'ayu-theme/ayu-vim'
 " Plugin 'arcticicestudio/nord-vim'
 
@@ -433,3 +437,30 @@ map <Leader>a :call RunAllSpecs()<CR>
 
 " automatic Dart file type detection
 au BufRead,BufNewFile *.dart set filetype=dart
+
+
+" echodoc configuration.
+" Or, you could use vim's popup window feature.
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'popup'
+" " To use a custom highlight for the popup window,
+" " change Pmenu to your highlight group
+highlight link EchoDocPopup Pmenu
+
+" Or, you could use neovim's floating text feature.
+" let g:echodoc#enable_at_startup = 1
+" let g:echodoc#type = 'floating'
+" To use a custom highlight for the float window,
+" change Pmenu to your highlight group
+" highlight link EchoDocFloat Pmenu
+let cmdheight=1
+let g:go_doc_popup_window=1 
+
+" vv to generate new vertical split
+nnore map <silent> vv <C-w>v
+
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
