@@ -40,6 +40,7 @@ Plugin 'Shougo/echodoc.vim'
 Plugin 'gorodinskiy/vim-coloresque'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux'
+Plugin 'evanleck/vim-svelte'
 " Plugin 'ayu-theme/ayu-vim'
 " Plugin 'arcticicestudio/nord-vim'
 
@@ -67,6 +68,7 @@ Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VER
 autocmd BufNewFile,BufRead *.ts  set filetype=typescript
 " use `setfiletype` to not override any other plugins like ianks/vim-tsx
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+autocmd BufNewFile,BufRead *.svelte set filetype=javascript
 
 " vim-codefmt
 augroup autoformat_settings
@@ -181,20 +183,23 @@ function! s:build_go_files()
   endif
 endfunction
 
-
+let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}
 "Set JavaScript
 let g:ale_linters = {
 \   'rust': ['cargo'],
 \   'javascript': ['prettier-standard'],
 \   'typescript': ['prettier-standard'],
-\   'ruby': ['brakeman', 'standardrb', 'ruby', 'rails_best_practices', 'rubocop']
+\   'ruby': ['brakeman', 'standardrb', 'ruby', 'rails_best_practices', 'rubocop'],
+\   'svelte': ['stylelint', 'eslint']
 \}
 let g:ale_fixers = {
 	\'ruby': ['sorbet', 'standardrb', 'rubocop'],
 	\'rust': ['rustfmt'],
 	\'vue': ['prettier-standard'],
 	\'javascript': ['prettier-standard'],
-	\'typescript': ['prettier-standard']
+	\'typescript': ['prettier-standard'],
+	\'svelte': ['stylelint', 'eslint', 'prettier', 'prettier-standard'],
+	\'*': ['remove_trailing_lines', 'trim_whitespace']
 \}
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
@@ -392,7 +397,7 @@ augroup vimrc
 augroup END
 
 " Plugin alvan/vim-closetag
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js,*.vue,*.erb"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js,*.vue,*.erb,*.svelte"
 let g:closetag_xhtml_filetypes = 'xhtml,js,jsx,tsx'
 
 
