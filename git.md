@@ -273,3 +273,36 @@ https://365git.tumblr.com/post/3308646748/writing-git-commit-messages
 https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
 https://dev.to/maxpou/enhance-your-git-log-with-conventional-commits-3ea4
 https://seesparkbox.com/foundry/semantic_commit_messages
+
+
+
+## List branches that has been merged
+```bash
+$ git branch —-merged
+```
+
+## List branches that has not been merged
+```bash
+$ git branch —-no-merged
+```
+
+```bash
+# cleanup unnecessary files and optimise the local repository (compact your repo)
+$ git gc
+
+# prune all unreachable object from the object database
+$ git prune
+
+# verifies the connectivity and validity of the objects in the database (validate that your repo is sane)
+$ git fsck
+
+# (prune your remote working directory)
+$ git remote update --prune 
+```
+
+# Rename branch after it is created
+- Checkout to the branch you want to rename $ git checkout old-name
+- Rename branch name locally: $ git branch -m <new-name>
+- Delete old branch from remote: $ git push origin <old-name> <new-name>
+- Reset the upstream branch for the new branch name: $ git push origin -u new-name
+
