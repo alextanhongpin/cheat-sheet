@@ -43,6 +43,8 @@ Plugin 'benmills/vimux'
 Plugin 'evanleck/vim-svelte'
 " Plugin 'ayu-theme/ayu-vim'
 " Plugin 'arcticicestudio/nord-vim'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
 
 " Add maktaba and codefmt to the runtimepath.
@@ -77,7 +79,7 @@ augroup autoformat_settings
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType typescript AutoFormatBuffer prettier-standard
   autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType md, markdown AutoFormatBuffer prettier 
+  autocmd FileType md, markdown AutoFormatBuffer prettier
   autocmd FileType gn AutoFormatBuffer gn
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
   autocmd FileType java AutoFormatBuffer google-java-format
@@ -135,6 +137,8 @@ let g:github_colors_soft = 1
 let g:github_colors_block_diffmark = 0
 " in your .vimrc or init.vim
 colorscheme github
+highlight Normal ctermbg=white
+highlight nonText ctermbg=white
 
 " if you use airline / lightline
 let g:airline_theme = "github"
@@ -187,17 +191,17 @@ let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}
 "Set JavaScript
 let g:ale_linters = {
 \   'rust': ['cargo'],
-\   'javascript': ['prettier-standard'],
-\   'typescript': ['prettier-standard'],
+\   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
 \   'ruby': ['brakeman', 'standardrb', 'ruby', 'rails_best_practices', 'rubocop'],
-\   'svelte': ['stylelint', 'eslint']
+\   'svelte': ['stylelint', 'eslint', 'prettier-standard']
 \}
 let g:ale_fixers = {
 	\'ruby': ['sorbet', 'standardrb', 'rubocop'],
 	\'rust': ['rustfmt'],
 	\'vue': ['prettier-standard'],
-	\'javascript': ['prettier-standard'],
-	\'typescript': ['prettier-standard'],
+	\'javascript': ['prettier'],
+	\'typescript': ['prettier'],
 	\'svelte': ['stylelint', 'eslint', 'prettier', 'prettier-standard'],
 	\'*': ['remove_trailing_lines', 'trim_whitespace']
 \}
@@ -459,7 +463,7 @@ highlight link EchoDocPopup Pmenu
 " change Pmenu to your highlight group
 " highlight link EchoDocFloat Pmenu
 let cmdheight=1
-let g:go_doc_popup_window=1 
+let g:go_doc_popup_window=1
 
 " vv to generate new vertical split
 nnore map <silent> vv <C-w>v
@@ -469,10 +473,6 @@ map <Leader>vp :VimuxPromptCommand<CR>
 
 " Run last command executed by VimuxRunCommand
 map <Leader>vl :VimuxRunLastCommand<CR>
-
-
-FZF Setup floating window
-
 
 " floating fzf
 if has('nvim')
@@ -499,3 +499,15 @@ if has('nvim')
   let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 endif
 
+" Universal-ctags is required
+let g:js_file_import_no_mappings = 0
+let g:js_file_import_omit_semicolon = 0
+let g:js_file_import_use_fzf = 1
+let g:js_file_import_sort_after_insert = 1
+set wildignore+=*node_modules/**
+set wildignore+=*dist/**
+set wildignore+=*build/**
+" set tags=tags
+
+" nmap <C-i> <Plug>(JsFileImport)
+" nmap <C-u> <Plug>(PromptJsFileImport)
