@@ -86,3 +86,9 @@ $ echo 'npm-debug.log' >> .gitignore
 $ git rm -r --cached node_modules
 $ git commit -am 'ignore node_modules'
 ```
+
+## Semantic versioning
+
+```bash
+$ npm version minor|major|patch to bump the version
+```
