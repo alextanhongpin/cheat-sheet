@@ -306,3 +306,8 @@ $ git remote update --prune
 - Delete old branch from remote: $ git push origin <old-name> <new-name>
 - Reset the upstream branch for the new branch name: $ git push origin -u new-name
 
+
+## Push the commit with the tags automatically
+```bash
+$ git config --global push.followTags true
+```
