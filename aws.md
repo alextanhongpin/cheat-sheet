@@ -823,3 +823,19 @@ NOTE: If you do not know which header to allow access to, set `<AllowedHeader>*<
 </CORSRule>
 </CORSConfiguration>
 ```
+
+## SWap
+
+In `.ebextensions/swap.config`:
+```
+commands:
+  remove_old_swap:
+     command: "rm -f /tmp/setup_swap.sh"
+  01setup_swap:
+    test: test ! -e /var/swapfile
+    command: |
+      /bin/dd if=/dev/zero of=/var/swapfile bs=1M count=2048
+      /bin/chmod 600 /var/swapfile
+      /sbin/mkswap /var/swapfile
+      /sbin/swapon /var/swapfile
+```
