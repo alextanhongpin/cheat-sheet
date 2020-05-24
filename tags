@@ -1,0 +1,615 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/336ebee/
+#	.vimrc	/^nnoremap # ?\\<<C-R>=expand('<cword>')<CR>\\><CR>$/;"	m
+(Close to) Zero-Downtime Deployments	aws.md	/^## (Close to) Zero-Downtime Deployments $/;"	s	chapter:AWS Cheatsheet
+*	.vimrc	/^nnoremap * \/\\<<C-R>=expand('<cword>')<CR>\\><CR>$/;"	m
+**DIFFERENCE** Operator	mysql.md	/^## **DIFFERENCE** Operator$/;"	s	chapter:Working in Sets
+**INTERSECT** Operator	mysql.md	/^## **INTERSECT** Operator$/;"	s	chapter:Working in Sets
+**UNION** Operator	mysql.md	/^## **UNION** Operator$/;"	s	chapter:Working in Sets
+.dockerignore	docker.md	/^## .dockerignore$/;"	s
+.vimrc	vim.md	/^## .vimrc$/;"	s	chapter:Inserting Date
+1 concurrent user doing 100 page hits	apache-ab.md	/^## 1 concurrent user doing 100 page hits$/;"	s	chapter:Apache Bench
+10 concurrent users each doing 10 page hits	apache-ab.md	/^## 10 concurrent users each doing 10 page hits$/;"	s	chapter:Apache Bench
+5 concurrent users each doing 10 page hits	apache-ab.md	/^## 5 concurrent users each doing 10 page hits$/;"	s	chapter:Apache Bench
+60 FPS Scrolling	css.md	/^## 60 FPS Scrolling$/;"	s	chapter:Reset box-sizing
+90 concurrent users each doing 30 page hits	apache-ab.md	/^## 90 concurrent users each doing 30 page hits$/;"	s	chapter:Apache Bench
+<C-S>	.vimrc	/^inoremap <silent> <C-S> <C-C>:write<CR>$/;"	m
+<C-S>	.vimrc	/^noremap <silent> <C-S> :write<CR>$/;"	m
+<C-S>	.vimrc	/^vnoremap <silent> <C-S> <C-C>:write<CR>$/;"	m
+<C-b>	.vimrc	/^inoremap <C-b> <C-o>o$/;"	m
+<C-d>	.vimrc	/^inoremap <C-d> <Right>,<C-o>o$/;"	m
+<C-e>	.vimrc	/^inoremap <C-e> <Right>:<Space>,<Left>$/;"	m
+<C-f>	.vimrc	/^nnoremap <C-f> :Ag!<Enter>$/;"	m
+<C-j>	.vimrc	/^inoremap <C-j> <Down>$/;"	m
+<C-k>	.vimrc	/^inoremap <C-k> <Up><C-o>A$/;"	m
+<C-l>	.vimrc	/^inoremap <C-l> <Right>$/;"	m
+<Leader>a	ftplugin/ruby.vim	/^map <Leader>a :call RunAllSpecs()<CR>$/;"	m
+<Leader>l	ftplugin/ruby.vim	/^map <Leader>l :call RunLastSpec()<CR>$/;"	m
+<Leader>s	ftplugin/ruby.vim	/^map <Leader>s :call RunNearestSpec()<CR>$/;"	m
+<Leader>t	ftplugin/ruby.vim	/^map <Leader>t :call RunCurrentSpecFile()<CR>$/;"	m
+<Leader>vl	.vimrc	/^map <Leader>vl :VimuxRunLastCommand<CR>$/;"	m
+<Leader>vp	.vimrc	/^map <Leader>vp :VimuxPromptCommand<CR>$/;"	m
+<M-g>	.vimrc	/^ino <M-g> <esc>:call JumpToDef()<cr>i$/;"	m
+<M-g>	.vimrc	/^nn <M-g> :call JumpToDef()<cr>$/;"	m
+<esc>	.vimrc	/^inoremap <esc> <nop>$/;"	m
+<leader>cd	.vimrc	/^nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>$/;"	m
+<leader>r	.vimrc	/^map <leader>r :NERDTreeFind<cr>$/;"	m
+<leader>zz	.vimrc	/^nnoremap <leader>zz :call VCenterCursor()<CR>$/;"	m
+AND, OR, NOT	python.md	/^## AND, OR, NOT$/;"	s
+AWS Cheatsheet	aws.md	/^# AWS Cheatsheet$/;"	c
+AWS Elasticbeanstalk	aws.md	/^## AWS Elasticbeanstalk $/;"	s	chapter:AWS Cheatsheet
+AWS Example	graphviz.md	/^## AWS Example$/;"	s
+AWS S3 CORS	aws.md	/^## AWS S3 CORS$/;"	s	chapter:AWS Cheatsheet
+Accessing environment variable in .ebextensions	aws.md	/^## Accessing environment variable in .ebextensions$/;"	s	chapter:AWS Cheatsheet
+Add Color Column for Character width 80	vim.md	/^## Add Color Column for Character width 80$/;"	s	chapter:Inserting Date
+Add memory monitoring AWS	aws.md	/^## Add memory monitoring AWS$/;"	s	chapter:AWS Cheatsheet
+Add to path	spark.md	/^## Add to path$/;"	s
+Adding Colorschemes	vim.md	/^## Adding Colorschemes$/;"	s	chapter:Inserting Date
+Adding sql script	sqlserver.md	/^## Adding sql script$/;"	s
+Adding the Achor link for header	github.md	/^## Adding the Achor link for header$/;"	s
+Ag	.vimrc	/^command! -bang -nargs=* Ag$/;"	c
+Aggregate functions	python.md	/^## Aggregate functions$/;"	s
+Aggregation and Grouping	mysql.md	/^# Aggregation and Grouping$/;"	c
+Allow DNS	aws.md	/^## Allow DNS$/;"	s	chapter:AWS Cheatsheet
+Allow only Cloudflare IPs	aws.md	/^## Allow only Cloudflare IPs$/;"	s	chapter:AWS Cheatsheet
+Alter Table	psql.md	/^## Alter Table$/;"	s	chapter:PostgreSQL
+Alternative Theme	vim.md	/^# Alternative Theme$/;"	c
+Amend your comments	git.md	/^# Amend your comments$/;"	c
+Android Gradle Duplicate files copied in APK META-INF/license.txt	android.md	/^## Android Gradle Duplicate files copied in APK META-INF\/license.txt$/;"	s
+Apache	aws.md	/^## Apache$/;"	s	chapter:AWS Cheatsheet
+Apache Bench	apache-ab.md	/^# Apache Bench$/;"	c
+Append	python.md	/^## Append$/;"	s
+Archive hidden folders	archive.md	/^## Archive hidden folders $/;"	s
+Array	rust.md	/^## Array$/;"	s
+Autoclose vim tag	vim.md	/^## Autoclose vim tag$/;"	s	chapter:Alternative Theme
+Autocomplete Brackets	vim.md	/^## Autocomplete Brackets$/;"	s
+Average	mysql.md	/^## Average$/;"	s	chapter:Aggregation and Grouping
+Bandwidth Estimate	conversion.md	/^## Bandwidth Estimate$/;"	s	chapter:Typical conversion
+Base64 and MD5 with no newline	bash.md	/^## Base64 and MD5 with no newline$/;"	s
+Bash Files ensure variables are set and not empty string	makefile.md	/^## Bash Files ensure variables are set and not empty string$/;"	s	chapter:Include Environment Variables and export all
+Basic Docker Mysql	mysql.md	/^## Basic Docker Mysql$/;"	s	chapter:mysql Commands for the terminal
+Basic Dockerfile for Microsoft SQLServer	sqlserver.md	/^## Basic Dockerfile for Microsoft SQLServer$/;"	s
+Basic Queries	mysql.md	/^# Basic Queries$/;"	c
+Basic Test	rust.md	/^## Basic Test$/;"	s
+Basic Usage	wrk.md	/^## Basic Usage$/;"	s	chapter:wrk is a Http Benchmarking tool
+Basics	mysql.md	/^# Basics$/;"	c
+Bcrypt Password	bash.md	/^## Bcrypt Password$/;"	s
+Best practices	jwt.md	/^# Best practices$/;"	c
+Binding Solidity directly	geth.md	/^## Binding Solidity directly$/;"	s	chapter:Dump TOML config
+Bookmark	vim.md	/^## Bookmark$/;"	s
+Boolean indexing	python.md	/^## Boolean indexing$/;"	s
+Building binary	go.md	/^## Building binary$/;"	s
+CHAR(n) vs VARCHAR(n)	mysql.md	/^## CHAR(n) vs VARCHAR(n)$/;"	s	chapter:Performance
+Calculated Fields	mysql.md	/^# Calculated Fields$/;"	c
+Capacity Estimation and Constraints	conversion.md	/^## Capacity Estimation and Constraints$/;"	s	chapter:Typical conversion
+Cell	rust.md	/^## Cell$/;"	s
+Chaining Commands	makefile.md	/^## Chaining Commands$/;"	s	chapter:Include Environment Variables and export all
+Changing profile	aws.md	/^## Changing profile$/;"	s	chapter:AWS Cheatsheet
+Check Connectivity	firebase.md	/^## Check Connectivity$/;"	s
+Check Constraint	mysql.md	/^## Check Constraint$/;"	s	chapter:Constraint
+Check if ethereum address is valid	regex.md	/^## Check if ethereum address is valid$/;"	s	chapter:Ethereum Transaction Hash
+Check if your go instances is running	bash.md	/^## Check if your go instances is running $/;"	s
+Cherry-picking	git.md	/^# Cherry-picking$/;"	c
+Clarification on how to stop containers with --restart=always	docker.md	/^## Clarification on how to stop containers with --restart=always$/;"	s
+Clean System	docker.md	/^## Clean System$/;"	s
+Cleanup image for elasticbeanstalk docker	aws.md	/^## Cleanup image for elasticbeanstalk docker$/;"	s	chapter:AWS Cheatsheet
+Clear	docker.md	/^## Clear $/;"	s
+Clear Table	psql.md	/^## Clear Table$/;"	s	chapter:PostgreSQL
+Clear all images forcefully	docker.md	/^## Clear all images forcefully$/;"	s
+Clear git history	git.md	/^# Clear git history$/;"	c
+Clear history	tmux.md	/^## Clear history$/;"	s
+Clearing clipboard	bash.md	/^## Clearing clipboard$/;"	s
+Clearing up registers	vim.md	/^## Clearing up registers$/;"	s
+Close a screen with the id 38894	screen-terminal.md	/^## Close a screen with the id 38894$/;"	s
+Close the screen with the name "Service"	screen-terminal.md	/^## Close the screen with the name "Service"$/;"	s
+Closure 2	rust.md	/^## Closure 2$/;"	s
+Closures	rust.md	/^## Closures$/;"	s
+Cloudwatch	aws.md	/^## Cloudwatch$/;"	s	chapter:AWS Cheatsheet
+Cloudwatch Conditional query	aws.md	/^## Cloudwatch Conditional query$/;"	s	chapter:AWS Cheatsheet
+Cloudwatch Insights	aws.md	/^## Cloudwatch Insights$/;"	s	chapter:AWS Cheatsheet
+Code	python.md	/^## Code$/;"	s	chapter:Python 3.6 Static Typing
+Colors	makefile.md	/^## Colors$/;"	s	chapter:Include Environment Variables and export all
+Column Alias	mysql.md	/^## Column Alias$/;"	s	chapter:Doing More with Queries
+Combining Conditions	mysql.md	/^## Combining Conditions$/;"	s	chapter:Basic Queries
+Compress the file but exclude node modules	archive.md	/^## Compress the file but exclude node modules$/;"	s
+Conditional Makefile environment	makefile.md	/^## Conditional Makefile environment$/;"	s	chapter:Include Environment Variables and export all
+Connect to Database	psql.md	/^### Connect to Database$/;"	S	chapter:PostgreSQL
+Connect to the terminal application:	psql.md	/^### Connect to the terminal application:$/;"	S	chapter:PostgreSQL
+Connecting from container to host service	docker.md	/^## Connecting from container to host service$/;"	s
+Constraint	mysql.md	/^# Constraint$/;"	c
+Convert exif data to json	imagemagick.md	/^# Convert exif data to json$/;"	c
+Copy	vim.md	/^## Copy$/;"	s	chapter:Inserting Date
+Copy data from S3	aws.md	/^## Copy data from S3$/;"	s	chapter:AWS Cheatsheet
+Copy files from local directory to SSH	ssh.md	/^## Copy files from local directory to SSH $/;"	s
+Copy paste to clipboard	vim.md	/^## Copy paste to clipboard$/;"	s	chapter:Inserting Date
+Copy stuff from a ssh to local directory	ssh.md	/^## Copy stuff from a ssh to local directory$/;"	s
+Copy whole file	vim.md	/^## Copy whole file $/;"	s
+Count Distinct Values	mysql.md	/^## Count Distinct Values$/;"	s	chapter:Doing More with Queries
+Counting the records	mysql.md	/^## Counting the records$/;"	s	chapter:Doing More with Queries
+Create	mysql.md	/^## Create$/;"	s	chapter:Indexing
+Create Table	mysql.md	/^## Create Table$/;"	s	chapter:Basics
+Create a Table	psql.md	/^## Create a Table$/;"	s	chapter:PostgreSQL
+Create a directory to place all the unzipped data references	zip.md	/^# Create a directory to place all the unzipped data references$/;"	c
+Create a full array	python.md	/^## Create a full array$/;"	s
+Create a new screen	screen-terminal.md	/^## Create a new screen$/;"	s
+Create a new screen with the name "Service"	screen-terminal.md	/^## Create a new screen with the name "Service"$/;"	s
+Create an alias before pushing to  dockerhub	docker.md	/^## Create an alias before pushing to  dockerhub$/;"	s
+Create an array of evenly-spaced values	python.md	/^## Create an array of evenly-spaced values$/;"	s
+Create an array of ones	python.md	/^## Create an array of ones$/;"	s
+Create an array of zeros	python.md	/^## Create an array of zeros$/;"	s
+Create an array of zeros and ones	python.md	/^## Create an array of zeros and ones$/;"	s
+Create an array with random values	python.md	/^## Create an array with random values$/;"	s
+Create an empty array	python.md	/^## Create an empty array$/;"	s
+Create your own diary	bash.md	/^## Create your own diary$/;"	s
+Creating Database	psql.md	/^### Creating Database$/;"	S	chapter:PostgreSQL
+Creating RSA key for JWT	jwt.md	/^# Creating RSA key for JWT$/;"	c
+Creating Table from existing Table	mysql.md	/^## Creating Table from existing Table$/;"	s	chapter:Operations on Table
+Creating a View	mysql.md	/^## Creating a View$/;"	s	chapter:Views
+Creating iterators from range and functional concepts	rust.md	/^## Creating iterators from range and functional concepts$/;"	s
+Creating new file/directory NERDTree	vim.md	/^## Creating new file\/directory NERDTree$/;"	s	chapter:Inserting Date
+Creating reference to collections	firebase.md	/^## Creating reference to collections$/;"	s
+Cross Join	mysql.md	/^## Cross Join$/;"	s	chapter:Join operation on two tables
+Custom Error	rust.md	/^## Custom Error$/;"	s
+Debugging memory	aws.md	/^## Debugging memory$/;"	s	chapter:AWS Cheatsheet
+Default command	makefile.md	/^## Default command$/;"	s	chapter:Include Environment Variables and export all
+Delete all files in directory except hidden ones	makefile.md	/^## Delete all files in directory except hidden ones$/;"	s	chapter:Include Environment Variables and export all
+Delete all untagged images	docker.md	/^## Delete all untagged images$/;"	s
+Delete and Insert Array	python.md	/^## Delete and Insert Array$/;"	s
+Delete branch locally	git.md	/^## Delete branch locally$/;"	s	chapter:Git shortcut
+Deleting Data from tables	mysql.md	/^## Deleting Data from tables$/;"	s	chapter:Manipulating Data
+Deleting Index	mysql.md	/^## Deleting Index$/;"	s	chapter:Indexing
+Deleting View	mysql.md	/^## Deleting View$/;"	s	chapter:Views
+Deleting all records	mysql.md	/^## Deleting all records$/;"	s	chapter:Manipulating Data
+Describe and It is not defined	mocha.md	/^## Describe and It is not defined$/;"	s	chapter:Mocha
+Describe and It is not defined mocha	javascript.md	/^# Describe and It is not defined mocha$/;"	c
+Detach a screen	screen-terminal.md	/^## Detach a screen$/;"	s
+Detaching Callbacks	firebase.md	/^## Detaching Callbacks$/;"	s
+Distinct Values	mysql.md	/^## Distinct Values$/;"	s	chapter:Doing More with Queries
+Docker Elasticbeanstalk LogRotate	aws.md	/^## Docker Elasticbeanstalk LogRotate$/;"	s	chapter:AWS Cheatsheet
+Docker container logs stdout	aws.md	/^## Docker container logs stdout$/;"	s	chapter:AWS Cheatsheet
+Docker image naming	docker.md	/^## Docker image naming$/;"	s
+Dockerfile build with multiple args	docker.md	/^## Dockerfile build with multiple args$/;"	s
+Dockerfile setting build arguments as environment variable	docker.md	/^## Dockerfile setting build arguments as environment variable$/;"	s
+Dockerfile with go-ethereum	docker.md	/^## Dockerfile with go-ethereum$/;"	s
+Dockerrun v2	aws.md	/^## Dockerrun v2$/;"	s	chapter:AWS Cheatsheet
+Doing More with Queries	mysql.md	/^# Doing More with Queries$/;"	c
+Don't commit your node_modules	npm.md	/^## Don't commit your node_modules$/;"	s	chapter:NPM 101
+Drop Database	psql.md	/^### Drop Database$/;"	S	chapter:PostgreSQL
+Dropping Table	mysql.md	/^## Dropping Table$/;"	s	chapter:Operations on Table
+Dump TOML config	geth.md	/^# Dump TOML config$/;"	c
+Dumping the mongo records	mongo.md	/^# Dumping the mongo records$/;"	c
+Dynamodb	aws.md	/^## Dynamodb$/;"	s	chapter:AWS Cheatsheet
+ECS Add Healthcheck	aws.md	/^## ECS Add Healthcheck$/;"	s	chapter:AWS Cheatsheet
+Early returns and !try macro	rust.md	/^## Early returns and !try macro$/;"	s
+Eb init without interactive	aws.md	/^## Eb init without interactive$/;"	s	chapter:AWS Cheatsheet
+Editor integration	rust.md	/^## Editor integration$/;"	s
+Elasticbeanstalk Go nginx.conf	aws.md	/^## Elasticbeanstalk Go nginx.conf$/;"	s	chapter:AWS Cheatsheet
+Elasticbeanstalk Worker Connections Not Enough	aws.md	/^## Elasticbeanstalk Worker Connections Not Enough$/;"	s	chapter:AWS Cheatsheet
+Enable syntax highlighting for golang	vim.md	/^## Enable syntax highlighting for golang$/;"	s	chapter:Inserting Date
+Enabling WebSocket	aws.md	/^## Enabling WebSocket$/;"	s	chapter:AWS Cheatsheet
+Engineers.my	nginx.md	/^## Engineers.my$/;"	s
+Ensure Variables are set	makefile.md	/^## Ensure Variables are set$/;"	s	chapter:Include Environment Variables and export all
+Ensure Variables are set and is not empty string	makefile.md	/^## Ensure Variables are set and is not empty string$/;"	s	chapter:Include Environment Variables and export all
+Ethereum Transaction Hash	regex.md	/^# Ethereum Transaction Hash$/;"	c
+Example	python.md	/^## Example$/;"	s	chapter:Python 3.6 Static Typing
+Example executing a source file from outside of Docker to Docker MySQL	mysql.md	/^## Example executing a source file from outside of Docker to Docker MySQL$/;"	s	chapter:mysql Commands for the terminal
+Example makefile for building docker	makefile.md	/^## Example makefile for building docker $/;"	s
+Example makefile for grpc	makefile.md	/^## Example makefile for grpc$/;"	s
+Example making a query	eventbrite.md	/^## Example making a query$/;"	s
+Example of dockerizing with C dependencies	go.md	/^## Example of dockerizing with C dependencies$/;"	s
+Example with Elastic Container Service	docker.md	/^## Example with Elastic Container Service$/;"	s
+Exit to background	vim.md	/^## Exit to background$/;"	s
+Export the gpg keys	gpg.md	/^## Export the gpg keys$/;"	s
+Exporting as csv/json as authenticate user	mongo.md	/^# Exporting as csv\/json as authenticate user$/;"	c
+FTPlugin	ftplugin/README.md	/^# FTPlugin$/;"	c
+Facebook Graph API Explorer	github.md	/^# Facebook Graph API Explorer$/;"	c
+Fetch all data	firebase.md	/^## Fetch all data$/;"	s
+Fibonnacci in O(1)	algorithms.md	/^# Fibonnacci in O(1)$/;"	c
+Filter images by name	docker.md	/^## Filter images by name$/;"	s
+Filters	firebase.md	/^## Filters$/;"	s
+Find Files	vim.md	/^## Find Files$/;"	s	chapter:Inserting Date
+Find Folder Size	git.md	/^# Find Folder Size$/;"	c
+Find and replace all file extension	bash.md	/^## Find and replace all file extension$/;"	s
+Finding threads processes	aws.md	/^## Finding threads processes$/;"	s	chapter:AWS Cheatsheet
+Flatten List	python.md	/^## Flatten List$/;"	s
+For js syntax highlighting	vim.md	/^## For js syntax highlighting$/;"	s	chapter:Inserting Date
+Format line to fit 80 characters	vim.md	/^## Format line to fit 80 characters$/;"	s
+Format string	sed.md	/^## Format string$/;"	s
+Format typescript	vim.md	/^## Format typescript$/;"	s	chapter:Inserting Date
+Formatting Date	date.md	/^## Formatting Date$/;"	s
+Fuzzy Search	vim.md	/^## Fuzzy Search$/;"	s	chapter:Inserting Date
+Ganache-cli with WebSocket	geth.md	/^## Ganache-cli with WebSocket$/;"	s	chapter:Dump TOML config
+General syntax	mysql.md	/^## General syntax$/;"	s	chapter:Indexing
+Generate random passwords	bash.md	/^## Generate random passwords$/;"	s
+Generic Types	rust.md	/^## Generic Types$/;"	s
+Get Tag for Docker Versioning	git.md	/^## Get Tag for Docker Versioning$/;"	s	chapter:To get the string
+Get a list of containers	docker.md	/^## Get a list of containers$/;"	s
+Get hash from latest commit	git.md	/^# Get hash from latest commit$/;"	c
+Get latest commit of repository	git.md	/^# Get latest commit of repository$/;"	c
+Get latest hash	docker.md	/^## Get latest hash$/;"	s
+Get the facebook page events	github.md	/^## Get the facebook page events$/;"	s	chapter:Facebook Graph API Explorer
+Get the {page-id} from Graph API	github.md	/^## Get the {page-id} from Graph API$/;"	s	chapter:Facebook Graph API Explorer
+Geth Clique	geth.md	/^## Geth Clique$/;"	s	chapter:Dump TOML config
+Getting Commit ID in CodeShip	aws.md	/^## Getting Commit ID in CodeShip$/;"	s	chapter:AWS Cheatsheet
+Getting Docker IP in Makefile	docker.md	/^## Getting Docker IP in Makefile$/;"	s
+Getting RFC Date from terminal for build date	date.md	/^## Getting RFC Date from terminal for build date$/;"	s
+Getting name	aws.md	/^## Getting name$/;"	s	chapter:AWS Cheatsheet
+Getting the Github Repository name and owner	git.md	/^## Getting the Github Repository name and owner$/;"	s	chapter:Git shortcut
+Git Hash versus Semantic Versioning for Docker images	docker.md	/^## Git Hash versus Semantic Versioning for Docker images$/;"	s
+Git commit messages	git.md	/^## Git commit messages$/;"	s	chapter:Git shortcut
+Git commit messages	git.md	/^## Git commit messages$/;"	s	chapter:clears local deleted branch, fetch all other branches
+Git shortcut	git.md	/^# Git shortcut$/;"	c
+Github Error for Rate Limit	errors.md	/^## Github Error for Rate Limit$/;"	s
+Go to column number	vim.md	/^## Go to column number$/;"	s
+Golang	date.md	/^## Golang$/;"	s
+Good Light Theme	vim.md	/^## Good Light Theme$/;"	s	chapter:Inserting Date
+Grep Guide	grep/README.md	/^# Grep Guide$/;"	c
+Grouping Data	mysql.md	/^## Grouping Data$/;"	s	chapter:Aggregation and Grouping
+Grouping and Aggregate Functions	mysql.md	/^## Grouping and Aggregate Functions$/;"	s	chapter:Aggregation and Grouping
+Guide for installing java in ec2	java.md	/^# Guide for installing java in ec2$/;"	c
+HTML Autocomplete for react	vim.md	/^## HTML Autocomplete for react$/;"	s	chapter:Alternative Theme
+Healthcheck in docker-compose.yml vs Dockerfile	docker.md	/^## Healthcheck in docker-compose.yml vs Dockerfile$/;"	s
+Help section	makefile.md	/^## Help section$/;"	s	chapter:Include Environment Variables and export all
+Horizontal/Vertical Split	python.md	/^## Horizontal\/Vertical Split$/;"	s
+ISO-8601 Compliant Date	date.md	/^## ISO-8601 Compliant Date$/;"	s
+If you want to make a zip without those invisible Mac resource files such as “_MACOSX” or “._Filename” and .ds store files, use the “-X” option in the command so:	archive.md	/^## If you want to make a zip without those invisible Mac resource files such as “_MACOSX” or/;"	s
+Image Compression Workflow	imagemagick.md	/^# Image Compression Workflow $/;"	c
+Image compression with ImageOptim	imagemagick.md	/^## Image compression with ImageOptim$/;"	s	chapter:Image Compression Workflow
+ImageOptim	imagemagick.md	/^## ImageOptim$/;"	s	chapter:Image Compression Workflow
+Importing json data	mongo.md	/^# Importing json data$/;"	c
+Improvisation	makefile.md	/^## Improvisation$/;"	s	chapter:Include Environment Variables and export all
+Include .env file	docker.md	/^## Include .env file$/;"	s
+Include .env file	makefile.md	/^## Include .env file$/;"	s
+Include Environment Variables and export all	makefile.md	/^# Include Environment Variables and export all$/;"	c
+Including config in nginx.conf Elasticbeanstalk	nginx.md	/^## Including config in nginx.conf Elasticbeanstalk$/;"	s
+Increase client_max_body_size	aws.md	/^## Increase client_max_body_size$/;"	s	chapter:AWS Cheatsheet
+Indexing	mysql.md	/^# Indexing$/;"	c
+Inner Joins	mysql.md	/^## Inner Joins$/;"	s	chapter:Join operation on two tables
+Insert	mysql.md	/^## Insert$/;"	s	chapter:Basics
+Insert Row	psql.md	/^## Insert Row$/;"	s	chapter:PostgreSQL
+Insert mode shortcuts	vim.md	/^## Insert mode shortcuts$/;"	s	chapter:Inserting Date
+Inserting Data into a Table from another table	mysql.md	/^## Inserting Data into a Table from another table$/;"	s	chapter:Manipulating Data
+Inserting Date	vim.md	/^# Inserting Date$/;"	c
+Install Dependencies	python.md	/^## Install Dependencies$/;"	s
+Install dependencies through composer	php.md	/^## Install dependencies through composer$/;"	s
+Installation	aws.md	/^## Installation$/;"	s	chapter:AWS Cheatsheet
+Installation	graphviz.md	/^## Installation$/;"	s
+Installation	python.md	/^## Installation$/;"	s	chapter:Python 3.6 Static Typing
+Installing Virtualenv	python.md	/^## Installing Virtualenv$/;"	s
+Installing on MacOS	spark.md	/^## Installing on MacOS$/;"	s
+Installing xcode cli only	xcode.md	/^# Installing xcode cli only$/;"	c
+Interior Mutability	rust.md	/^## Interior Mutability$/;"	s
+IsNERDTreeOpen	.vimrc	/^function! IsNERDTreeOpen()$/;"	f
+Join adn Split Arrays	python.md	/^## Join adn Split Arrays$/;"	s
+Join operation on two tables	mysql.md	/^# Join operation on two tables$/;"	c
+Joins	mysql.md	/^# Joins$/;"	c
+JumpToDef	.vimrc	/^fun! JumpToDef()$/;"	f
+Jupyter not using MacOS python3	jupyter.md	/^## Jupyter not using MacOS python3 $/;"	s
+Key	firebase.md	/^## Key$/;"	s
+Kill Running Daemon Process	bash.md	/^## Kill Running Daemon Process$/;"	s
+Lifecycle scripts	npm.md	/^## Lifecycle scripts$/;"	s	chapter:NPM 101
+Like Operator	mysql.md	/^## Like Operator$/;"	s	chapter:Doing More with Queries
+Limit to First	firebase.md	/^## Limit to First$/;"	s
+Limit to Last	firebase.md	/^## Limit to Last$/;"	s
+Linting	python.md	/^## Linting$/;"	s	chapter:Python 3.6 Static Typing
+List Storage Size	bash.md	/^## List Storage Size$/;"	s
+List all screens	screen-terminal.md	/^## List all screens$/;"	s
+List all the keys	gpg.md	/^## List all the keys$/;"	s
+List branches that has been merged	git.md	/^## List branches that has been merged$/;"	s	chapter:clears local deleted branch, fetch all other branches
+List branches that has not been merged	git.md	/^## List branches that has not been merged$/;"	s	chapter:clears local deleted branch, fetch all other branches
+Literal Values	mysql.md	/^## Literal Values$/;"	s	chapter:Calculated Fields
+Load numpy array from text	python.md	/^## Load numpy array from text$/;"	s
+Load numpy array with missing values	python.md	/^## Load numpy array with missing values$/;"	s
+Logging in specific database with auth	mongo.md	/^# Logging in specific database with auth$/;"	c
+Login as root	mysql.md	/^## Login as root$/;"	s	chapter:mysql Commands for the terminal
+Loop for each directory	bash.md	/^## Loop for each directory$/;"	s
+Makefile for vgo	go.md	/^## Makefile for vgo$/;"	s
+Makefile to add version to release tag	version.md	/^# Makefile to add version to release tag$/;"	c
+Making HTTP GET Request	rust.md	/^## Making HTTP GET Request$/;"	s
+Manipulating Data	mysql.md	/^# Manipulating Data$/;"	c
+Mapping Errors	rust.md	/^## Mapping Errors$/;"	s
+Match command	makefile.md	/^## Match command$/;"	s	chapter:Include Environment Variables and export all
+Memory Estimates	conversion.md	/^## Memory Estimates$/;"	s	chapter:Typical conversion
+Min and Max	mysql.md	/^## Min and Max$/;"	s	chapter:Aggregation and Grouping
+Mine Blocks	geth.md	/^## Mine Blocks$/;"	s	chapter:Dump TOML config
+Mocha	mocha.md	/^# Mocha$/;"	c
+Modified Workflow	imagemagick.md	/^## Modified Workflow$/;"	s	chapter:Image Compression Workflow
+Modifying Table	mysql.md	/^## Modifying Table$/;"	s	chapter:Operations on Table
+Modifying data thorugh views	mysql.md	/^## Modifying data thorugh views$/;"	s	chapter:Views
+Modifying specific language indentation	vim.md	/^## Modifying specific language indentation$/;"	s	chapter:Alternative Theme
+Multi-container AWS Elasticbeanstalk	aws.md	/^## Multi-container AWS Elasticbeanstalk$/;"	s	chapter:AWS Cheatsheet
+My favorite way of removing all stopped docker containers is:	docker.md	/^## My favorite way of removing all stopped docker containers is:$/;"	s
+NPM 101	npm.md	/^# NPM 101$/;"	c
+Nginx rewrite for SPA/HTML5 Push state support	nginx.md	/^## Nginx rewrite for SPA\/HTML5 Push state support$/;"	s
+NodeJS	date.md	/^## NodeJS$/;"	s
+Normal mode shortcuts	vim.md	/^## Normal mode shortcuts$/;"	s	chapter:Inserting Date
+Null Constraint	mysql.md	/^## Null Constraint$/;"	s	chapter:Constraint
+Open as json in new tab	javascript.md	/^# Open as json in new tab$/;"	c
+Operating on search matches using gn	vim.md	/^## Operating on search matches using gn$/;"	s
+Operations	python.md	/^## Operations$/;"	s
+Operations on Table	mysql.md	/^# Operations on Table$/;"	c
+Optional include	makefile.md	/^## Optional include$/;"	s
+Optionally	sqlserver.md	/^## Optionally$/;"	s
+Order by child	firebase.md	/^## Order by child$/;"	s
+Order by key	firebase.md	/^## Order by key$/;"	s
+Order by value	firebase.md	/^## Order by value$/;"	s
+Order of execution of SELECT queries	mysql.md	/^## Order of execution of SELECT queries$/;"	s	chapter:Doing More with Queries
+Ordering by Multiple Columns	mysql.md	/^## Ordering by Multiple Columns$/;"	s	chapter:Basic Queries
+Ordering the Results	mysql.md	/^## Ordering the Results$/;"	s	chapter:Basic Queries
+Organizing your data	mysql.md	/^# Organizing your data$/;"	c
+Others	vim.md	/^## Others$/;"	s	chapter:Inserting Date
+Outer Joins	mysql.md	/^## Outer Joins$/;"	s	chapter:Join operation on two tables
+Pass in string slice	rust.md	/^## Pass in string slice$/;"	s
+Password protect folder in macOS	password.md	/^## Password protect folder in macOS$/;"	s
+Pattern matching bytes	elixir.md	/^## Pattern matching bytes$/;"	s
+Performance	mysql.md	/^# Performance$/;"	c
+Plotting the histogram	python.md	/^## Plotting the histogram$/;"	s
+PostgreSQL	psql.md	/^# PostgreSQL$/;"	c
+Posting Form Data with cURL	php.md	/^## Posting Form Data with cURL$/;"	s
+Posting JSON using cURL	php.md	/^## Posting JSON using cURL$/;"	s
+Posting with apache ab	apache-ab.md	/^## Posting with apache ab$/;"	s	chapter:Apache Bench
+Preview Highlighting	fzf.md	/^## Preview Highlighting$/;"	s
+Previewing Graphviz Diagram of depedencies	go.md	/^## Previewing Graphviz Diagram of depedencies$/;"	s
+Primary Key Constraint	mysql.md	/^## Primary Key Constraint$/;"	s	chapter:Constraint
+Probes for HTTP Services	kubernetes.md	/^## Probes for HTTP Services$/;"	s
+Publishing to SNS	sns.md	/^## Publishing to SNS$/;"	s	chapter:Tips and Tricks
+Push	firebase.md	/^## Push$/;"	s
+Push the commit with the tags automatically	git.md	/^## Push the commit with the tags automatically$/;"	s	chapter:Rename branch after it is created
+Putting conditions with `WHERE`	mysql.md	/^## Putting conditions with `WHERE`$/;"	s	chapter:Basic Queries
+Python 3.6 Static Typing	python.md	/^# Python 3.6 Static Typing$/;"	c
+RFC3339 with macos date	date.md	/^## RFC3339 with macos date$/;"	s
+RFC3339 with macos gdate	date.md	/^## RFC3339 with macos gdate$/;"	s
+RFC3339 with macos gdate UTC	date.md	/^## RFC3339 with macos gdate UTC$/;"	s
+Read File	rust.md	/^## Read File$/;"	s
+RefCell	rust.md	/^## RefCell$/;"	s
+Reference Counter	rust.md	/^## Reference Counter$/;"	s
+References	conversion.md	/^## References$/;"	s	chapter:Typical conversion
+References	python.md	/^## References$/;"	s
+References	screen-terminal.md	/^## References$/;"	s
+Register	vim.md	/^## Register$/;"	s
+Remove all containers that exited	docker.md	/^## Remove all containers that exited$/;"	s
+Remove all git branch except the current one	git.md	/^## Remove all git branch except the current one$/;"	s	chapter:clears local deleted branch, fetch all other branches
+Remove all images created that is specified before the last image	docker.md	/^## Remove all images created that is specified before the last image$/;"	s
+Remove containers that are months old	docker.md	/^## Remove containers that are months old$/;"	s
+Remove dangling images	docker.md	/^## Remove dangling images$/;"	s
+Remove dev-dependencies before deploying to production	npm.md	/^## Remove dev-dependencies before deploying to production$/;"	s	chapter:NPM 101
+Remove node_modules if you accidentally checked them in	git.md	/^# Remove node_modules if you accidentally checked them in$/;"	c
+Rename branch	git.md	/^# Rename branch$/;"	c
+Rename branch after it is created	git.md	/^# Rename branch after it is created$/;"	c
+Rename extension	bash.md	/^## Rename extension $/;"	s
+Replace existing .json file with jq	aws.md	/^## Replace existing .json file with jq$/;"	s	chapter:AWS Cheatsheet
+Replace in selected lines	vim.md	/^## Replace in selected lines$/;"	s
+Reset box-sizing	css.md	/^# Reset box-sizing$/;"	c
+Reset local repository branch to be just like remote repository HEAD	git.md	/^# Reset local repository branch to be just like remote repository HEAD$/;"	c
+Reset to origin	git.md	/^# Reset to origin$/;"	c
+Reshape	python.md	/^## Reshape$/;"	s
+Resize	python.md	/^## Resize$/;"	s
+Resolve 499 error	nginx.md	/^## Resolve 499 error$/;"	s
+Resolving ambiguity in Join Columns	mysql.md	/^## Resolving ambiguity in Join Columns$/;"	s	chapter:Join operation on two tables
+Reveal Folder when using fuzzy search	vim.md	/^## Reveal Folder when using fuzzy search$/;"	s	chapter:Inserting Date
+Run	python.md	/^## Run $/;"	s
+Run AWS Command with profile	aws.md	/^## Run AWS Command with profile$/;"	s	chapter:AWS Cheatsheet
+Run MySQL in Docker	mysql.md	/^## Run MySQL in Docker$/;"	s	chapter:mysql Commands for the terminal
+Run all go files except those ending with test	go.md	/^## Run all go files except those ending with test$/;"	s
+Run migration for laravel	php.md	/^## Run migration for laravel$/;"	s
+Run the last command line	vim.md	/^## Run the last command line$/;"	s
+Run ubuntu to test installations	docker.md	/^## Run ubuntu to test installations$/;"	s
+Running Docker Bench Security	docker.md	/^## Running Docker Bench Security$/;"	s
+Running Makefile	buildkite.md	/^## Running Makefile$/;"	s
+SSH	aws.md	/^## SSH$/;"	s	chapter:AWS Cheatsheet
+SSH Amazon EC2	ssh.md	/^## SSH Amazon EC2$/;"	s
+SWap	aws.md	/^## SWap$/;"	s	chapter:AWS Cheatsheet
+Safe Env	makefile.md	/^## Safe Env$/;"	s	chapter:Include Environment Variables and export all
+Sample Create Table	mysql.md	/^## Sample Create Table$/;"	s	chapter:mysql Commands for the terminal
+Sample boilerplate code for AWS Elasticbeanstalk Worker Environment with SQS	aws.md	/^## Sample boilerplate code for AWS Elasticbeanstalk Worker Environment with SQS$/;"	s	chapter:AWS Cheatsheet
+Sample error messages for validation	errors.md	/^## Sample error messages for validation$/;"	s
+Save numpy arrays	python.md	/^## Save numpy arrays$/;"	s
+Scrolling in vim	vim.md	/^## Scrolling in vim$/;"	s	chapter:Inserting Date
+Search	vim.md	/^## Search$/;"	s
+Search for matching text in file content in a directory	grep.md	/^# Search for matching text in file content in a directory$/;"	c
+Security Group Inbound Rules	aws.md	/^## Security Group Inbound Rules$/;"	s	chapter:AWS Cheatsheet
+Selecting a Limited number of Columns	mysql.md	/^## Selecting a Limited number of Columns$/;"	s	chapter:Basic Queries
+Selective Fields Insert	mysql.md	/^## Selective Fields Insert$/;"	s	chapter:Constraint
+Self Join	mysql.md	/^## Self Join$/;"	s	chapter:Join operation on two tables
+Self-documenting Makefiles	makefile.md	/^## Self-documenting Makefiles$/;"	s	chapter:Include Environment Variables and export all
+Semantic versioning	npm.md	/^## Semantic versioning$/;"	s	chapter:NPM 101
+Sending a preflight request using cUrl:	curl.md	/^## Sending a preflight request using cUrl:$/;"	s
+Sending a regular CORS request using cUrl:	curl.md	/^## Sending a regular CORS request using cUrl:$/;"	s
+Set default config with `npm config`	npm.md	/^## Set default config with `npm config`$/;"	s	chapter:NPM 101
+Set sbt to offline mode in terminal	sbt.md	/^## Set sbt to offline mode in terminal$/;"	s
+Set tabwidth for specific language	vim.md	/^## Set tabwidth for specific language$/;"	s	chapter:Inserting Date
+Set vim as the main editor	vim.md	/^## Set vim as the main editor$/;"	s
+Setting Credentials	aws.md	/^## Setting Credentials$/;"	s	chapter:AWS Cheatsheet
+Setting Unit Test	javascript.md	/^# Setting Unit Test$/;"	c
+Setting default value for environment variables	bash.md	/^## Setting default value for environment variables$/;"	s
+Setting true color	tmux.md	/^## Setting true color$/;"	s
+Setting up Swap	aws.md	/^## Setting up Swap$/;"	s	chapter:AWS Cheatsheet
+Setting up Unittest with Jupyter	jupyter.md	/^## Setting up Unittest with Jupyter$/;"	s
+Setting up Virtualenv	python.md	/^## Setting up Virtualenv$/;"	s
+Setting up gopath	go.md	/^## Setting up gopath$/;"	s
+Setting values	firebase.md	/^## Setting values$/;"	s
+Setup basic axios client with default timeout	react.md	/^## Setup basic axios client with default timeout$/;"	s
+Shortcuts for Pages, MacOS	macos.md	/^# Shortcuts for Pages, MacOS$/;"	c
+Sign your github commit	gpg.md	/^## Sign your github commit$/;"	s
+Simple Split	vim.md	/^## Simple Split$/;"	s	chapter:Inserting Date
+Simple http server	python.md	/^## Simple http server$/;"	s
+Simply Expanded Variables `:=`	makefile.md	/^## Simply Expanded Variables `:=`$/;"	s
+Slice Usage	rust.md	/^## Slice Usage$/;"	s
+Sort all the images by size	docker.md	/^## Sort all the images by size$/;"	s
+Sort by file size	bash.md	/^## Sort by file size$/;"	s
+Sort the branches by last commited date	git.md	/^## Sort the branches by last commited date$/;"	s	chapter:clears local deleted branch, fetch all other branches
+Sort/sort reverse	vim.md	/^## Sort\/sort reverse$/;"	s
+Specifying User	docker.md	/^## Specifying User$/;"	s
+Splitting the table	mysql.md	/^## Splitting the table$/;"	s	chapter:Organizing your data
+Squash commits	git.md	/^# Squash commits$/;"	c
+Start a local server	php.md	/^## Start a local server$/;"	s
+Start a new project	sbt.md	/^## Start a new project $/;"	s
+Static Analysis	go.md	/^## Static Analysis$/;"	s
+Storage Estimate	conversion.md	/^### Storage Estimate$/;"	S	section:Typical conversion""Capacity Estimation and Constraints
+String methods	rust.md	/^## String methods$/;"	s
+String operations	mysql.md	/^## String operations$/;"	s	chapter:Calculated Fields
+Subqueries	mysql.md	/^# Subqueries$/;"	c
+Subset, slice and index arrays	python.md	/^## Subset, slice and index arrays$/;"	s
+Substring	mysql.md	/^## Substring$/;"	s	chapter:Calculated Fields
+Sum	mysql.md	/^## Sum$/;"	s	chapter:Aggregation and Grouping
+Swap settings	aws.md	/^## Swap settings$/;"	s	chapter:AWS Cheatsheet
+SyncTree	.vimrc	/^function! SyncTree()$/;"	f
+TODO	algorithms.md	/^## TODO$/;"	s	chapter:Fibonnacci in O(1)
+TODO	regex.md	/^## TODO$/;"	s	chapter:Ethereum Transaction Hash
+Tab to Space for Js	vim.md	/^## Tab to Space for Js$/;"	s	chapter:Inserting Date
+Test Coverage	go.md	/^## Test Coverage $/;"	s
+Testing Slack Webhook through cli	slack.md	/^# Testing Slack Webhook through cli$/;"	c
+The **HAVING** clause	mysql.md	/^## The **HAVING** clause$/;"	s	chapter:Aggregation and Grouping
+Threads	rust.md	/^## Threads$/;"	s
+Time	conversion.md	/^## Time$/;"	s	chapter:Typical conversion
+Tips and Tricks	sns.md	/^# Tips and Tricks$/;"	c
+To automatically resolve reference	android.md	/^## To automatically resolve reference$/;"	s
+To compress	archive.md	/^## To compress$/;"	s
+To delete all branches on remote that are already merged	git.md	/^# To delete all branches on remote that are already merged$/;"	c
+To extract	archive.md	/^## To extract$/;"	s
+To get the string	git.md	/^# To get the string$/;"	c
+Traffic Estimate	conversion.md	/^### Traffic Estimate$/;"	S	section:Typical conversion""Capacity Estimation and Constraints
+Trait Display	rust.md	/^## Trait Display$/;"	s
+Traits Add	rust.md	/^## Traits Add$/;"	s
+Traits Into	rust.md	/^## Traits Into$/;"	s
+Transactional data	firebase.md	/^## Transactional data$/;"	s
+Transpose	python.md	/^## Transpose$/;"	s
+Trigger events on another tab	javascript.md	/^# Trigger events on another tab$/;"	c
+Tuning apache mpm event formula	aws.md	/^### Tuning apache mpm event formula $/;"	S	section:AWS Cheatsheet""Apache
+TypeScript + Vue support	vim.md	/^## TypeScript + Vue support$/;"	s	chapter:Inserting Date
+Types	rust.md	/^## Types$/;"	s
+Typical conversion	conversion.md	/^# Typical conversion$/;"	c
+Undo git reset	git.md	/^## Undo git reset$/;"	s
+Undo your changes	git.md	/^# Undo your changes$/;"	c
+Unique Key Constraint	mysql.md	/^## Unique Key Constraint$/;"	s	chapter:Constraint
+Unit	conversion.md	/^## Unit$/;"	s	chapter:Typical conversion
+Unzip	zip.md	/^## Unzip $/;"	s
+Update existing data	mysql.md	/^## Update existing data$/;"	s	chapter:Manipulating Data
+Update multiple fields	mysql.md	/^## Update multiple fields$/;"	s	chapter:Manipulating Data
+Update so that it won't restart	docker.md	/^## Update so that it won't restart$/;"	s
+Update with `WHERE` condition	mysql.md	/^## Update with `WHERE` condition$/;"	s	chapter:Manipulating Data
+Updating Region	aws.md	/^## Updating Region$/;"	s	chapter:AWS Cheatsheet
+Updating values	firebase.md	/^## Updating values$/;"	s
+Uploading file	curl.md	/^## Uploading file$/;"	s
+Upper and lower case	mysql.md	/^## Upper and lower case$/;"	s	chapter:Calculated Fields
+Use .npmrc for setting project config	npm.md	/^## Use .npmrc for setting project config$/;"	s	chapter:NPM 101
+Use UUID	mysql.md	/^## Use UUID$/;"	s	chapter:Performance
+Useful Regex Patterns	regex.md	/^# Useful Regex Patterns$/;"	c
+Useful Variables	makefile.md	/^## Useful Variables$/;"	s	chapter:Include Environment Variables and export all
+Useful images	docker.md	/^## Useful images$/;"	s
+User	bash.md	/^## User$/;"	s
+Using ID as anchor	github.md	/^## Using ID as anchor$/;"	s
+Using Subqueries in **INSERT** statement	mysql.md	/^## Using Subqueries in **INSERT** statement$/;"	s	chapter:Subqueries
+Using minikube as a docker-machine to avoid sharing a local-registry	kubernetes.md	/^## Using minikube as a docker-machine to avoid sharing a local-registry$/;"	s
+VCenterCursor	.vimrc	/^  augroup VCenterCursor$/;"	a
+VCenterCursor	.vimrc	/^  function VCenterCursor()$/;"	f
+Versioning with Github Hash	docker.md	/^## Versioning with Github Hash$/;"	s
+View Running Daemon Process	bash.md	/^## View Running Daemon Process$/;"	s
+View Specific Table	psql.md	/^## View Specific Table$/;"	s	chapter:PostgreSQL
+View folder directory	vim.md	/^## View folder directory $/;"	s	chapter:Inserting Date
+View iptables	docker.md	/^## View iptables$/;"	s
+View network gateway	docker.md	/^## View network gateway$/;"	s
+View the character	mysql.md	/^## View the character$/;"	s	chapter:mysql Commands for the terminal
+Views	mysql.md	/^# Views$/;"	c
+Vim Golang Plugins	vim.md	/^## Vim Golang Plugins$/;"	s	chapter:Inserting Date
+Vim airline theme (including dracula)	vim.md	/^## Vim airline theme (including dracula)$/;"	s	chapter:Inserting Date
+Vim standardjs setup	vim.md	/^## Vim standardjs setup$/;"	s	chapter:Inserting Date
+Vim-airline	vim.md	/^## Vim-airline$/;"	s	chapter:Inserting Date
+Visual Selection	vim.md	/^## Visual Selection$/;"	s
+Visual mode shortcuts	vim.md	/^## Visual mode shortcuts$/;"	s	chapter:Inserting Date
+Visualizing Histogram	python.md	/^## Visualizing Histogram$/;"	s
+Web3 Sending	geth.md	/^## Web3 Sending$/;"	s	chapter:Dump TOML config
+Wipe all images except running ones	docker.md	/^## Wipe all images except running ones$/;"	s
+Wiping out all containers	docker.md	/^## Wiping out all containers$/;"	s
+With awk	grep/README.md	/^## With awk$/;"	s	chapter:Grep Guide
+Worker connections not enough in elasticbeanstalk	nginx.md	/^## Worker connections not enough in elasticbeanstalk$/;"	s
+Working in Sets	mysql.md	/^# Working in Sets$/;"	c
+Zip but exclude node modules	archive.md	/^## Zip but exclude node modules$/;"	s
+Zip hidden	archive.md	/^## Zip hidden$/;"	s
+Zip with password	archive.md	/^## Zip with password$/;"	s
+alias for tree	bash.md	/^## alias for tree$/;"	s
+autoformat_settings	.vimrc	/^augroup autoformat_settings$/;"	a
+cheat-sheet	README.md	/^# cheat-sheet$/;"	c
+child_added Event	firebase.md	/^## child_added Event$/;"	s
+child_changed Event	firebase.md	/^## child_changed Event$/;"	s
+child_removed Event	firebase.md	/^## child_removed Event$/;"	s
+clears local deleted branch, fetch all other branches	git.md	/^# clears local deleted branch, fetch all other branches$/;"	c
+copy or link the executables to /usr/local/bin	go.md	/^## copy or link the executables to \/usr\/local\/bin$/;"	s
+dependencies vs dev-dependencies	npm.md	/^## dependencies vs dev-dependencies$/;"	s	chapter:NPM 101
+find with multiple command	bash.md	/^## find with multiple command$/;"	s
+g:NERDAltDelims_java	.vimrc	/^let g:NERDAltDelims_java = 1$/;"	v
+g:NERDCommentEmptyLines	.vimrc	/^let g:NERDCommentEmptyLines = 1$/;"	v
+g:NERDCompactSexyComs	.vimrc	/^let g:NERDCompactSexyComs = 1$/;"	v
+g:NERDCustomDelimiters	.vimrc	/^let g:NERDCustomDelimiters = { 'c': { 'left': '\/**','right': '*\/' } }$/;"	v
+g:NERDDefaultAlign	.vimrc	/^let g:NERDDefaultAlign = 'left'$/;"	v
+g:NERDSpaceDelims	.vimrc	/^let g:NERDSpaceDelims = 1$/;"	v
+g:NERDToggleCheckAllLines	.vimrc	/^let g:NERDToggleCheckAllLines = 1$/;"	v
+g:NERDTrimTrailingWhitespace	.vimrc	/^let g:NERDTrimTrailingWhitespace = 1$/;"	v
+g:PaperColor_Theme_Options	.vimrc	/^let g:PaperColor_Theme_Options = {$/;"	v
+g:airline#extensions#ale#enabled	.vimrc	/^let g:airline#extensions#ale#enabled = 1$/;"	v
+g:airline_theme	.vimrc	/^let g:airline_theme = "github"$/;"	v
+g:ale_completion_enabled	.vimrc	/^let g:ale_completion_enabled = 1$/;"	v
+g:ale_fix_on_save	.vimrc	/^let g:ale_fix_on_save = 1$/;"	v
+g:ale_fixers	.vimrc	/^let g:ale_fixers = {$/;"	v
+g:ale_lint_on_enter	.vimrc	/^let g:ale_lint_on_enter = 0$/;"	v
+g:ale_lint_on_save	.vimrc	/^let g:ale_lint_on_save = 1$/;"	v
+g:ale_lint_on_text_changed	.vimrc	/^let g:ale_lint_on_text_changed = 'never'$/;"	v
+g:ale_linter_aliases	.vimrc	/^let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}$/;"	v
+g:ale_linters	.vimrc	/^let g:ale_linters = {$/;"	v
+g:ale_rust_rls_toolchain	.vimrc	/^let g:ale_rust_rls_toolchain = 'stable'$/;"	v
+g:ale_set_loclist	.vimrc	/^let g:ale_set_loclist = 0$/;"	v
+g:ale_set_quickfix	.vimrc	/^let g:ale_set_quickfix = 0$/;"	v
+g:closetag_filenames	ftplugin/javascript.vim	/^let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js,*.vue,*.erb,*.svelte"$/;"	v
+g:closetag_xhtml_filetypes	ftplugin/javascript.vim	/^let g:closetag_xhtml_filetypes = 'xhtml,js,jsx,tsx'$/;"	v
+g:fzf_buffers_jump	.vimrc	/^let g:fzf_buffers_jump = 1$/;"	v
+g:fzf_colors	.vimrc	/^let g:fzf_colors =$/;"	v
+g:fzf_commands_expect	.vimrc	/^let g:fzf_commands_expect = 'alt-enter,ctrl-x'$/;"	v
+g:fzf_commits_log_options	.vimrc	/^let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bo/;"	v
+g:fzf_tags_command	.vimrc	/^let g:fzf_tags_command = 'ctags -R'$/;"	v
+g:github_colors_block_diffmark	.vimrc	/^let g:github_colors_block_diffmark = 0$/;"	v
+g:github_colors_soft	.vimrc	/^let g:github_colors_soft = 1$/;"	v
+g:go_auto_sameids	ftplugin/go.vim	/^let g:go_auto_sameids = 1$/;"	v
+g:go_auto_type_info	ftplugin/go.vim	/^let g:go_auto_type_info = 1$/;"	v
+g:go_fmt_command	ftplugin/go.vim	/^let g:go_fmt_command = "goimports"$/;"	v
+g:go_highlight_build_constraints	ftplugin/go.vim	/^let g:go_highlight_build_constraints = 1$/;"	v
+g:go_highlight_extra_types	ftplugin/go.vim	/^let g:go_highlight_extra_types = 1$/;"	v
+g:go_highlight_fields	ftplugin/go.vim	/^let g:go_highlight_fields = 1$/;"	v
+g:go_highlight_function_calls	ftplugin/go.vim	/^let g:go_highlight_function_calls = 1$/;"	v
+g:go_highlight_functions	ftplugin/go.vim	/^let g:go_highlight_functions = 1$/;"	v
+g:go_highlight_methods	ftplugin/go.vim	/^let g:go_highlight_methods = 1$/;"	v
+g:go_highlight_operators	ftplugin/go.vim	/^let g:go_highlight_operators = 1$/;"	v
+g:go_highlight_structs	ftplugin/go.vim	/^let g:go_highlight_structs = 1$/;"	v
+g:go_highlight_types	ftplugin/go.vim	/^let g:go_highlight_types = 1$/;"	v
+g:go_list_type	ftplugin/go.vim	/^let g:go_list_type = "quickfix"$/;"	v
+g:js_file_import_no_mappings	ftplugin/javascript.vim	/^let g:js_file_import_no_mappings = 0$/;"	v
+g:js_file_import_omit_semicolon	ftplugin/javascript.vim	/^let g:js_file_import_omit_semicolon = 0$/;"	v
+g:js_file_import_sort_after_insert	ftplugin/javascript.vim	/^let g:js_file_import_sort_after_insert = 1$/;"	v
+g:js_file_import_use_fzf	ftplugin/javascript.vim	/^let g:js_file_import_use_fzf = 1$/;"	v
+g:lightline	.vimrc	/^let g:lightline = { 'colorscheme': 'github' }$/;"	v
+g:pymode_indent	ftplugin/python.vim	/^let g:pymode_indent = 0$/;"	v
+g:pymode_python	ftplugin/python.vim	/^let g:pymode_python = 'python3'$/;"	v
+g:rspec_runner	ftplugin/ruby.vim	/^let g:rspec_runner = "os_x_iterm"$/;"	v
+golang	ftplugin/go.vim	/^augroup golang$/;"	a
+javaScript_fold	ftplugin/javascript.vim	/^let javaScript_fold = 1 "activates fold by JS syntax$/;"	v
+jk	.vimrc	/^inoremap jk <esc>$/;"	m
+map	.vimrc	/^nnore map <silent> vv <C-w>v$/;"	m
+mapleader	.vimrc	/^let mapleader = ","$/;"	v
+mysql Commands for the terminal	mysql.md	/^# mysql Commands for the terminal$/;"	c
+nerdtree	.vimrc	/^augroup nerdtree$/;"	a
+python_highlight_all	ftplugin/python.vim	/^let python_highlight_all=1$/;"	v
+rbenv to manage your local ruby version	ruby.md	/^## rbenv to manage your local ruby version$/;"	s
+s:build_go_files	ftplugin/go.vim	/^function! s:build_go_files()$/;"	f
+t	.tmux.conf	/^bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode/;"	k
+tmux.conf	tmux.md	/^## tmux.conf$/;"	s
+tmux_bind_copy	.tmux.conf.sh	/^function tmux_bind_copy {$/;"	f
+varchar(5) vs varchar(500)	mysql.md	/^# varchar(5) vs varchar(500)$/;"	c
+vimrc	.vimrc	/^augroup vimrc$/;"	a
+wrk is a Http Benchmarking tool	wrk.md	/^# wrk is a Http Benchmarking tool$/;"	c
+xargs with multiple commands	bash.md	/^## xargs with multiple commands$/;"	s
