@@ -5,27 +5,17 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Bundle 'belltoy/vim-protobuf'
-Bundle 'zah/nim.vim'
-Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'alvan/vim-closetag'
 Plugin 'cohama/lexima.vim'
 Plugin 'cormacrelf/vim-colors-github'
-Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
-Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries', 'for': 'go'}
 Plugin 'itchyny/lightline.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/seoul256.vim'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'mdempsky/gocode', {'rtp': 'nvim/'}
-Plugin 'posva/vim-vue'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'terryma/vim-multiple-cursors'
@@ -34,18 +24,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'w0rp/ale'
-Plugin 'Shougo/echodoc.vim'
-Plugin 'gorodinskiy/vim-coloresque'
+Plugin 'gorodinskiy/vim-coloresque', { 'for': ['css', 'scss'] }
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'benmills/vimux'
-Plugin 'evanleck/vim-svelte'
-" Plugin 'ayu-theme/ayu-vim'
-" Plugin 'arcticicestudio/nord-vim'
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
-
+Plugin 'ludovicchabant/vim-gutentags', { 'for': ['js', 'ts'] }
+Plugin 'kristijanhusak/vim-js-file-import', {'do': 'npm install', 'for':['js', 'ts']}
 
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -67,10 +50,10 @@ Glaive codefmt plugin[mappings]
 Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
 
 " use `set filetype` to override default filetype=xml for *.ts files
-autocmd BufNewFile,BufRead *.ts  set filetype=typescript
+" autocmd BufNewFile,BufRead *.ts  set filetype=typescript
 " use `setfiletype` to not override any other plugins like ianks/vim-tsx
-autocmd BufNewFile,BufRead *.tsx set filetype=typescript
-autocmd BufNewFile,BufRead *.svelte set filetype=javascript
+" autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+" autocmd BufNewFile,BufRead *.svelte set filetype=javascript
 
 " vim-codefmt
 augroup autoformat_settings
@@ -95,32 +78,22 @@ set rtp+=/usr/local/opt/fzf
 let mapleader = ","
 
 set notermguicolors
-set swapfile
+" set swapfile
 set dir=~/tmp
 set encoding=utf-8
 set clipboard=unnamed
 set ruler
 set number
-set relativenumber
 set mouse=a
 set laststatus=2
 set colorcolumn=80
 set cursorline
 set cursorcolumn
+set relativenumber
+syntax sync minlines=256
 set nocompatible
 set inccommand=nosplit
 set splitright
-
-"Split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-"https://github.com/jiangmiao/auto-pairs
-let g:AutoPairsFlyMode = 1
-let g:AutoPairsFlyMode = 0
-let g:AutoPairsShortcutBackInsert = '<M-b>'
 
 "Set themes
 let g:PaperColor_Theme_Options = {
@@ -146,50 +119,8 @@ highlight nonText ctermbg=white
 let g:airline_theme = "github"
 let g:lightline = { 'colorscheme': 'github' }
 
-" set termguicolors     " enable true colors support
-" let ayucolor="light"  " for light version of theme
-" let ayucolor="mirage" " for mirage version of theme
-" let ayucolor="dark"   " for dark version of theme
-" colorscheme ayu
-" colorscheme nord
-
-"Set Golang
-let g:go_highlight_structs = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
-let g:go_auto_type_info = 1
-let g:go_auto_sameids = 1
-let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
-
-augroup golang
-	autocmd!
-	autocmd FileType go nmap <leader>t <Plug>(go-test)
-	autocmd FileType go nmap <Leader>i <Plug>(go-info)
-	autocmd FileType go nmap <leader>r <Plug>(go-run)
-	autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-augroup END
-
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
-
 let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}
+
 "Set JavaScript
 let g:ale_linters = {
 \   'rust': ['cargo'],
@@ -249,17 +180,6 @@ function! SyncTree()
   endif
 endfunction
 
-
-" Set space for JavaScript
-autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
-autocmd Filetype typescript setlocal ts=2 sw=2 sts=0 expandtab
-
-let g:pymode_python = 'python3'
-let g:pymode_indent = 0
-let python_highlight_all=1
-
-autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
-
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -315,7 +235,7 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 " ctrlf + f to search
 nnoremap <C-f> :Ag!<Enter>
 
-" ctrl + d to save
+" ctrl + s to save
 noremap <silent> <C-S> :write<CR>
 vnoremap <silent> <C-S> <C-C>:write<CR>
 inoremap <silent> <C-S> <C-C>:write<CR>
@@ -345,14 +265,6 @@ nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>
 
 "Easy cd to directory with `,cd`
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-"Preview markdown key mapping
-"Require `$ brew install grip`
-let vim_markdown_preview_github=1
-let vim_markdown_preview_toggle=1
-let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_temp_file=1
 
 "Center cursor vertically
 set scrolloff=999
@@ -398,21 +310,12 @@ endf
 nn <M-g> :call JumpToDef()<cr>
 ino <M-g> <esc>:call JumpToDef()<cr>i
 
+" Speed up vim syntax highlighting.
 augroup vimrc
 	autocmd!
 	autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
 augroup END
 
-" Plugin alvan/vim-closetag
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js,*.vue,*.erb,*.svelte"
-let g:closetag_xhtml_filetypes = 'xhtml,js,jsx,tsx'
-
-
-" Enable folding
-set foldmethod=syntax
-set foldcolumn=1
-let javaScript_fold = 1 "activates fold by JS syntax
-set foldlevelstart=99 "start file with all folds opened
 
 " Map jk to ESC in insert mode
 inoremap jk <esc>
@@ -424,49 +327,8 @@ inoremap <esc> <nop>
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-" Sets the directory to ~/.vim/tmp
+" set swap config, Sets the directory to ~/.vim/tmp
 set directory^=$HOME/.vim/tmp//
-
-" Mono configuration for dotnetcore
-let g:OmniSharp_server_stdio = 1
-
-" add yaml stuffs
-au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-
-let g:rspec_runner = "os_x_iterm"
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
-" automatic Dart file type detection
-au BufRead,BufNewFile *.dart set filetype=dart
-
-
-" echodoc configuration.
-" Or, you could use vim's popup window feature.
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'popup'
-" " To use a custom highlight for the popup window,
-" " change Pmenu to your highlight group
-highlight link EchoDocPopup Pmenu
-
-" Or, you could use neovim's floating text feature.
-" let g:echodoc#enable_at_startup = 1
-" let g:echodoc#type = 'floating'
-" To use a custom highlight for the float window,
-" change Pmenu to your highlight group
-" highlight link EchoDocFloat Pmenu
-let cmdheight=1
-let g:go_doc_popup_window=1
 
 " vv to generate new vertical split
 nnore map <silent> vv <C-w>v
@@ -476,51 +338,3 @@ map <Leader>vp :VimuxPromptCommand<CR>
 
 " Run last command executed by VimuxRunCommand
 map <Leader>vl :VimuxRunLastCommand<CR>
-
-" floating fzf
-if has('nvim')
-  let $FZF_DEFAULT_OPTS .= ' --layout=reverse'
-
-  function! FloatingFZF()
-    let height = &lines
-    let width = float2nr(&columns - (&columns * 2 / 10))
-    let col = float2nr((&columns - width) / 2)
-    let col_offset = &columns / 10
-    let opts = {
-          \ 'relative': 'editor',
-          \ 'row': 1,
-          \ 'col': col + col_offset,
-          \ 'width': width * 2 / 1,
-          \ 'height': height / 2,
-          \ 'style': 'minimal'
-          \ }
-    let buf = nvim_create_buf(v:false, v:true)
-    let win = nvim_open_win(buf, v:true, opts)
-    call setwinvar(win, '&winhl', 'NormalFloat:TabLine')
-  endfunction
-
-  let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-endif
-
-" Universal-ctags is required
-let g:js_file_import_no_mappings = 0
-let g:js_file_import_omit_semicolon = 0
-let g:js_file_import_use_fzf = 1
-let g:js_file_import_sort_after_insert = 1
-set wildignore+=*node_modules/**
-set wildignore+=*dist/**
-set wildignore+=*build/**
-" set tags=tags
-
-" nmap <C-i> <Plug>(JsFileImport)
-" nmap <C-u> <Plug>(PromptJsFileImport)
-"
-augroup vimrc
-	autocmd!
-   	autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
-augroup END
-
-set nocursorcolumn
-set nocursorline
-set norelativenumber
-syntax sync minlines=256
