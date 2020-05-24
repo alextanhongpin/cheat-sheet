@@ -77,7 +77,7 @@ augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
   autocmd FileType c,cpp,protoAutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType typescript AutoFormatBuffer prettier-standard
+  " autocmd FileType typescript AutoFormatBuffer prettier-standard
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType md, markdown AutoFormatBuffer prettier
   autocmd FileType gn AutoFormatBuffer gn
@@ -95,6 +95,8 @@ set rtp+=/usr/local/opt/fzf
 let mapleader = ","
 
 set notermguicolors
+set swapfile
+set dir=~/tmp
 set encoding=utf-8
 set clipboard=unnamed
 set ruler
@@ -317,6 +319,7 @@ nnoremap <C-f> :Ag!<Enter>
 noremap <silent> <C-S> :write<CR>
 vnoremap <silent> <C-S> <C-C>:write<CR>
 inoremap <silent> <C-S> <C-C>:write<CR>
+" noremap jj <Esc>:w<CR>
 "# ~/.zshrc
 "# enable control-s and control-q
 "stty start undef
@@ -511,3 +514,13 @@ set wildignore+=*build/**
 
 " nmap <C-i> <Plug>(JsFileImport)
 " nmap <C-u> <Plug>(PromptJsFileImport)
+"
+augroup vimrc
+	autocmd!
+   	autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
+augroup END
+
+set nocursorcolumn
+set nocursorline
+set norelativenumber
+syntax sync minlines=256
