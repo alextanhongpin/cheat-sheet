@@ -558,3 +558,9 @@ https://github.com/cohama/lexima.vim
 ```
 Ctrl + ^: goes back to previous file
 ```
+
+
+## Setting up true color support
+
+The actual implementation that works:
+https://jdhao.github.io/2018/10/19/tmux_nvim_true_color/
