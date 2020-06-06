@@ -567,3 +567,54 @@ cat $WORKDIR/Dockerrun.aws.json.copy | jq --arg VERSION "$VERSION" ".containerDe
 
 cat $WORKDIR/Dockerrun.aws.json | grep image
 ```
+
+
+## Check env equal or error
+ 
+```Makefile
+.PHONY: deploy check-env
+
+deploy: check-env
+	...
+
+other-thing-that-needs-env: check-env
+	...
+
+check-env:
+ifndef ENV
+	$(error ENV is undefined)
+endif
+```
+
+## Better way to set default environment variables
+
+```diff bash
+- ifeq ($(ENV),)
+-         ENV := development
+- endif 
++ ENV ?= development
+```
+
+## Error handling
+```Makefile
+command:
+	@$(error bad request)	
+```
+
+## Test exists
+
+```bash
+test -f myApp || echo File does not exist
+test ! -f myApp && echo File does not exist
+```
+
+## Execute once
+
+Using transient directory to store state:
+```Makefile
+# Usage: greet: $(TS)/db.done
+$(TS)/%.done:
+	mkdir -p $(dir $@)
+	touch $@
+	$(MAKE) $*
+```
