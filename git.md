@@ -311,3 +311,18 @@ $ git remote update --prune
 ```bash
 $ git config --global push.followTags true
 ```
+
+## Git restore a file to a given commit
+
+```bash
+git restore -s <SHA1>     -- <filename>
+git restore -s somebranch -- <filename>
+```
+
+## Download just a folder from github with subversion (svn)
+
+E.g. To download the folder `https://github.com/alextanhongpin/pkg/tree/master/authheader`:
+```bash
+# Replace tree/master with trunk
+$ svn export https://github.com/alextanhongpin/pkg.git/trunk/authheader
+```
