@@ -586,6 +586,17 @@ ifndef ENV
 endif
 ```
 
+E.g. to ensure env is production
+```bash
+greet: prod-only
+	@echo hello world
+
+prod-only:
+ifneq ($(ENV),production)
+	$(error ENV must be production)
+endif
+```
+
 ## Better way to set default environment variables
 
 ```diff bash
