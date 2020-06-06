@@ -544,3 +544,26 @@ deploy:
 deploy-%: .env.%
 	@$(MAKE) deploy ENV=$*
 ```
+
+## Getting version bash script
+
+```bash
+set version 
+
+#!/bin/sh
+
+set -e
+
+# Take only the first 7 characters as the version.
+export VERSION=$(echo $CI_COMMIT_ID | cut -c1-7)
+export WORKDIR=deploy
+echo $VERSION > $WORKDIR/VERSION
+
+# Create a copy of the old configuration.
+mv $WORKDIR/Dockerrun.aws.json $WORKDIR/Dockerrun.aws.json.copy
+
+# Set the latest version.
+cat $WORKDIR/Dockerrun.aws.json.copy | jq --arg VERSION "$VERSION" ".containerDefinitions[].image"="\"yourcontainername:$VERSION\"" > $WORKDIR/Dockerrun.aws.json
+
+cat $WORKDIR/Dockerrun.aws.json | grep image
+```
