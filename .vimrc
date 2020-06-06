@@ -1,83 +1,41 @@
-syntax on
-filetype off                  " required
+filetype off
+syntax off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'alvan/vim-closetag'
-Plugin 'cohama/lexima.vim'
-Plugin 'cormacrelf/vim-colors-github'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'ervandew/supertab'
-Plugin 'fatih/vim-go', {'do': ':GoUpdateBinaries', 'for': 'go'}
-Plugin 'itchyny/lightline.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'w0rp/ale'
-Plugin 'gorodinskiy/vim-coloresque', { 'for': ['css', 'scss'] }
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'ludovicchabant/vim-gutentags', { 'for': ['js', 'ts'] }
-Plugin 'kristijanhusak/vim-js-file-import', {'do': 'npm install', 'for':['js', 'ts']}
+Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'airblade/vim-gitgutter'
+Plug 'cormacrelf/vim-colors-github'
+Plug 'alvan/vim-closetag', { 'for': 'js' }
+Plug 'cohama/lexima.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ervandew/supertab'
+Plug 'preservim/nerdtree'
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries', 'for': 'go'}
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
+Plug 'gorodinskiy/vim-coloresque', { 'for': ['css', 'scss'] }
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'typescript'] }
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install', 'for':['javascript', 'typescript']}
+Plug 'sheerun/vim-polyglot'
+Plug 'altercation/vim-colors-solarized'
 
-" Add maktaba and codefmt to the runtimepath.
-" (The latter must be installed before it can be used.)
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
-Plugin 'google/vim-glaive'
-" ...
-"
-" All of your Plugins must be added before the following line
-call vundle#end()
-filetype plugin indent on    " required
+call plug#end()
 
-" the glaive#Install() should go after the "call vundle#end()"
-call glaive#Install()
-" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
+filetype plugin indent on
 
-" use `set filetype` to override default filetype=xml for *.ts files
-" autocmd BufNewFile,BufRead *.ts  set filetype=typescript
-" use `setfiletype` to not override any other plugins like ianks/vim-tsx
-" autocmd BufNewFile,BufRead *.tsx set filetype=typescript
-" autocmd BufNewFile,BufRead *.svelte set filetype=javascript
-
-" vim-codefmt
-augroup autoformat_settings
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,protoAutoFormatBuffer clang-format
-  autocmd FileType dart AutoFormatBuffer dartfmt
-  " autocmd FileType typescript AutoFormatBuffer prettier-standard
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType md, markdown AutoFormatBuffer prettier
-  autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,json AutoFormatBuffer js-beautify
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
-  autocmd FileType yaml AutoFormatBuffer prettier
-  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-augroup END
-
-" If installed using Homebrew
-set rtp+=/usr/local/opt/fzf
 
 " Map leader \ to ,
 let mapleader = ","
 
-set notermguicolors
 " set swapfile
 set dir=~/tmp
 set encoding=utf-8
@@ -86,38 +44,58 @@ set ruler
 set number
 set mouse=a
 set laststatus=2
-set colorcolumn=80
+"set colorcolumn=80
 set cursorline
-set cursorcolumn
-set relativenumber
-syntax sync minlines=256
+"set cursorcolumn
+"set relativenumber
+"syntax sync minlines=256
 set nocompatible
 set inccommand=nosplit
+set foldlevelstart=99
+set foldlevel=99
 set splitright
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Github colorscheme settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "Set themes
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \ 	 'default': {
-  \        'transparent_background': 0,
-  \        'allow_bold': 1,
-  \        'allow_italic': 1,
-  \	 }
-  \    }
-  \ }
 " use a slightly darker background, like GitHub inline code blocks
-let g:github_colors_soft = 1
+"let g:github_colors_soft = 1
 
-" more blocky diff markers in signcolumn (e.g. GitGutter)
-let g:github_colors_block_diffmark = 0
-" in your .vimrc or init.vim
-colorscheme github
-highlight Normal ctermbg=white
-highlight nonText ctermbg=white
+"" more blocky diff markers in signcolumn (e.g. GitGutter)
+"let g:github_colors_block_diffmark = 0
+"" in your .vimrc or init.vim
+"colorscheme github
 
-" if you use airline / lightline
-let g:airline_theme = "github"
-let g:lightline = { 'colorscheme': 'github' }
+"" if you use airline / lightline
+"let g:airline_theme = "github"
+""let g:lightline = { 'colorscheme': 'github' }
+
+"set background=dark
+"colorscheme monokai
+"let g:airline_theme='monokai'
+"let g:lightline = {
+  "\ 'colorscheme': 'monokai',
+  "\ }
+
+
+set background=light
+colorscheme papercolor
+let g:airline_theme='papercolor'
+let g:lightline = {
+  \ 'colorscheme': 'papercolor',
+  \ }
+"highlight Normal ctermbg=black
+"highlight nonText ctermbg=black
+
+"let g:solarized_termcolors=256
+"set background=dark
+"colorscheme solarized
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE Linter settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}
 
@@ -147,62 +125,6 @@ let g:ale_completion_enabled = 1
 let g:ale_set_quickfix = 0
 let g:airline#extensions#ale#enabled = 1
 let g:ale_rust_rls_toolchain = 'stable'
-
-"Set NERDTree
-augroup nerdtree
-	autocmd!
-	autocmd vimenter * NERDTree
-
-	autocmd StdinReadPre * let s:std_in=1
-	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-	autocmd StdinReadPre * let s:std_in=1
-	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-	" Highlight currently open buffer in NERDTree
-	autocmd BufEnter * call SyncTree()
-
-augroup END
-
-"Go back to the bar.
-map <leader>r :NERDTreeFind<cr>
-
-" Check if NERDTree is open or active
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-
-" Enable NERDCommenterToggle to check all selected lines is commented or not
-let g:NERDToggleCheckAllLines = 1
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -310,22 +232,20 @@ endf
 nn <M-g> :call JumpToDef()<cr>
 ino <M-g> <esc>:call JumpToDef()<cr>i
 
-" Speed up vim syntax highlighting.
-augroup vimrc
-	autocmd!
-	autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
-augroup END
-
-
 " Map jk to ESC in insert mode
 inoremap jk <esc>
 
 " Disable ESC key in insert mode.
 inoremap <esc> <nop>
 
-" set Vim-specific sequences for RGB colors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set Vim-specific sequences for RGB colors
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " set swap config, Sets the directory to ~/.vim/tmp
 set directory^=$HOME/.vim/tmp//
@@ -338,3 +258,23 @@ map <Leader>vp :VimuxPromptCommand<CR>
 
 " Run last command executed by VimuxRunCommand
 map <Leader>vl :VimuxRunLastCommand<CR>
+
+autocmd vimenter * NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-n> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeFind<CR>
+
+" Plugin alvan/vim-closetag
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js,*.vue,*.erb,*.svelte"
+let g:closetag_xhtml_filetypes = 'xhtml,js,jsx,tsx'
+
+" Universal-ctags is required
+"let g:js_file_import_no_mappings = 0
+"let g:js_file_import_omit_semicolon = 0
+"let g:js_file_import_use_fzf = 1
+"let g:js_file_import_sort_after_insert = 1
+"set wildignore+=*node_modules/**
+"set wildignore+=*dist/**
+"set wildignore+=*build/**
