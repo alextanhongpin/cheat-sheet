@@ -839,3 +839,8 @@ commands:
       /sbin/mkswap /var/swapfile
       /sbin/swapon /var/swapfile
 ```
+
+
+## Metabase 
+
+Disable Rocket Loader on Cloudflare, and firewall (?)
