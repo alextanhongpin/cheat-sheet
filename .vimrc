@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter'
 Plug 'cormacrelf/vim-colors-github'
-Plug 'alvan/vim-closetag', { 'for': 'js' }
+Plug 'alvan/vim-closetag', { 'for': ['javascript', 'svelte'] }
 Plug 'cohama/lexima.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
@@ -23,8 +23,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'gorodinskiy/vim-coloresque', { 'for': ['css', 'scss'] }
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'typescript'] }
-Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install', 'for':['javascript', 'typescript']}
+Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'typescript', 'typescriptreact'] }
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install', 'for':['javascript', 'typescript', 'typescriptreact']}
 Plug 'sheerun/vim-polyglot'
 Plug 'altercation/vim-colors-solarized'
 
@@ -104,6 +104,7 @@ let g:ale_linters = {
 \   'rust': ['cargo'],
 \   'javascript': ['prettier'],
 \   'typescript': ['prettier'],
+\   'typescriptreact': ['prettier'],
 \   'ruby': ['brakeman', 'standardrb', 'ruby', 'rails_best_practices', 'rubocop'],
 \   'svelte': ['stylelint', 'eslint', 'prettier-standard']
 \}
@@ -113,6 +114,7 @@ let g:ale_fixers = {
 	\'vue': ['prettier-standard'],
 	\'javascript': ['prettier'],
 	\'typescript': ['prettier'],
+	\'typescriptreact': ['prettier'],
 	\'svelte': ['stylelint', 'eslint', 'prettier', 'prettier-standard'],
 	\'*': ['remove_trailing_lines', 'trim_whitespace']
 \}
