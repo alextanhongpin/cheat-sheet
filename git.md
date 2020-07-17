@@ -326,3 +326,8 @@ E.g. To download the folder `https://github.com/alextanhongpin/pkg/tree/master/a
 # Replace tree/master with trunk
 $ svn export https://github.com/alextanhongpin/pkg.git/trunk/authheader
 ```
+
+You can add an alias to ease the creation of `docker-compose` templates in projects:
+```
+alias init-db=svn export https://github.com/alextanhongpin/docker-samples/trunk/postgres/docker-compose.yml
+```
