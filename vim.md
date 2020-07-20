@@ -564,3 +564,22 @@ Ctrl + ^: goes back to previous file
 
 The actual implementation that works:
 https://jdhao.github.io/2018/10/19/tmux_nvim_true_color/
+
+
+## Vim update multiple files
+
+
+
+
+https://dev.to/iggredible/how-to-search-and-replace-string-in-multiple-files-in-vim-20g2
+
+```bash
+// Find all typescript files in the folder src/currency and add to current args
+:args src/currency/**.ts
+
+// Replace and save all files
+:argdo %s/currency/employment-type/gI | update
+
+// Check the current args in selection
+:arg
+```
