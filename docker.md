@@ -7,6 +7,7 @@ $ docker run -it ubuntu
 
 ## Connecting from container to host service
 
+Say we have a `service-a` running in container, and `postgres` running outside. When `service-a` wants to refer to postgres outside the container, we cannot just call `localhost:5432`. Instead, we call `HDI` (host.docker.internal), which means calling `http://host.docker.internal:5432`.
 ```
 host.docker.internal
 ```
@@ -456,4 +457,17 @@ Is this naming good enough?
 alextanhongpin/go-server:prod-latest
 alextanhongpin/go-server:stage-latest
 alextanhongpin/go-server:test-latest
+```
+
+
+## Dynamic Arg in container
+
+Specifying image version dynamically:
+```
+ARG MYAPP_IMAGE=myorg/myapp:latest
+FROM $MYAPP_IMAGE
+...
+Then if you want to use a different image/tag, you can provide it at runtime:
+
+docker build -t container_tag --build-arg MYAPP_IMAGE=localimage:latest .
 ```
