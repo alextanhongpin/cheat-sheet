@@ -42,3 +42,11 @@ comp=$(echo "$fullName"  | sed 's/ //g')
 # or
 comp=`echo "$fullName"  | sed 's/ //g'`
 ```
+
+
+## Inject before line
+
+```
+inject:
+	gsed -i '/Inject code here/i another code' text.txt
+```
