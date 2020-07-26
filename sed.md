@@ -50,3 +50,32 @@ comp=`echo "$fullName"  | sed 's/ //g'`
 inject:
 	gsed -i '/Inject code here/i another code' text.txt
 ```
+
+Multi-line:
+
+```bash
+define template_import
+	gsed -i "/inject code here/Ii \
+	userRepository: container(UserRepository).asClass(),\n\
+	userService: container(UserService).asClass().singleton(), \
+	" text.txt
+endef
+```
+
+## Remove line with pattern
+
+Note, multi line remove not supported...so we run each command separately.
+
+```bash
+# With GNU sed, we can use ignore case.
+define remove_line
+	gsed -i '/userService/Id' text.txt; \
+	gsed -i '/userRepository/Id' text.txt
+endef
+
+# With macos sed, we can't, use regex instead.
+define remove_line
+	sed -i '' '/[u|U]serService/d' text.txt; \
+	sed -i '' '/[u|U]serRepository/d' text.txt
+endef
+```
