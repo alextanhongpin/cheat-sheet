@@ -583,3 +583,15 @@ https://dev.to/iggredible/how-to-search-and-replace-string-in-multiple-files-in-
 // Check the current args in selection
 :arg
 ```
+
+## Nerdtree Enter/Exit directory
+
+Reduces cognitive load when working with aplication with many folders:
+
+```
+# To enter
+Shift + c
+
+# To go up the directory
+Shift + u
+```
