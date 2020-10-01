@@ -247,3 +247,12 @@ On_IPurple='\033[0;105m'  # Purple
 On_ICyan='\033[0;106m'    # Cyan
 On_IWhite='\033[0;107m'   # White
 ```
+
+
+
+# Find the last file that changes the file 
+
+A naive way would be to check `HEAD~1`, but the previous commit does not necessarily change that given file.
+```bash
+$ find data/swagger -name "*.json" -exec sh -c 'git show $(git log --follow -n1 --pretty=format:"%h" -- {} | tail -n 1):{} > tmp/{}' \;
+``
