@@ -608,4 +608,15 @@ Here’s a brief explanation of how this vi/vim search and delete command works:
 The : character says "put vim in last-line mode".
 The g characters says "perform the following operation globally in this file".
 The forward slash characters enclose the pattern I'm trying to match. In this case it's a very simple sequence of characters, but it can also be a more complicated regular expression.
-The d at the end of the command says "When you find this pattern, delete the line".```
+The d at the end of the command says "When you find this pattern, delete the line".
+```
+
+
+## Nerdtree Toggle
+
+```
+Shift + ?: Toggle help
+P - go to root
+X - close all children recursively
+R - refresh current root (Not sure if this is necessary)
+```
