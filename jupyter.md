@@ -1,6 +1,7 @@
 ## Jupyter not using MacOS python3 
 
-```
+When the kernel is missing for Jupyter Lab:
+```bash
 $ python3 -m pip install ipykernel
 $ python3 -m ipykernel install --user
 ```
