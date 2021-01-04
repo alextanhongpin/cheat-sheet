@@ -18,26 +18,33 @@ For ubuntu/debian:
 
 ```Dockerfile
 FROM debian:stretch
-RUN groupadd -g 999 appuser && \
-    useradd -r -u 999 -g appuser appuser
-USER appuser
+
+# NOTE: UIDs below 10,000 are a security risk, as a container breakout could
+# result in the container being # ran as a more privilged user on the host
+# kernel with th same UID.
+# Add user 10001 with group 10001.
+RUN groupadd -g 10001 nonroot && \
+    useradd -r -u 10001 -g nonroot -d /home/nonroot nonroot
+
+# Run the application with the non-root user.
+USER nonroot
+
 CMD ["cat", "/tmp/secrets.txt"]
 ```
 
 For alpine:
 
 ```Dockerfile
-RUN addgroup -g 1000 group && \
-    adduser -D -u 1000 -G group user
+RUN addgroup -g 10001 -S nonroot && \
+    adduser -u 10001 -S -G nonroot  -h /home/nonroot nonroot
 
-RUN chown -R user:group /app
-USER user
+USER nonroot
 ```
 
 Alternative:
 ```Dockerfile
-RUN adduser -S -D -H -h /app appuser
-USER appuser
+RUN adduser -S -D -H -h /home/nonroot nonroot
+USER nonroot
 ```
 
 `adduser` command:
@@ -236,7 +243,16 @@ push:
 login:
   @docker log -u ${DOCKER_USER} -p ${DOCKER_PASS}
 ```
+## Running with tini
 
+```Dockerfile
+# Tini allows us to avoid several Docker edge cases, see https://github.com/krallin/tini.
+RUN apk add --no-cache tini
+ENTRYPOINT ["/sbin/tini", "--", "myapp"]
+
+# Default arguments for your app (remove if you have none):
+CMD ["--foo", "1", "--bar=2"]
+```
 
 ## Example with Elastic Container Service
 
@@ -471,3 +487,7 @@ Then if you want to use a different image/tag, you can provide it at runtime:
 
 docker build -t container_tag --build-arg MYAPP_IMAGE=localimage:latest .
 ```
+
+## References
+
+- https://github.com/hexops/dockerfile
