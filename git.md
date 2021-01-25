@@ -11,6 +11,13 @@ $ git reflog
 $ git reset 'HEAD@{1}'
 ```
 
+## Undo last commit
+
+
+```bash
+$ git reset --soft HEAD~1
+```
+
  
 # Find Folder Size
 
