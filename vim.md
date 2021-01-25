@@ -620,3 +620,11 @@ P - go to root
 X - close all children recursively
 R - refresh current root (Not sure if this is necessary)
 ```
+
+## Bookmark
+
+```
+Show bookmark: B
+Add bookmark: :bookmark
+Delete bookmark (at bookmark bar): D
+```
