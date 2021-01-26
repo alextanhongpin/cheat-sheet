@@ -160,9 +160,20 @@ alias tree='find . -print | sed -e '\''s;[^/]*/;|____;g;s;____|; |;g'\'
 
 ## Find and replace all file extension
 
-The example below will find all files with `*.JPG` extension and rename it to `*.jpg`.
+The example below will find all files with `*.JPG` extension and rename it to `*.jpg`. NOTE this will not work in Makefile:
 ```bash
 $ find . -path *.JPG -exec sh -c 'mv "$1" "${1%.JPG}.jpg"' _ {}  \;
+```
+
+## Convert .MOV/.mov file to .MP4
+```bash
+$ ffmpeg -i in.MOV -vcodec copy -acodec copy out.mp4
+```
+
+Find all files with the `.MOV` extension and convert them to `.MP4`. This will not work in Makefile:
+
+```bash
+$ find . -name '*.MOV' -exec sh -c 'ffmpeg -i "$1" -vcodec copy -acodec copy "${1%.MOV}.mp4"' _ {} \;
 ```
 
 ## Bcrypt Password
