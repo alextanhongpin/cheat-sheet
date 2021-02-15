@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter'
 Plug 'cormacrelf/vim-colors-github'
-Plug 'alvan/vim-closetag', { 'for': ['javascript', 'svelte'] }
+Plug 'alvan/vim-closetag', { 'for': ['javascript', 'svelte', 'typescript', 'typescriptreact', 'vue'] }
 Plug 'cohama/lexima.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
@@ -20,13 +20,14 @@ Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'gorodinskiy/vim-coloresque', { 'for': ['css', 'scss'] }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'typescript', 'typescriptreact'] }
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install', 'for':['javascript', 'typescript', 'typescriptreact']}
 Plug 'sheerun/vim-polyglot'
 Plug 'altercation/vim-colors-solarized'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -41,14 +42,15 @@ set dir=~/tmp
 set encoding=utf-8
 set clipboard=unnamed
 set ruler
-set number
+set nonumber
+"set foldcolumn=3
 set mouse=a
 set laststatus=2
 "set colorcolumn=80
 set cursorline
 "set cursorcolumn
-"set relativenumber
-"syntax sync minlines=256
+set relativenumber
+syntax sync minlines=256
 set nocompatible
 set inccommand=nosplit
 set foldlevelstart=99
@@ -102,20 +104,27 @@ let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}
 "Set JavaScript
 let g:ale_linters = {
 \   'rust': ['cargo'],
+\   'css': ['prettier'],
+\   'html': ['prettier'],
 \   'javascript': ['prettier'],
 \   'typescript': ['prettier'],
-\   'typescriptreact': ['prettier'],
+\   'vue': ['prettier'],
+\   'typescriptreact': ['eslint', 'prettier'],
 \   'ruby': ['brakeman', 'standardrb', 'ruby', 'rails_best_practices', 'rubocop'],
 \   'svelte': ['stylelint', 'eslint', 'prettier-standard']
+"\   'python': ['pylint']
 \}
 let g:ale_fixers = {
 	\'ruby': ['sorbet', 'standardrb', 'rubocop'],
 	\'rust': ['rustfmt'],
-	\'vue': ['prettier-standard'],
+	\'vue': ['prettier'],
+	\'html': ['prettier'],
+	\'css': ['prettier'],
 	\'javascript': ['prettier'],
 	\'typescript': ['prettier'],
-	\'typescriptreact': ['prettier'],
+	\'typescriptreact': ['eslint', 'prettier'],
 	\'svelte': ['stylelint', 'eslint', 'prettier', 'prettier-standard'],
+	"\   'python': ['black'],
 	\'*': ['remove_trailing_lines', 'trim_whitespace']
 \}
 let g:ale_lint_on_text_changed = 'never'
@@ -131,18 +140,18 @@ let g:ale_rust_rls_toolchain = 'stable'
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+	\ 'bg':      ['bg', 'Normal'],
+	\ 'hl':      ['fg', 'Comment'],
+	\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+	\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+	\ 'hl+':     ['fg', 'Statement'],
+	\ 'info':    ['fg', 'PreProc'],
+	\ 'border':  ['fg', 'Ignore'],
+	\ 'prompt':  ['fg', 'Conditional'],
+	\ 'pointer': ['fg', 'Exception'],
+	\ 'marker':  ['fg', 'Keyword'],
+	\ 'spinner': ['fg', 'Label'],
+	\ 'header':  ['fg', 'Comment'] }
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -155,6 +164,13 @@ let g:fzf_tags_command = 'ctags -R'
 
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+
+"command! -bang -nargs=* Ag
+  "\ call fzf#vim#ag(<q-args>,
+  "\                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  "\                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  "\                 <bang>0)
+
 
 " ctrlf + f to search
 nnoremap <C-f> :Ag!<Enter>
@@ -216,12 +232,6 @@ endif
 
 nnoremap <leader>zz :call VCenterCursor()<CR>
 
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
-
 fun! JumpToDef()
   if exists("*GotoDefinition_" . &filetype)
     call GotoDefinition_{&filetype}()
@@ -269,14 +279,20 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFind<CR>
 
 " Plugin alvan/vim-closetag
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx,*.tsx,*.js,*.vue,*.erb,*.svelte"
-let g:closetag_xhtml_filetypes = 'xhtml,js,jsx,tsx'
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.ts,*.jsx,*.tsx,*.js,*.vue,*.erb,*.svelte"
+let g:closetag_xhtml_filetypes = 'xhtml,js,jsx,tsx,typescriptreact'
 
 " Universal-ctags is required
-"let g:js_file_import_no_mappings = 0
-"let g:js_file_import_omit_semicolon = 0
-"let g:js_file_import_use_fzf = 1
-"let g:js_file_import_sort_after_insert = 1
-"set wildignore+=*node_modules/**
-"set wildignore+=*dist/**
-"set wildignore+=*build/**
+let g:js_file_import_no_mappings = 0
+let g:js_file_import_omit_semicolon = 0
+let g:js_file_import_use_fzf = 1
+let g:js_file_import_sort_after_insert = 1
+set wildignore+=*node_modules/**
+set wildignore+=*dist/**
+set wildignore+=*build/**
+
+au BufRead /tmp/psql.edit.* set syntax=sql
+
+"Configure vimwiki to use Markdown
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
