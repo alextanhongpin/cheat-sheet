@@ -17,6 +17,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
@@ -42,14 +43,15 @@ set dir=~/tmp
 set encoding=utf-8
 set clipboard=unnamed
 set ruler
-set nonumber
 "set foldcolumn=3
 set mouse=a
 set laststatus=2
 "set colorcolumn=80
 set cursorline
 "set cursorcolumn
-set relativenumber
+"set relativenumber
+"set number
+set number relativenumber
 syntax sync minlines=256
 set nocompatible
 set inccommand=nosplit
@@ -81,7 +83,6 @@ set splitright
   "\ 'colorscheme': 'monokai',
   "\ }
 
-
 set background=light
 colorscheme papercolor
 let g:airline_theme='papercolor'
@@ -104,6 +105,7 @@ let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}
 "Set JavaScript
 let g:ale_linters = {
 \   'rust': ['cargo'],
+"\   'go': ['staticcheck'],
 \   'css': ['prettier'],
 \   'html': ['prettier'],
 \   'javascript': ['prettier'],
@@ -135,6 +137,8 @@ let g:ale_set_loclist = 0
 let g:ale_completion_enabled = 1
 let g:ale_set_quickfix = 0
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#fnamecollapse = 0
+
 let g:ale_rust_rls_toolchain = 'stable'
 
 " Customize fzf colors to match your color scheme
