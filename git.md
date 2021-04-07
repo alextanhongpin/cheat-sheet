@@ -338,3 +338,23 @@ You can add an alias to ease the creation of `docker-compose` templates in proje
 ```
 alias init-db=svn export https://github.com/alextanhongpin/docker-samples/trunk/postgres/docker-compose.yml
 ```
+
+
+## Pre commit hooks
+
+Ensure you have a changelog edited in your current branch.
+```sh
+#!/bin/bash
+
+if [[ $(git diff develop -- CHANGELOG.md | wc -l) -eq 0 ]];then
+	echo "Don't forget to add CHANGELOG.md"
+	exit 1;
+fi
+```
+
+## Git rebase favour current branch
+
+```bash
+$ git rebase -X theirs ${branch} # Short option
+```
+https://stackoverflow.com/questions/2945344/how-do-i-select-a-merge-strategy-for-a-git-rebase
