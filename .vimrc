@@ -31,6 +31,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vimwiki/vimwiki'
 Plug 'jremmen/vim-ripgrep'
+Plug 'dyng/ctrlsf.vim'
 
 call plug#end()
 
@@ -178,9 +179,19 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
   "\                 <bang>0)
 
 
-" ctrlf + f to search
+" ctrl + f to search
 "nnoremap <C-f> :Ag!<Enter>
 nnoremap <C-f> :Rg<space>
+" Find files with fzf
+nmap <leader>p :Files<CR>
+nmap <leader>m :CtrlSF -R ""<Left>
+nmap <leader>n :CtrlSFFocus<CR>
+
+" Find within file lines
+nmap <leader>f :BLines<CR>
+
+" Substitute the word under the cursor.
+nmap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " ctrl + s to save
 noremap <silent> <C-S> :write<CR>
