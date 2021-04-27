@@ -13,6 +13,7 @@ Plug 'ervandew/supertab'
 Plug 'preservim/nerdtree'
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries', 'for': 'go'}
 Plug 'itchyny/lightline.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -29,6 +30,7 @@ Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install', 'for':['javascri
 Plug 'sheerun/vim-polyglot'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vimwiki/vimwiki'
+Plug 'jremmen/vim-ripgrep'
 
 call plug#end()
 
@@ -177,7 +179,8 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 
 " ctrlf + f to search
-nnoremap <C-f> :Ag!<Enter>
+"nnoremap <C-f> :Ag!<Enter>
+nnoremap <C-f> :Rg<space>
 
 " ctrl + s to save
 noremap <silent> <C-S> :write<CR>
@@ -300,3 +303,6 @@ au BufRead /tmp/psql.edit.* set syntax=sql
 "Configure vimwiki to use Markdown
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+
+"Ripgrep command
+let g:rg_command = 'rg --vimgrep -S'
