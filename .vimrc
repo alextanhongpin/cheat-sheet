@@ -192,6 +192,9 @@ nmap <leader>f :BLines<CR>
 
 " Substitute the word under the cursor.
 nmap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+" The equivalent, but in visual mode
+vnoremap <leader>s :s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
 
 " ctrl + s to save
 noremap <silent> <C-S> :write<CR>
