@@ -358,3 +358,37 @@ fi
 $ git rebase -X theirs ${branch} # Short option
 ```
 https://stackoverflow.com/questions/2945344/how-do-i-select-a-merge-strategy-for-a-git-rebase
+
+## Git post checkout hook
+
+```bash
+$ touch .git/hooks/post-checkout
+$ chmod u+x .git/hooks-post-checkout
+```
+
+The `.git/hooks/post-checkout`:
+
+```
+#!/bin/bash
+
+
+# The post-checkout hook receives three parameters
+# $1: Ref of previous head
+# $2: Ref of new head
+# $3: Whether this is a file checkout (0) or branch checkout (1).
+
+# This is a file checkout - do nothing
+if [ "$3" == "0" ]; then exit; fi
+
+BRANCH_NAME=$(git symbolic-ref --short -- HEAD)
+NUM_CHECKOUTS=`git reflog --date=local | grep -o ${BRANCH_NAME} | wc -l`
+
+# If the refs of the previous and new heads are the same
+# and the number of checkouts equals one, a new branch has been created
+if [ "$1" == "$2" ] && [ ${NUM_CHECKOUTS} -eq 1 ]; then
+	echo "new branch created"
+else
+	echo switched branch ${BRANCH_NAME}
+fi
+
+```
