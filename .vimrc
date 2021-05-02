@@ -30,7 +30,6 @@ Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install', 'for':['javascri
 Plug 'sheerun/vim-polyglot'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vimwiki/vimwiki'
-Plug 'jremmen/vim-ripgrep'
 Plug 'dyng/ctrlsf.vim'
 
 call plug#end()
@@ -104,8 +103,6 @@ let g:lightline = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:ale_linter_aliases = {'svelte': ['css', 'javascript']}
-
-"Set JavaScript
 let g:ale_linters = {
 \   'rust': ['cargo'],
 "\   'go': ['staticcheck'],
@@ -192,9 +189,7 @@ nmap <leader>f :BLines<CR>
 
 " Substitute the word under the cursor.
 nmap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
-" The equivalent, but in visual mode
 vnoremap <leader>s :s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
-
 
 " ctrl + s to save
 noremap <silent> <C-S> :write<CR>
