@@ -315,3 +315,6 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 
 "Ripgrep command
 let g:rg_command = 'rg --vimgrep -S'
+
+"Navigate to the next error with ALE
+nmap <leader>e :ALENext<cr>
