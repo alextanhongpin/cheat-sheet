@@ -342,7 +342,7 @@ alias init-db=svn export https://github.com/alextanhongpin/docker-samples/trunk/
 
 ## Pre commit hooks
 
-Ensure you have a changelog edited in your current branch.
+Ensure you have a changelog edited in your current branch. Currently there's no way to find out what is the first commit from the current branch, unless I refer to the original branch where it originated from. Usually it will be `main/master`, but probably a better way to do it is to write another script to find the origin.
 ```sh
 #!/bin/bash
 
