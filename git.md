@@ -392,3 +392,10 @@ else
 fi
 
 ```
+
+## Git checkout a single file from master commit
+
+Useful when you screw up and wants to revert back the original file.
+```bash
+$ git checkout $(git rev-parse master) -- path-to-file
+```
