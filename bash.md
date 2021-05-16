@@ -267,3 +267,16 @@ A naive way would be to check `HEAD~1`, but the previous commit does not necessa
 ```bash
 $ find data/swagger -name "*.json" -exec sh -c 'git show $(git log --follow -n1 --pretty=format:"%h" -- {} | tail -n 1):{} > tmp/{}' \;
 ``
+
+## Copy file only if not exists
+
+```bash
+$ cp -n .env.sample .env
+```
+
+Alternatively make use of makefile:
+
+```bash
+.env:
+  cp .env.sample .env
+```
