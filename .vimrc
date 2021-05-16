@@ -31,6 +31,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vimwiki/vimwiki'
 Plug 'dyng/ctrlsf.vim'
+Plug 'universal-ctags/ctags'
+Plug 'preservim/tagbar'
 
 call plug#end()
 
@@ -318,3 +320,6 @@ let g:rg_command = 'rg --vimgrep -S'
 
 "Navigate to the next error with ALE
 nmap <leader>e :ALENext<cr>
+
+"Toggle universal ctag display.
+nmap <leader>t :TagbarToggle<CR>
