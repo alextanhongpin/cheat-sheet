@@ -628,3 +628,10 @@ Show bookmark: B
 Add bookmark: :bookmark
 Delete bookmark (at bookmark bar): D
 ```
+
+
+## Find file path
+- full path: 1 ctrl+g
+- current file: ctrl+g, or :fs
+- to copy in insert mode: In insert mode, type Ctrl-r then % to insert the name of the current file
+
