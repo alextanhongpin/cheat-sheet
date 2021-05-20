@@ -280,3 +280,10 @@ Alternatively make use of makefile:
 .env:
   cp .env.sample .env
 ```
+
+## Edit long commands in vim
+
+Opens an editor to allow you to type your command. When you exist (:w), the command will be run:
+```bash
+$ fc
+```
