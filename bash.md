@@ -287,3 +287,10 @@ Opens an editor to allow you to type your command. When you exist (:w), the comm
 ```bash
 $ fc
 ```
+
+# Hearbeat to avoid timeout error during long deployment
+
+```
+function prevent_codeship_timeout() { ( for i in {1..5}; do echo "Preventing Codeship timeout by echoing every 300 seconds"; sleep 300; done ) & local pid=$!; trap 'kill ${pid}' SIGINT SIGTERM EXIT; }
+prevent_codeship_timeout &
+```
