@@ -399,3 +399,40 @@ Useful when you screw up and wants to revert back the original file.
 ```bash
 $ git checkout $(git rev-parse master) -- path-to-file
 ```
+
+## Adding new changes to the latest commit
+
+```bash
+$ git add --all # Add your changes
+$ git commit --amend # Apply to the last commit
+
+# NOTE: You need to force push the commit to origin if it has been pushed
+```
+
+## Cleaning a branch PR
+
+You are already working on the branch and the commits are messy. You want to recreate the branch with commits that are arranged nicely. 
+
+Say if you are working on branch `feature/foo`:
+```bash
+# Create a new temp branch.
+$ git checkout -b feature/foo-tmp
+
+# Create the patch file for all new changes on that branch relative to your main branch
+$ git diff origin/feature/foo origin/main > out.patch
+
+# Apply all the changes to this branch
+$ git apply out.patch
+
+# Do your rebase magic, git patch or git add -i
+...
+
+# Once you are done, drop the old branch
+$ git branch -D feature/foo
+
+# Rename the current branch.
+$ git branch -m feature/foo
+
+# Force push the changes if necessary
+$ git push +feature/foo
+```
