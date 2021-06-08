@@ -844,3 +844,13 @@ commands:
 ## Metabase 
 
 Disable Rocket Loader on Cloudflare, and firewall (?)
+
+
+# JSON Environment Value
+
+Does not work as `{` is not supported.
+
+https://stackoverflow.com/questions/26553553/json-stored-in-aws-eb-environment-variables-is-retrieved-without-quotes
+
+See Environment property limits:
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environments-cfg-softwaresettings.html
