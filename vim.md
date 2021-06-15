@@ -635,3 +635,14 @@ Delete bookmark (at bookmark bar): D
 - current file: ctrl+g, or :fs
 - to copy in insert mode: In insert mode, type Ctrl-r then % to insert the name of the current file
 
+## Get current file, and directory in command mode
+
+Useful when running commands in directory
+
+```
+:echo @%                |" directory/name of file
+:echo expand('%:t')     |" name of file ('tail')
+:echo expand('%:p')     |" full path
+:echo expand('%:p:h')   |" directory containing file ('head')
+```
+
