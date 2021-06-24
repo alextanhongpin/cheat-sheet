@@ -133,3 +133,12 @@ https://imageoptim.com/command-line.html
 ```
 $ open -a ImageOptim .
 ```
+
+## Convert gif to base64 for embedding in HTML
+
+```bash
+find . -name "*.gif" -exec  base64 -in {} -out {}.base64 \;
+
+# Append the prefix to the file output
+data:image/gif;base64,
+```
