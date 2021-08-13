@@ -294,3 +294,9 @@ $ fc
 function prevent_codeship_timeout() { ( for i in {1..5}; do echo "Preventing Codeship timeout by echoing every 300 seconds"; sleep 300; done ) & local pid=$!; trap 'kill ${pid}' SIGINT SIGTERM EXIT; }
 prevent_codeship_timeout &
 ```
+
+## Flatten all directory files to root
+
+```bash
+$ find [DIRECTORY] -mindepth 2 -type f -exec mv -i '{}' [DIRECTORY] ';'
+```
