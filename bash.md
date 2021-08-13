@@ -300,3 +300,9 @@ prevent_codeship_timeout &
 ```bash
 $ find [DIRECTORY] -mindepth 2 -type f -exec mv -i '{}' [DIRECTORY] ';'
 ```
+
+## Mass create directory from filename
+
+```bash
+$ find . -type f -exec sh -c 'mkdir -p "${1%.txt}"' _ {} \;
+```
