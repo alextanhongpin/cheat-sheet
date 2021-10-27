@@ -646,3 +646,11 @@ Useful when running commands in directory
 :echo expand('%:p:h')   |" directory containing file ('head')
 ```
 
+
+## Sort
+
+```
+:sort (sorts alphabetically)
+:sort n (to sorts numerically)
+```
+
