@@ -854,3 +854,116 @@ https://stackoverflow.com/questions/26553553/json-stored-in-aws-eb-environment-v
 
 See Environment property limits:
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environments-cfg-softwaresettings.html
+
+## Checking IP from curl
+
+```bash
+$ curl ifconfig.me/ip
+```
+
+## Setting Linux ulimit
+
+```bash
+// Check all
+$ ulimit -a 
+
+// Check particular
+$ ulimit -c // If this is zero, set to unlimited (see next line)
+
+$ ulimit -c unlimited
+```
+
+## Amazon Linux Platform 2
+
+### Exporting env vars in build.sh
+
+Env are not exported by default. There are two way:
+
+```bash
+$ export $(cat /opt/elasticbeanstalk/deployment/env | xargs)
+```
+
+Alternative:
+```bash
+#!/bin/bash -xe
+# See http://tldp.org/LDP/abs/html/options.html
+# -x -> Print each command to stdout before executing it, expand commands
+# -e -> Abort script at first error, when a command exits with non-zero status
+#   (except in until or while loops, if-tests, list constructs
+
+# Getting the environment variables
+values=$(/opt/elasticbeanstalk/bin/get-config environment)
+
+## Parsing the json and exporting them as environment variables
+for env in $(echo $values | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
+    export $env
+done
+
+# Current pwd is /var/app/staging
+# When building the binary for go, the output must be in $pwd/application or $pwd/bin/application
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./bin/application ./cmd/server/main.go
+```
+
+### Setting permissions
+
+
+Required to make the file executable:
+```
+$ chmod +x build.sh
+```
+
+Adding webapp users:
+```bash
+$ cd /etc/sudoers
+
+# You can only edit the sudoers file with visudo 
+$ sudo visudo
+
+# Add this line at the end
+# User rules for webapp user
+webapp ALL=(ALL) NOPASSWD:ALL
+```
+
+### Buildfile and Procfile
+
+Use `Buildfile` if you need to perform custom builds, or fetching additional data or running migrations etc.
+
+```
+# Buildfile
+make: ./build.sh
+```
+
+Use `Procfile` if you need to run multiple processes aside from server (e.g. background job). If not specified, it will be automatically created with
+
+```
+# Procfile
+web: bin/application
+```
+
+## Useful .ebextensions
+
+
+`.ebextensions/00-options.config`:
+
+```yaml
+option_settings:
+  - namespace: aws:elasticbeanstalk:application:environment # Default port is not set to 5000, so you have to pass in an environment variable or hardcode it.
+    option_name: PORT
+    value: 5000
+# Enable webapp users (you don't need this unless $systemctl status make.service or $journalctl -xe says there are missing permissions.
+users:
+  ec2-user:
+    groups:
+      - webapp
+```
+
+`.ebextensions/01-commands.config`:
+
+```yaml
+commands:
+  set_time_zone:
+    command: "sudo ln -f -s /usr/share/zoneinfo/Singapore /etc/localtime"
+  # You don't actually need this, since it is exported by default.
+  set_environment:
+    command: "export $(cat /opt/elasticbeanstalk/deployment/env | xargs)"
+```
