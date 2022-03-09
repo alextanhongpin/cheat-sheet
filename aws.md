@@ -967,3 +967,17 @@ commands:
   set_environment:
     command: "export $(cat /opt/elasticbeanstalk/deployment/env | xargs)"
 ```
+
+
+### Print env from one Elasticbeanstalk Instance and set in another
+
+```bash
+$ eb printenv | grep -v Environment | sed 's/ //g' | xargs > envvars.txt
+
+grep -v Environment: Removes the first line
+sed 's/ //g': Removes all white line
+xargs: remove new lines so that all variables are in one line
+
+$ eb setenv key=value
+```
+
