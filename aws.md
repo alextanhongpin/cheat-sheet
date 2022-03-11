@@ -981,3 +981,13 @@ xargs: remove new lines so that all variables are in one line
 $ eb setenv key=value
 ```
 
+### EB Deploy Procedure failed
+
+eb deploy procedures fail with an error that: go.mod was found, but not expected. Possible solution [here](https://stackoverflow.com/questions/59020915/how-do-i-deploy-a-go-app-with-modules-to-aws-eb).
+
+`.ebextensions/go.config`
+```
+option_settings:
+    aws:elasticbeanstalk:application:environment:
+        GOPATH: /home/ec2-user
+```
