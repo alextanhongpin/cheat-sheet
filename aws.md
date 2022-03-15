@@ -991,3 +991,21 @@ option_settings:
     aws:elasticbeanstalk:application:environment:
         GOPATH: /home/ec2-user
 ```
+
+
+### Amazon Linux Platform 2 uses Syslog
+
+```
+cat /etc/rsyslog.d/web.conf
+```
+
+The issue with this filter is it fails on logger like uber/zap, that uses `debug`, `error` and `warn`.
+```
+if $programname  == 'web' then {
+  *.=warning;*.=err;*.=crit;*.=alert;*.=emerg /var/log/web.stderr.log
+  *.=info;*.=notice /var/log/web.stdout.log
+}
+```
+
+
+https://serverfault.com/questions/1017974/outputting-json-logs-on-elastic-beanstalk-with-amazon-linux-2
