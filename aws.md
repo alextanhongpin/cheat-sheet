@@ -1033,7 +1033,6 @@ Original at `/opt/elasticbeanstalk/config/private/rsyslog.conf.template`:
 https://gist.github.com/sjlu/63bce0f7003b217bc800602c81fbce12
 
 ```
-
 files:
   "/opt/elasticbeanstalk/config/private/rsyslog.conf.template":
     mode: "000644"
@@ -1047,8 +1046,9 @@ files:
       template(name="SimpleFormat" type="string" string="%msg%\n")
       $EscapeControlCharactersOnReceive off
 
-      if $programname  == 'web' then {
-        *.=warning;*.=err;*.=crit;*.=alert;*.=emerg; /var/log/web.stderr.log; SimpleFormat
-        *.=info;*.=notice /var/log/web.stdout.log; SimpleFormat
+      {{range .ProcessNames}}if $programname  == '{{.}}' then {
+        *.=warning;*.=err;*.=crit;*.=alert;*.=emerg /var/log/{{.}}.stderr.log; SimpleFormat
+        *.=info;*.=notice /var/log/{{.}}.stdout.log; SimpleFormat
       }
+      {{end}}
 ```
