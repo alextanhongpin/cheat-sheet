@@ -1109,3 +1109,8 @@ files:
 For Amazon Linux 2 Platform for golang, the `web.stdout.log` is stream to Cloudwatch, but the `web.stderr.log` has to be done manually using the approach below, including installing awslogs through yum.
 
 https://github.com/awsdocs/elastic-beanstalk-samples/blob/main/configuration-files/aws-provided/instance-configuration/logs-streamtocloudwatch-linux.config
+
+
+For excluding nginx logs on rsyslog
+
+https://serverfault.com/questions/1017974/outputting-json-logs-on-elastic-beanstalk-with-amazon-linux-2
