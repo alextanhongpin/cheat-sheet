@@ -1052,3 +1052,53 @@ files:
       }
       {{end}}
 ```
+
+
+Alternative matching
+
+```
+files:
+  "/opt/elasticbeanstalk/config/private/rsyslog.conf.template":
+    mode: "000644"
+    owner: root
+    group: root
+    content: |
+      # This rsyslog file redirects Elastic Beanstalk platform logs.
+      # Logs are initially sent to syslog, but we also want to divide
+      # stdout and stderr into separate log files.
+
+      template(name="SimpleFormat" type="string" string="%msg%\n")
+      $EscapeControlCharactersOnReceive off
+
+      {{range .ProcessNames}}if $programname  == '{{.}}' and (($msg contains "warn") or ($msg contains "error") or ($msg contains "dpanic") or ($msg contains "panic") or ($msg contains "fatal")) then {
+        *.* /var/log/{{.}}.stderr.log; SimpleFormat
+      } else if $programname == '{{.}}' and (($msg contains "debug") or ($msg contains "info")) then {
+        *.* /var/log/{{.}}.stdout.log; SimpleFormat
+      }
+      {{end}}
+```
+
+With regex
+
+```
+files:
+  "/opt/elasticbeanstalk/config/private/rsyslog.conf.template":
+    mode: "000644"
+    owner: root
+    group: root
+    content: |
+      # This rsyslog file redirects Elastic Beanstalk platform logs.
+      # Logs are initially sent to syslog, but we also want to divide
+      # stdout and stderr into separate log files.
+
+      template(name="SimpleFormat" type="string" string="%msg%\n")
+      $EscapeControlCharactersOnReceive off
+
+      {{range .ProcessNames}}if $programname  == '{{.}}' and $msg regex "warn|error|dpanic|panic|fatal" then {
+        *.* /var/log/{{.}}.stderr.log; SimpleFormat
+      } else if $programname == '{{.}}' and $msg regex "debug"|info" then {
+        *.* /var/log/{{.}}.stdout.log; SimpleFormat
+      }
+      {{end}}
+
+```
