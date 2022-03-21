@@ -980,6 +980,9 @@ sed 's/^[ \t]*//;s/[ \t]*$//': Trim left and right spaces
 xargs: remove new lines so that all variables are in one line
 
 $ eb setenv key=value
+
+# To test sed locally
+sed -e 's/^[ ]*//;s/[ ]*$//' < .env
 ```
 
 ### EB Deploy Procedure failed
