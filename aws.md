@@ -975,7 +975,8 @@ commands:
 $ eb printenv | grep -v Environment | sed 's/ //g' | xargs > envvars.txt
 
 grep -v Environment: Removes the first line
-sed 's/ //g': Removes all white line
+# sed 's/ //g': Removes all white line (this removes spaces in the middle too
+sed 's/^[ \t]*//;s/[ \t]*$//': Trim left and right spaces
 xargs: remove new lines so that all variables are in one line
 
 $ eb setenv key=value
