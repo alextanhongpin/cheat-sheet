@@ -1102,6 +1102,7 @@ files:
         *.* /var/log/{{.}}.stderr.log; SimpleFormat
       } else if $programname == '{{.}}' and $msg regex "debug"|info" then {
         *.* /var/log/{{.}}.stdout.log; SimpleFormat
+	& stop # rsyslog: Stop logging after the match - to avoid logging to /var/log/messages
       }
       {{end}}
 
@@ -1118,3 +1119,28 @@ https://github.com/awsdocs/elastic-beanstalk-samples/blob/main/configuration-fil
 For excluding nginx logs on rsyslog
 
 https://serverfault.com/questions/1017974/outputting-json-logs-on-elastic-beanstalk-with-amazon-linux-2
+
+## Configuring rsyslog
+
+See `rsyslog: Stop logging after the match - to avoid logging to /var/log/messages` too.
+
+This could be an alternative to avoid excessive logging to `/var/log/messages` (note, the `web.none` does not work, probably just comment the whole line)
+
+```
+files:
+  "/home/webapp/configure-syslog.sh":
+    mode: "00755"
+    owner: root
+    group: root
+    encoding: plain
+    content: |
+      #!/bin/bash
+      ## Enables installing minimal security patches
+      sed -i 's/\*.info;mail.none;authpriv.none;cron.none/\*.info;web.none;mail.none;authpriv.none;cron.none/g' /etc/rsyslog.conf
+      systemctl restart rsyslog.service
+
+
+commands:
+  configure_rsyslog:
+    command: "/home/webapp/configure-syslog.sh"
+```
