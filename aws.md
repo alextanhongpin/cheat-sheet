@@ -1100,6 +1100,8 @@ files:
 
       {{range .ProcessNames}}if $programname  == '{{.}}' and $msg regex "warn|error|dpanic|panic|fatal" then {
         *.* /var/log/{{.}}.stderr.log; SimpleFormat
+	// Alternative to discard all.
+	// *.* ~
       } else if $programname == '{{.}}' and $msg regex "debug"|info" then {
         *.* /var/log/{{.}}.stdout.log; SimpleFormat
 	& stop # rsyslog: Stop logging after the match - to avoid logging to /var/log/messages
