@@ -436,3 +436,35 @@ $ git branch -m feature/foo
 # Force push the changes if necessary
 $ git push +feature/foo
 ```
+
+	
+## Better push --force
+	
+Use `git push --force-with-lease`.
+https://stackoverflow.com/questions/52823692/git-push-force-with-lease-vs-force
+
+	
+## Git Fixup
+	
+```bash
+$ touch 1.md
+$ echo 1 > 1.md
+$ gcmsg 'first commit'
+$ touch 2.md
+$ echo 'Two\n2' > 2.md
+$ gcmsg 'second commit'
+
+# Now, update 1.md to 'One\n1'
+$ echo 'One\n1' > 1.md
+# Get the first commit hash
+$ git log -n 2
+$ git commit --fixup <first-commit-hash>
+
+# There should be 3 entries now
+$ git log -n 3
+	
+# We want to squash the 3rd commit into the first by using git rebase --autosquash
+# However, git rebase requires the parent, and the first commit does not have a parent
+# So we use the --root option instead
+$ git rebase -i --fixup --root
+```
