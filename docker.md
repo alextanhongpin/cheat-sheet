@@ -88,6 +88,8 @@ cat: /tmp/secrets.txt: Permission denied
 $ docker run -v /root/secrets.txt:/tmp/secrets.txt <img>
 top secret stuff
 ```
+
+See how the official nodejs Docker image does it [here](https://github.com/nodejs/docker-node/blob/28ad5e0e5d0e80df44d897c9057ffd6419a3c7a5/19/alpine3.16/Dockerfile),
 ## Remove containers that are months old
 
 The first pipe search for the keyword `months`, you can customize it to filter specific keyword. The second one basically prints out only the third column, which is the image id.
