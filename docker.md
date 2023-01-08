@@ -219,7 +219,7 @@ $ docker system prune -af
 ## Get latest hash
 
 ```bash
-$ git rev-parse HEAD
+$ git rev-parse HEAD --short
 ```
 
 ## Versioning with Github Hash
@@ -255,6 +255,8 @@ ENTRYPOINT ["/sbin/tini", "--", "myapp"]
 # Default arguments for your app (remove if you have none):
 CMD ["--foo", "1", "--bar=2"]
 ```
+	
+Do we really need an init for nodejs running PID 1? Maybe not according to https://github.com/GoogleContainerTools/distroless/issues/550
 
 ## Example with Elastic Container Service
 
