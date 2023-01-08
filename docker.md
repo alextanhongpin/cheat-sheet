@@ -257,6 +257,8 @@ CMD ["--foo", "1", "--bar=2"]
 ```
 	
 Do we really need an init for nodejs running PID 1? Maybe not according to https://github.com/GoogleContainerTools/distroless/issues/550
+	
+Also [here](https://emmer.dev/blog/you-don-t-need-an-init-system-for-node.js-in-docker/).
 
 ## Example with Elastic Container Service
 
