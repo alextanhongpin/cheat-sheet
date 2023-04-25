@@ -79,3 +79,48 @@ define remove_line
 	sed -i '' '/[u|U]serRepository/d' text.txt
 endef
 ```
+
+
+## Rewrite source code
+
+
+The `src/hello.txt` contains:
+
+```txt
+this is a text to replace "here"
+
+\`\`\`go
+func main() {
+	->setHost()
+	->setPort()
+}
+\`\`\`
+```
+
+This script searches for the pattern `->setHost` and replace the whole line with `->setHostAndPort()`.
+
+It then deletes the line with `->setPort()`.
+
+```Makefile
+all:
+	rm ./src/hello.txt
+	cp hello.txt ./src/hello.txt
+	for file in $(shell ag -i setHost -l src); do \
+		echo $$file; \
+		sed -i '' 's/->setHost.*/->setHostAndPort()/g' $$file; \
+		sed -i '' '/->setPort/d' $$file; \
+	done
+```
+
+
+
+Output:
+```
+this is a text to replace "here"
+
+\`\`\`go
+func main() {
+	->setHostAndPort()
+}
+\`\`\`
+```
