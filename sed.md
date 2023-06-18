@@ -184,3 +184,48 @@ func main() {
 	fmt.Println("hello again");
 }
 ```
+
+
+## Print specific line in a file
+
+
+`cat` command will print all lines. You can use `sed` to print specific line, as mentioned [here](https://unix.stackexchange.com/questions/288521/with-the-linux-cat-command-how-do-i-show-only-certain-lines-by-number).
+
+```bash
+# Usage
+$ cat file
+Line 1
+Line 2
+Line 3
+Line 4
+Line 5
+Line 6
+Line 7
+Line 8
+Line 9
+Line 10
+
+# To print one line (5)
+$ sed -n 5p file
+Line 5
+
+# To print multiple lines (5 & 8)
+$ sed -n -e 5p -e 8p file
+Line 5
+Line 8
+
+# To print specific range (5 - 8)
+$ sed -n 5,8p file
+Line 5
+Line 6
+Line 7
+Line 8
+
+# To print range with other specific line (5 - 8 & 10)
+$ sed -n -e 5,8p -e 10p file
+Line 5
+Line 6
+Line 7
+Line 8
+Line 10
+```
