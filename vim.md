@@ -654,3 +654,10 @@ Useful when running commands in directory
 :sort n (to sorts numerically)
 ```
 
+
+## No Auto Command
+
+Run save without auto-formatting:
+```bash
+:noa w
+```
