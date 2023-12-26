@@ -10,6 +10,10 @@ cmd + shift + p
 
 cmd + .
 
+# Zen mode
+
+ctrl + k, z
+
 # Pick file
 
 Right arrow when selecting file on sidebar
