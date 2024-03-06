@@ -468,3 +468,8 @@ $ git log -n 3
 # So we use the --root option instead
 $ git rebase -i --fixup --root
 ```
+
+
+## Others
+
+https://martinheinz.dev/blog/109
