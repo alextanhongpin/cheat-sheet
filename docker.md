@@ -494,6 +494,20 @@ Then if you want to use a different image/tag, you can provide it at runtime:
 docker build -t container_tag --build-arg MYAPP_IMAGE=localimage:latest .
 ```
 
+## Redis-cli not working macos
+`redis-cli` not working when you run it locally.
+
+```yaml
+version: '3.8'
+services:
+  redis:
+    image: redis:7.2.4
+    ports:
+      - "6379:6379"
+    # Set this
+    command: redis-server --bind redis
+```
+
 ## References
 
 - https://github.com/hexops/dockerfile
