@@ -661,3 +661,16 @@ Run save without auto-formatting:
 ```bash
 :noa w
 ```
+
+
+## Debug slow vim
+
+Found out the culprit is gitgutter
+```
+:profile start profile.log
+:profile func *
+:profile file *
+" At this point do slow actions
+:profile pause
+:noautocmd qall!
+```
