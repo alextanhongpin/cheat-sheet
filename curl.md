@@ -40,3 +40,12 @@ starttransfer:  %{time_starttransfer}s\n\
         total:  %{time_total}s\n" "$@"
 }
 ```
+
+
+or better, put it in `.curlrc`
+
+```
+-w "\n\n==== cURL measurements stats ====\ntotal: %{time_total} seconds \nsize: %{size_download} bytes \ndnslookup: %{time_namelookup} seconds \nconnect: %{time_connect} seconds \nappconnect: %{time_appconnect} seconds \nredirect: %{time_redirect} seconds \npretransfer: %{time_pretransfer} seconds \nstarttransfer: %{time_starttransfer} seconds \ndownloadspeed: %{speed_download} byte/sec \nuploadspeed: %{speed_upload} byte/sec \n\n"
+```
+
+https://stackoverflow.com/questions/18215389/how-do-i-measure-request-and-response-times-at-once-using-curl
