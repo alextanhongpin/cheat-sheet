@@ -22,3 +22,21 @@ curl -H "Origin: http://example.com" \
 ```bash
 $ curl -F 'file[]=@/absolute/path/filename.jpeg" http://localhost:8080
 ```
+
+## Measure response time
+
+https://stackoverflow.com/questions/18215389/how-do-i-measure-request-and-response-times-at-once-using-curl
+```
+// .bashrc or .zprofile
+curl_time() {
+    curl -so /dev/null -w "\
+   namelookup:  %{time_namelookup}s\n\
+      connect:  %{time_connect}s\n\
+   appconnect:  %{time_appconnect}s\n\
+  pretransfer:  %{time_pretransfer}s\n\
+     redirect:  %{time_redirect}s\n\
+starttransfer:  %{time_starttransfer}s\n\
+-------------------------\n\
+        total:  %{time_total}s\n" "$@"
+}
+```
