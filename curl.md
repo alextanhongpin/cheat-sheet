@@ -49,3 +49,5 @@ or better, put it in `.curlrc`
 ```
 
 https://stackoverflow.com/questions/18215389/how-do-i-measure-request-and-response-times-at-once-using-curl
+
+https://blog.cloudflare.com/a-question-of-timing/
