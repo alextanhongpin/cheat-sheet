@@ -508,6 +508,16 @@ services:
     command: redis-server --bind redis
 ```
 
+## Check system storage and prune cache
+
+```bash
+docker system df
+df -h
+docker builder prune --force
+docker system df
+df -h
+```
+
 ## References
 
 - https://github.com/hexops/dockerfile
