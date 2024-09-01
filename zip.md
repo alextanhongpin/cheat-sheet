@@ -4,3 +4,10 @@
 mkdir data && unzip data.zip -d data/
 cp ../elasticsearch/index/index.json data/index.json
 ```
+
+
+Zip files with password
+
+```bash
+zip -e tosent.zip tosent/*
+```
